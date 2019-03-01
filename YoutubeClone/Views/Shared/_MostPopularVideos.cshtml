@@ -1,0 +1,17 @@
+﻿@model IEnumerable<YoutubeClone.Models.Data_Models.Video>
+
+<div class="MostPopular">
+    <div class="row">
+        <h1 class="col-md-12">Most Popular Videos</h1>
+    </div>
+
+        <div class="row">
+            @foreach (var item in Model) {
+                <div style="background-color:darkgrey">
+                    <div class="col-md-2">
+                        @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item);
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<YoutubeClone.Models.Data_Models.Chaine>
+
+<div class="MostPopularChannel">
+    <div class="row">
+        <h1 class="col-md-12">Most Popular Channel</h1>
+    </div>
+    @foreach (var item in Model) {
+        <div class="row">
+            <div style="background-color:red">
+                <div class="col-md-12">
+                    @Html.Action("MostPopularVideosOfChannels", "Channel", item)
+                </div>
+            </div>
+        </div>
+        <br />
+     }
+    </div>
