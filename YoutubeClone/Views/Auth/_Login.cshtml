@@ -1,0 +1,31 @@
+﻿<main id="Auth_Login">
+    @if (ViewBag.error != "")
+    {
+        <div>
+            <b>Erreur!</b>
+            @ViewBag.error
+        </div>
+    }
+    <form method="POST" action="/Auth/Login">
+        <fieldset>
+            <legend>Connexion</legend>
+            <label>
+                Votre email:
+                <input name="UserName" value="" type="text" placeholder="Votre nom d'utilisateur" required />
+            </label>
+
+            <label>
+                Votre mot de passe :
+                <input name="HashPassword" value="" type="password" placeholder="Votre mot de passe" required />
+            </label>
+            <label>
+                Se souvenir de moi :
+                <input name="RemindMe" value="" type="checkbox" />
+            </label>
+
+            <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" required />
+            <input type="submit" value="Connexion" />
+        </fieldset>
+    </form>
+</main>
+

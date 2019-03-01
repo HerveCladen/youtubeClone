@@ -130,15 +130,22 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ChannelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RechercheController.cs" />
+    <Compile Include="Controllers\UtilisateursController.cs" />
     <Compile Include="Controllers\VideosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -147,6 +154,9 @@
     <Compile Include="Models\Data_Models\Utilisateur.cs" />
     <Compile Include="Models\Data_Models\Video.cs" />
     <Compile Include="Models\Data_Models\YoutubeCloneDb.cs" />
+    <Compile Include="Models\View_Models\Inscription.cs" />
+    <Compile Include="Models\View_Models\LoginForm.cs" />
+    <Compile Include="Models\View_Models\Profil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +178,9 @@
     <Content Include="Views\Videos\VideoViewer.cshtml" />
     <Content Include="Views\Channel\ChannelViewer.cshtml" />
     <Content Include="Views\Recherche\Recherche.cshtml" />
+    <Content Include="Views\Auth\_Login.cshtml" />
+    <Content Include="Views\Auth\SignUp.cshtml" />
+    <Content Include="Views\Utilisateurs\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,7 +191,6 @@
   <ItemGroup>
     <Folder Include="Content\Thumbnails\" />
     <Folder Include="Content\Videos\" />
-    <Folder Include="Models\View_Models\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
   <PropertyGroup>
