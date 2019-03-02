@@ -10,7 +10,7 @@
 <div class="row">
     <form method="get" action="/Recherche/Index">
 
-        <div class="col-md-12" >
+        <div class="col-md-12">
             <input type="text" name="search" value="" required>
             <input type="submit" value="Recherche" />
         </div>
@@ -29,6 +29,7 @@
         </div>
         <div class="col-md-3">
             <p>Sort By</p>
+            <input type="radio" name="sortBy" value="Relevance"> Relevance<br />
             <input type="radio" name="sortBy" value="Popular" checked> Popular<br />
             <input type="radio" name="sortBy" value="UploadDate"> Upload time<br />
         </div>
@@ -53,15 +54,19 @@
             <h3>Videos - Resultat(s)</h3>
             <hr />
         </div>
-        @{if (ViewBag.StatusVideo) {
-                foreach (var item in ViewBag.Videos) {
+        @{if (ViewBag.StatusVideo)
+            {
+                foreach (var item in ViewBag.Videos)
+                {
                     <div>
                         <div class="col-md-12">
                             @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", (YoutubeClone.Models.Data_Models.Video)item)
                         </div>
                     </div>
                 }
-            } else {
+            }
+            else
+            {
                 <p>No results</p>
             }
 
@@ -75,15 +80,19 @@
             <hr />
         </div>
 
-        @{if (ViewBag.StatusChaine) {
-                foreach (var item in ViewBag.Chaines) {
+        @{if (ViewBag.StatusChaine)
+            {
+                foreach (var item in ViewBag.Chaines)
+                {
                     <div>
                         <div class="col-md-12">
                             @Html.Action("MostPopularVideosOfChannels", "Channel", (YoutubeClone.Models.Data_Models.Chaine)item)
                         </div>
                     </div>
                 }
-            } else {
+            }
+            else
+            {
                 <p>No results</p>
             }
 

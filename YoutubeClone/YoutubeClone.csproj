@@ -157,6 +157,7 @@
     <Compile Include="Models\View_Models\Inscription.cs" />
     <Compile Include="Models\View_Models\LoginForm.cs" />
     <Compile Include="Models\View_Models\Profil.cs" />
+    <Compile Include="Models\View_Models\RechercheCoefficient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

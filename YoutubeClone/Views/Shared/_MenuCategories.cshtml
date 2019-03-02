@@ -10,7 +10,7 @@
             <div style="background-color:yellow">
                 <div class="col-md-12">
                     <!--TODO: AVOIR LE PROPER LINK/PARAMETER-->
-                    @Html.ActionLink((string)item.ToString(), "Index", "Recherche", new { categorie = item, isVideo = "on", isFromCat = true }, null)
+                    @Html.ActionLink((string)item.ToString(), "Index", "Recherche", new { categorie = item, isVideo = "off", isFromCat = true }, null)
                 </div>
             </div>
         }
@@ -24,7 +24,7 @@
             <div style="background-color:yellow">
                 <div class="col-md-12">
                     <!--TODO: AVOIR LE PROPER LINK/PARAMETER-->
-                    @Html.ActionLink((string)item.ToString(), "Index", "Recherche", new { categorie = item, isChaine = "on", isFromCat = true }, null)
+                    @Html.ActionLink((string)item.ToString(), "Index", "Recherche", new { categorie = item, isChaine = "off", isFromCat = true }, null)
                 </div>
             </div>
         }
