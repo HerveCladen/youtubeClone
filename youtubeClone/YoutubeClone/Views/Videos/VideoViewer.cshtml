@@ -1,0 +1,70 @@
+﻿@model YoutubeClone.Models.Data_Models.Video
+
+@{
+    ViewBag.Title = "VideoViewer";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <hr />
+    <video controls src="@(Model.VideoPath)" poster="@(Model.ThumbnailPath)"></video>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Channel.Name)
+        </dt>
+
+        <dd>
+            <a href="~/Channel/Details/@(Model.Channel.ChaineId)">
+                @Html.DisplayFor(model => model.Channel.Name)
+            </a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Views)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorie_Video)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categorie_Video)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatePublished)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatePublished)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags_Video)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tags_Video)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <!---NEED TO PUT THE RIGHT LINK--->
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VideoId })
+</p>
+@Html.Action("MostPopularVideosOfChannels", "Channel", Model.Channel);

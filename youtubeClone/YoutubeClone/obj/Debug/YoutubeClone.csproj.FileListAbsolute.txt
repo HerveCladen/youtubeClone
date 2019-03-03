@@ -1,0 +1,142 @@
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csprojResolveAssemblyReference.cache
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CoreCompileInputs.cache
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\YoutubeClone.dll.config
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\YoutubeClone.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\YoutubeClone.pdb
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\EntityFramework.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\EntityFramework.SqlServer.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Helpers.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Mvc.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Razor.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\EntityFramework.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\EntityFramework.SqlServer.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Razor.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Helpers.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Mvc.xml
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.dll
+C:\Users\David Génois\source\repos\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.pdb
+D:\source\repos\YoutubeClone\YoutubeClone\bin\YoutubeClone.dll.config
+D:\source\repos\YoutubeClone\YoutubeClone\bin\YoutubeClone.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\YoutubeClone.pdb
+D:\source\repos\YoutubeClone\YoutubeClone\bin\EntityFramework.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\EntityFramework.SqlServer.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\Microsoft.Web.Infrastructure.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Helpers.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Mvc.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Razor.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\EntityFramework.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\EntityFramework.SqlServer.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Razor.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Helpers.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Mvc.xml
+D:\source\repos\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csprojResolveAssemblyReference.cache
+D:\source\repos\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CoreCompileInputs.cache
+D:\source\repos\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.dll
+D:\source\repos\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.pdb
+D:\source\repos\YoutubeClone\YoutubeClone\bin\Newtonsoft.Json.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Net.Http.Formatting.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Http.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Http.WebHost.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\Newtonsoft.Json.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Net.Http.Formatting.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Http.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\System.Web.Http.WebHost.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\PagedList.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\PagedList.Mvc.dll
+D:\source\repos\YoutubeClone\YoutubeClone\bin\PagedList.xml
+D:\source\repos\YoutubeClone\YoutubeClone\bin\PagedList.Mvc.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\YoutubeClone.dll.config
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\YoutubeClone.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\YoutubeClone.pdb
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\EntityFramework.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\EntityFramework.SqlServer.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\Newtonsoft.Json.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\PagedList.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\PagedList.Mvc.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Net.Http.Formatting.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Helpers.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Http.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Http.WebHost.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Mvc.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Razor.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\EntityFramework.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\EntityFramework.SqlServer.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\Newtonsoft.Json.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\PagedList.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\PagedList.Mvc.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Net.Http.Formatting.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Http.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Http.WebHost.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Razor.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Helpers.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\bin\System.Web.Mvc.xml
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csprojAssemblyReference.cache
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CoreCompileInputs.cache
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CopyComplete
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.dll
+C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.pdb
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\YoutubeClone.dll.config
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\YoutubeClone.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\YoutubeClone.pdb
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\EntityFramework.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\EntityFramework.SqlServer.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\Newtonsoft.Json.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\PagedList.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\PagedList.Mvc.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Net.Http.Formatting.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Helpers.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Http.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Http.WebHost.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Mvc.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Razor.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Webpages.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\EntityFramework.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\EntityFramework.SqlServer.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\Newtonsoft.Json.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\PagedList.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\PagedList.Mvc.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Net.Http.Formatting.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Http.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Http.WebHost.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Razor.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Webpages.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Helpers.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\bin\System.Web.Mvc.xml
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csprojAssemblyReference.cache
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CoreCompileInputs.cache
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CopyComplete
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.dll
+C:\Users\bruce\Desktop\youtubeClone\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.pdb

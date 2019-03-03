@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Recherche";
+}
+
+
+<h2><b>Search of</b> @ViewBag.Recherche</h2>
+
+<!-- BAR+FILTRE -->
+<div class="row">
+    <form method="get" action="/Recherche/Index">
+
+        <div class="col-md-12" >
+            <input type="text" name="search" value="" required>
+            <input type="submit" value="Recherche" />
+        </div>
+        <div class="col-md-3">
+            <p>Type</p>
+            <input type="checkbox" name="isChaine" checked> Chaine <br />
+            <input type="checkbox" name="isVideo" checked> Video <br />
+        </div>
+        <div class="col-md-3">
+            <p>Upload Time</p>
+            <input type="radio" name="uploadFrame" value="All" checked> All<br />
+            <input type="radio" name="uploadFrame" value="Day"> Day<br />
+            <input type="radio" name="uploadFrame" value="Week"> Week<br />
+            <input type="radio" name="uploadFrame" value="Month"> Month<br />
+            <input type="radio" name="uploadFrame" value="Year"> Year<br />
+        </div>
+        <div class="col-md-3">
+            <p>Sort By</p>
+            <input type="radio" name="sortBy" value="Popular" checked> Popular<br />
+            <input type="radio" name="sortBy" value="UploadDate"> Upload time<br />
+        </div>
+        <div class="col-md-3">
+            <p>Category</p>
+            <input type="radio" name="categorie" value="All" checked> All<br />
+            <input type="radio" name="categorie" value="Fashion"> Fashion<br />
+            <input type="radio" name="categorie" value="React"> React<br />
+            <input type="radio" name="categorie" value="Jeux"> Jeux<br />
+            <input type="radio" name="categorie" value="Sport"> Sport<br />
+            <input type="radio" name="categorie" value="Review"> Review<br />
+            <input type="radio" name="categorie" value="Meme"> Meme<br />
+        </div>
+    </form>
+
+</div>
+<!-- CONTENU DE LA RECHERCHE -->
+<div class="row">
+    <!--VIDEO-->
+    <div class="col-md-4">
+        <div class="col-md-12">
+            <h3>Videos - Resultat(s)</h3>
+            <hr />
+        </div>
+        @{if (ViewBag.StatusVideo) {
+                foreach (var item in ViewBag.Videos) {
+                    <div>
+                        <div class="col-md-12">
+                            @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", (YoutubeClone.Models.Data_Models.Video)item)
+                        </div>
+                    </div>
+                }
+            } else {
+                <p>No results</p>
+            }
+
+        }
+    </div>
+
+    <!--CHAINE-->
+    <div class="col-md-8" style="border-left: 5px red solid">
+        <div class="col-md-12">
+            <h3>Chaines - Resultat(s)</h3>
+            <hr />
+        </div>
+
+        @{if (ViewBag.StatusChaine) {
+                foreach (var item in ViewBag.Chaines) {
+                    <div>
+                        <div class="col-md-12">
+                            @Html.Action("MostPopularVideosOfChannels", "Channel", (YoutubeClone.Models.Data_Models.Chaine)item)
+                        </div>
+                    </div>
+                }
+            } else {
+                <p>No results</p>
+            }
+
+        }
+    </div>
+</div>
