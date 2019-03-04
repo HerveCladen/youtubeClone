@@ -1,3 +1,8 @@
 
 .vs/YoutubeClone/v15/Server/sqlite3/storage.ide-shm
 .vs/YoutubeClone/v15/Server/sqlite3/storage.ide-wal
+.vs/YoutubeClone/v15/.suo
+*.ide
+*.ide-shm
+*.ide-wal
+*.ide
