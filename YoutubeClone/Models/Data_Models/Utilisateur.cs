@@ -5,8 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace YoutubeClone.Models.Data_Models {
-    public class Utilisateur {
+namespace YoutubeClone.Models.Data_Models
+{
+    public class Utilisateur
+    {
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,7 +19,7 @@ namespace YoutubeClone.Models.Data_Models {
         [EmailAddress, Index(IsUnique = true), MaxLength(50)]
         public string Courriel { get; set; }
         [Required]
-        [StringLength(18, MinimumLength = 6)]
+        [StringLength(80, MinimumLength = 6)]
         //VERIF DANS LE VIEW MODAL DANS LA CREATION
         //[RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$")]//Might cause issues
         [Display(Name = "Password")]
@@ -25,6 +27,6 @@ namespace YoutubeClone.Models.Data_Models {
         public virtual ICollection<Chaine> Chaines { get; set; }
         //Sera sauver en ordre chronologique, pas besoin de save la date
         public ICollection<Video> Historique { get; set; }
-        public bool isAdmin{get; set;}
+        public bool IsAdmin { get; set; }
     }
 }

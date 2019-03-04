@@ -30,9 +30,20 @@ namespace YoutubeClone.Controllers
             ViewBag.ReturnUrl = ReturnUrl;
             if (ModelState.IsValid)
             {
+                // pour verifier si le username existe dans la bd et pour voir si le pass est valide
+                string formPass = Profil.Cryptage(f.HashPassword);
+                var user = db.Utilisateurs.FirstOrDefault(u => u.Username == f.UserName && u.HashPassword == formPass);
 
-                FormsAuthentication.SetAuthCookie(f.UserName, f.RemindMe);
-                return this.RedirectToAction(ReturnUrl);
+                if (user != null)
+                {
+                    FormsAuthentication.SetAuthCookie(f.UserName, f.RemindMe);
+                    return this.RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Le nom d'utilisateur n'exite pas ou le mot de passe est invalide");
+                    return View(f);
+                }
             }
             else
             {
@@ -54,22 +65,32 @@ namespace YoutubeClone.Controllers
             ViewBag.error = "";
             ViewBag.ReturnUrl = ReturnUrl;
 
-            if (ModelState.IsValid)
+            var inscrip = db.Utilisateurs.FirstOrDefault(model => model.Username == i.UserName);
+            var inscrip2 = db.Utilisateurs.FirstOrDefault(model => model.Courriel == i.Email);
+
+            if (ModelState.IsValid && inscrip == null && inscrip2 == null)
             {
                 db.Utilisateurs.Add(new Utilisateur
                 {
                     Username = i.UserName,
-                    HashPassword = i.Encodage(i.HashPassword),
+                    HashPassword = Profil.Cryptage(i.HashPassword),
                     Courriel = i.Email,
-                    isAdmin = false
+                    IsAdmin = false
                 });
+                db.SaveChanges();
                 FormsAuthentication.SetAuthCookie(i.UserName, true);
             }
             else
             {
+                // tres laid et mediocre... mais efficace
+                if (inscrip != null)
+                    ModelState.AddModelError("", "Le nom d'utilisateur est deja utilise");
+                else if (inscrip2 != null)
+                    ModelState.AddModelError("", "Le courriel est deja utilise");
+
                 return View(i);
             }
-            return this.RedirectToAction(ReturnUrl);
+            return this.RedirectToAction("Index", "Home");
         }
         [Authorize]
         public ActionResult Logout(string ReturnUrl = "")
@@ -77,7 +98,7 @@ namespace YoutubeClone.Controllers
             ViewBag.error = "";
             ViewBag.ReturnUrl = ReturnUrl;
             FormsAuthentication.SignOut();
-            return this.RedirectToAction(ReturnUrl);
+            return this.RedirectToAction("Index", "Home");
         }
     }
 }

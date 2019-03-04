@@ -24,7 +24,7 @@ namespace YoutubeClone.Models.View_Models
         [Required, DisplayName("Courriel"), DataType(DataType.EmailAddress)]
         [Compare("Email")]
         public string VerifiedEmail { get; set; }
-        protected String Cryptage(String pass)
+        public static string Cryptage(string pass)
         {
             byte[] passEncoder = new UTF8Encoding().GetBytes(pass);
             byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(passEncoder);
@@ -33,9 +33,10 @@ namespace YoutubeClone.Models.View_Models
             return encoder;
         }
 
-        public string Encodage(string pass)
-        {
-            return Cryptage(pass);
-        }
+        // --- A VOIR SI VOS MIEUX GARDER CRYPTAGE PRIVATE COMME  DANS TP2 WEB 1 OU SI ONT SENFOU ---
+        //public string Encodage(string pass)
+        //{
+        //    return Cryptage(pass);
+        //}
     }
 }

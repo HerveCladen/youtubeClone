@@ -1,10 +1,10 @@
 ﻿@model YoutubeClone.Models.View_Models.Inscription
 
 @{
-    ViewBag.Title = "creation de compte";
+    ViewBag.Title = "Creation de compte";
 }
 
-<h2>Create</h2>
+<h2>Creation de compte</h2>
 
 @using (Html.BeginForm())
 {
@@ -72,7 +72,10 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Annuler", "Index", "Home")
 </div>
 
 
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
