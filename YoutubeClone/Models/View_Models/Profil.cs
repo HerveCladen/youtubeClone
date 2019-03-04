@@ -11,17 +11,17 @@ namespace YoutubeClone.Models.View_Models
 {
     public class Profil
     {
-        [DisplayName("Nom")]
+        [DisplayName("Nom d'utilisateur:")]
         public string UserName { get; set; }
         [DisplayName("Mot de passe:"), DataType(DataType.Password)]
         [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$")]
         public string HashPassword { get; set; }
-        [DisplayName("Verifier le mot de passe:"), DataType(DataType.Password)]
+        [DisplayName("Vérifiez votre mot de passe:"), DataType(DataType.Password)]
         [Compare("HashPassword")]
         public string VerifiedPass { get; set; }
-        [Required, DisplayName("Courriel"), DataType(DataType.EmailAddress)]
+        [Required, DisplayName("Courriel:"), DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [Required, DisplayName("Courriel"), DataType(DataType.EmailAddress)]
+        [Required, DisplayName("Confirmez votre courriel:"), DataType(DataType.EmailAddress)]
         [Compare("Email")]
         public string VerifiedEmail { get; set; }
         public static string Cryptage(string pass)

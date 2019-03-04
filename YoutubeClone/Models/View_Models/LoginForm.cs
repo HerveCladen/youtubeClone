@@ -16,7 +16,7 @@ namespace YoutubeClone.Models
          DisplayName("Mot de passe:"),
          DataType(DataType.Password)]
         public string HashPassword { get; set; }
-        [DisplayName("Se souvenir de moi")]
+        [DisplayName("Se souvenir de moi:")]
         public bool RemindMe { get; set; }
     }
 }

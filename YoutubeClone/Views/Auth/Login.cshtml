@@ -9,7 +9,6 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @*TEST*@
     <div class="form-horizontal">
         <h4>Utilisateur</h4>
         <hr />
@@ -47,11 +46,13 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Revenir a l'acceuil", "Index", "Home")
-</div>
+    <ul>
+        <li>@Html.ActionLink("Revenir a l'acceuil", "Index", "Home")</li>
+        <li>@Html.ActionLink("Créer un compte", "SignUp", "Auth")</li>
+    </ul>
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

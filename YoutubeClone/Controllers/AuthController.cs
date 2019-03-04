@@ -19,7 +19,7 @@ namespace YoutubeClone.Controllers
         {
             ViewBag.error = "";
             ViewBag.ReturnUrl = ReturnUrl;
-            return PartialView(new LoginForm());
+            return View(new LoginForm());
         }
 
         // POST: Login
