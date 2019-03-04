@@ -11,7 +11,7 @@
     <form method="get" action="/Recherche/Index">
 
         <div class="col-md-12" style="text-align:center">
-            <input type="text" name="search" value="" required>
+            <input type="text" name="search" value="" required autofocus>
             <input type="submit" value="Recherche Filtrer" />
         </div>
         <div class="col-md-3">
@@ -35,13 +35,15 @@
         </div>
         <div class="col-md-3">
             <p>Category</p>
-            <input type="radio" name="categorie" value="All" checked> All<br />
-            <input type="radio" name="categorie" value="Fashion"> Fashion<br />
-            <input type="radio" name="categorie" value="React"> React<br />
-            <input type="radio" name="categorie" value="Jeux"> Jeux<br />
-            <input type="radio" name="categorie" value="Sport"> Sport<br />
-            <input type="radio" name="categorie" value="Review"> Review<br />
-            <input type="radio" name="categorie" value="Meme"> Meme<br />
+            <select name="categorie">
+                <option value="All">All</option>
+                <option value="Fashion">Fashion</option>
+                <option value="React">React</option>
+                <option value="Jeux">Jeux</option>
+                <option value="Sport">Sport</option>
+                <option value="Review">Review</option>
+                <option value="Meme">Meme</option>
+            </select>
         </div>
     </form>
 
