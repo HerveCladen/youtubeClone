@@ -44,7 +44,7 @@ namespace YoutubeClone.Models.View_Models
                     MatchesTags += CountPoints(itemTags, keyword);
                 MatchesDescription += CountPoints(itemDescription, keyword);
             }
-
+            //TEST PATATE
             coefficient = MatchesDescription * coefficientDescription + MatchesName * coefficientName + MatchesTags * coefficientTags;
         }
 
