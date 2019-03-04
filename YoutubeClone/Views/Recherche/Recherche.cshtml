@@ -10,9 +10,9 @@
 <div class="row">
     <form method="get" action="/Recherche/Index">
 
-        <div class="col-md-12">
+        <div class="col-md-12" style="text-align:center">
             <input type="text" name="search" value="" required>
-            <input type="submit" value="Recherche" />
+            <input type="submit" value="Recherche Filtrer" />
         </div>
         <div class="col-md-3">
             <p>Type</p>
@@ -21,11 +21,11 @@
         </div>
         <div class="col-md-3">
             <p>Upload Time</p>
-            <input type="radio" name="uploadFrame" value="All" checked> All<br />
-            <input type="radio" name="uploadFrame" value="Day"> Day<br />
-            <input type="radio" name="uploadFrame" value="Week"> Week<br />
-            <input type="radio" name="uploadFrame" value="Month"> Month<br />
-            <input type="radio" name="uploadFrame" value="Year"> Year<br />
+            <input type="radio" name="uploadFrame" value="All" checked> All time<br />
+            <input type="radio" name="uploadFrame" value="Day"> Today<br />
+            <input type="radio" name="uploadFrame" value="Week"> This Week<br />
+            <input type="radio" name="uploadFrame" value="Month"> This Month<br />
+            <input type="radio" name="uploadFrame" value="Year"> This Year<br />
         </div>
         <div class="col-md-3">
             <p>Sort By</p>
