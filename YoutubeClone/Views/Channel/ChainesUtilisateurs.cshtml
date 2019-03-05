@@ -6,12 +6,13 @@
 
 <div class="MostPopularChannel">
     <div class="row">
-        @Html.ActionLink("Create Channel", "Create")
+        @Html.ActionLink("Create a channel", "Create")
     </div>
     <div class="row">
         <h1 class="col-md-12">Vos chaînes:</h1>
     </div>
-    @foreach (var item in Model) {
+    @if (Model.Count() > 0) {
+        foreach (var item in Model) {
         <div class="row">
             <div style="background-color:red">
                 <div class="col-md-12 video-populaire">
@@ -20,7 +21,10 @@
             </div>
         </div>
         <br />
-    }
-</div>
+        }
+    } else {
+
+        <p>You do not own any channel, @Html.ActionLink("Create a channel", "Create") now!</p>
+    }</div>
 
 
