@@ -37,7 +37,7 @@ namespace YoutubeClone.Models.Data_Models
         protected override void Seed(YoutubeCloneDb context)
         {
 
-            Utilisateur u1 = new Utilisateur() { Username = "kidbestcode", Courriel = "David.genois13@gmail.com", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
+            Utilisateur u1 = new Utilisateur() { Username = "kidbestcode", Courriel = "David.genois13@gmail.com", HashPassword = Profil.Cryptage("patate"), IsAdmin = true };
             Utilisateur u2 = new Utilisateur() { Username = "ace13", Courriel = "e1671873@cmaisonneuve.qc.ca", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
             Utilisateur u3 = new Utilisateur() { Username = "jijininja", Courriel = "frandre@videotron.ca", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
             Utilisateur u4 = new Utilisateur() { Username = "buzz5", Courriel = "a@a.com", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
