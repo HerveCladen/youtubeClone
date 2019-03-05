@@ -101,6 +101,7 @@ C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.C
 C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CopyComplete
 C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.dll
 C:\Users\sumef\Desktop\YoutubeClone\YoutubeClone\obj\Debug\YoutubeClone.pdb
+<<<<<<< HEAD
 D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\bin\YoutubeClone.dll.config
 D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\bin\YoutubeClone.dll
 D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\bin\YoutubeClone.pdb
@@ -139,3 +140,44 @@ D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csp
 D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CoreCompileInputs.cache
 D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.dll
 D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.pdb
+=======
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\YoutubeClone.dll.config
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\YoutubeClone.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\YoutubeClone.pdb
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\EntityFramework.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\EntityFramework.SqlServer.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\Newtonsoft.Json.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\PagedList.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\PagedList.Mvc.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Net.Http.Formatting.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Helpers.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Http.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Http.WebHost.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Mvc.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Razor.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Webpages.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\EntityFramework.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\EntityFramework.SqlServer.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\Newtonsoft.Json.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\PagedList.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\PagedList.Mvc.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Net.Http.Formatting.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Http.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Http.WebHost.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Razor.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Webpages.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Webpages.Deployment.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Webpages.Razor.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Helpers.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\bin\System.Web.Mvc.xml
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csprojAssemblyReference.cache
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CoreCompileInputs.cache
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CopyComplete
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.dll
+C:\Users\bruce\Desktop\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.pdb
+>>>>>>> Fix

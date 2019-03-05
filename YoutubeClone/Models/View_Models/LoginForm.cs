@@ -7,15 +7,18 @@ using System.Web;
 
 namespace YoutubeClone.Models
 {
-    [CustomValidation(typeof(LoginForm), "Valider")]
     public class LoginForm
     {
-        [Required, DisplayName("Nom d'utilisateur:")]
+        [Required(ErrorMessage = "Veuillez entrer un nom d'utilisateur.")]
+        [DisplayName("Nom d'utilisateur:")]
         public string UserName { get; set; }
-        [Required, DisplayName("Mot de passe:"), DataType(DataType.Password)]
-        public string HashPassword { get; set; }
-        [DisplayName("Se souvenir de moi")]
-        public bool RemindMe { get; set; }
 
+        [Required(ErrorMessage = "Veuillez entrer un mot de passe.")]
+        [DisplayName("Mot de passe:")]
+        [DataType(DataType.Password)]
+        public string HashPassword { get; set; }
+
+        [DisplayName("Se souvenir de moi:")]
+        public bool RemindMe { get; set; }
     }
 }

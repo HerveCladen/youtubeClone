@@ -11,20 +11,38 @@ namespace YoutubeClone.Models.View_Models
 {
     public class Profil
     {
-        [DisplayName("Nom")]
+        [Required(ErrorMessage = "Veuillez entrer un nom d'utilisateur.")]
+        [DisplayName("Nom d'utilisateur:")]
+        [StringLength(18, MinimumLength = 5, ErrorMessage = "Le nom d'utilisateur doit être en 5 et 18 caractères.")]
+        [RegularExpression("^[a-zA-Z0-9_.-]*")]
         public string UserName { get; set; }
-        [DisplayName("Mot de passe:"), DataType(DataType.Password)]
-        [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$")]
+
+        [DisplayName("Mot de passe:")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Veuillez entrer un mot de passe.")]
+        [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$", ErrorMessage = "Votre mot de passe doit contenir au moins une lettre majuscule, une miniscule et un chiffre.")]
+        [StringLength(80, MinimumLength = 6, ErrorMessage = "Le mot de passe doit être entre 6 et 80 caractères.")]
         public string HashPassword { get; set; }
-        [DisplayName("Verifier le mot de passe:"), DataType(DataType.Password)]
-        [Compare("HashPassword")]
+
+        [DisplayName("Vérifiez votre mot de passe:")]
+        [DataType(DataType.Password)]
+        [Compare("HashPassword", ErrorMessage = "Les deux champs ne sont pas identiques.")]
+        [StringLength(80, MinimumLength = 6, ErrorMessage = "Le mot de passe doit être entre 6 et 80 caractères.")]
         public string VerifiedPass { get; set; }
-        [Required, DisplayName("Courriel"), DataType(DataType.EmailAddress)]
+
+        [Required(ErrorMessage = "Veuillez entrer une adresse courriel.")]
+        [DisplayName("Courriel:")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Veuillez entrer une adresse courriel valide.")]
+        [MaxLength(50)]
         public string Email { get; set; }
-        [Required, DisplayName("Courriel"), DataType(DataType.EmailAddress)]
-        [Compare("Email")]
+
+        [DisplayName("Confirmez votre courriel:")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Veuillez entrer une adresse courriel valide.")]
+        [Compare("Email", ErrorMessage = "Les deux champs ne sont pas identiques.")]
+        [MaxLength(50)]
         public string VerifiedEmail { get; set; }
-        protected String Cryptage(String pass)
+
+        public static string Cryptage(string pass)
         {
             byte[] passEncoder = new UTF8Encoding().GetBytes(pass);
             byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(passEncoder);
@@ -33,9 +51,10 @@ namespace YoutubeClone.Models.View_Models
             return encoder;
         }
 
-        public string Encodage(string pass)
-        {
-            return Cryptage(pass);
-        }
+        // --- A VOIR SI VOS MIEUX GARDER CRYPTAGE PRIVATE COMME  DANS TP2 WEB 1 OU SI ONT SENFOU ---
+        //public string Encodage(string pass)
+        //{
+        //    return Cryptage(pass);
+        //}
     }
 }

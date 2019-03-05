@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using YoutubeClone.Models.Data_Models;
+using YoutubeClone.Models.View_Models;
 
 namespace YoutubeClone_Bruce.Controllers
 {
@@ -37,35 +38,16 @@ namespace YoutubeClone_Bruce.Controllers
             return View(utilisateur);
         }
 
-        //// GET: Utilisateurs/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
-        ////POST: Utilisateurs/Create
-        ////To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //  //more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        // [HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "UtilisateurId,Username,Courriel,Password")] Utilisateur utilisateur)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Utilisateurs.Add(utilisateur);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(utilisateur);
-        //}
-
         // GET: Utilisateurs/Edit/5
         [Authorize]
         public ActionResult Edit()
         {
-            int UserID = Convert.ToInt32(User.Identity.Name);
-            Utilisateur u = db.Utilisateurs.Find(UserID);
+            // ma methode == plus efficace
+            var u = db.Utilisateurs.FirstOrDefault(user => user.Username == User.Identity.Name);
+
+            // methode du prof...
+            //int UserID = Convert.ToInt32(User.Identity);
+            //Utilisateur u = db.Utilisateurs.Find(UserID);
             return this.View(u);
         }
 
@@ -77,14 +59,26 @@ namespace YoutubeClone_Bruce.Controllers
         [Authorize]
         public ActionResult Edit(Utilisateur u, string ReturnUrl = "")
         {
-            ViewBag.error = "";
-            ViewBag.ReturnUrl = ReturnUrl;
-            u.UtilisateurId = Convert.ToInt32(User.Identity.Name);
+            //   ne fonctionne pas comme prevue...
+            //ViewBag.error = "";
+            //ViewBag.ReturnUrl = ReturnUrl;
+            //u.UtilisateurId = Convert.ToInt32(User.Identity);
+            var user = db.Utilisateurs.FirstOrDefault(model => model.Username == User.Identity.Name);
+
             if (ModelState.IsValid)
             {
+                if (user.HashPassword != Profil.Cryptage(u.HashPassword))
+                    u.HashPassword = Profil.Cryptage(u.HashPassword);
+                //**********************************************************************************************************************//
+                // la ligne 80 renvoi une exception des qu'il y a une modification.. a voir comment fix
+                // System.Data.Entity.Infrastructure.DbUpdateConcurrencyException: 
+                //'Store update, insert, or delete statement affected an unexpected number of rows (0).
+                //Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 
+                //for information on understanding and handling optimistic concurrency exceptions.'
+
                 db.Entry(u).State = EntityState.Modified;
                 db.SaveChanges();
-                return this.RedirectToAction(ReturnUrl);
+                return this.RedirectToAction("Index", "Home");
             }
             return this.View(u);
         }

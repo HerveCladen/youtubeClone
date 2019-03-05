@@ -4,36 +4,44 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using YoutubeClone.Models.View_Models;
 
-namespace YoutubeClone.Models.Data_Models {
-    public class YoutubeCloneDb: DbContext {
-        public YoutubeCloneDb() : base("cnx") {
-            Database.SetInitializer(new  YoutubeCloneInitializer());
+namespace YoutubeClone.Models.Data_Models
+{
+    public class YoutubeCloneDb : DbContext
+    {
+        public YoutubeCloneDb() : base("cnx")
+        {
+            Database.SetInitializer(new YoutubeCloneInitializer());
         }
 
         public DbSet<Video> Videos { get; set; }
         public DbSet<Utilisateur> Utilisateurs { get; set; }
         public DbSet<Chaine> Chaines { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
     }
 
     public class YoutubeCloneInitializer :
-        DropCreateDatabaseIfModelChanges<YoutubeCloneDb> {
+        DropCreateDatabaseIfModelChanges<YoutubeCloneDb>
+    {
         public YoutubeCloneInitializer() : base() { }
-        public override void InitializeDatabase(YoutubeCloneDb context) {
+        public override void InitializeDatabase(YoutubeCloneDb context)
+        {
             base.InitializeDatabase(context);
 
         }
-        protected override void Seed(YoutubeCloneDb context) {
+        protected override void Seed(YoutubeCloneDb context)
+        {
 
-            Utilisateur u1 = new Utilisateur() { Username = "kidbestcode", Courriel = "David.genois13@gmail.com", HashPassword = "patate" };
-            Utilisateur u2 = new Utilisateur() { Username = "ace13", Courriel = "e1671873@cmaisonneuve.qc.ca", HashPassword = "patate" };
-            Utilisateur u3 = new Utilisateur() { Username = "jijininja", Courriel = "frandre@videotron.ca", HashPassword = "patate" };
-            Utilisateur u4 = new Utilisateur() { Username = "buzz5", Courriel = "a@a.com", HashPassword = "patate" };
-            Utilisateur u5 = new Utilisateur() { Username = "marcamnesia", Courriel = "b@b.com", HashPassword = "patate" };
+            Utilisateur u1 = new Utilisateur() { Username = "kidbestcode", Courriel = "David.genois13@gmail.com", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
+            Utilisateur u2 = new Utilisateur() { Username = "ace13", Courriel = "e1671873@cmaisonneuve.qc.ca", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
+            Utilisateur u3 = new Utilisateur() { Username = "jijininja", Courriel = "frandre@videotron.ca", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
+            Utilisateur u4 = new Utilisateur() { Username = "buzz5", Courriel = "a@a.com", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
+            Utilisateur u5 = new Utilisateur() { Username = "marcamnesia", Courriel = "b@b.com", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
             Chaine ch1 = new Chaine() { Categorie_Chaine = Categorie.Fashion, Name = "Pewdiepie", Description = "Patate Pata  sdasdsa asdas te Patate", Utilisateur = u1 };
             Chaine ch2 = new Chaine() { Categorie_Chaine = Categorie.Fashion, Name = "ReactGaming", Description = "Patate Patat asdasd asdasd dse Patate", Utilisateur = u2 };
             Chaine ch3 = new Chaine() { Categorie_Chaine = Categorie.Fashion, Name = "Jacksepticeye", Description = "Patate asdasd asdas Patate Patate", Utilisateur = u4 };
