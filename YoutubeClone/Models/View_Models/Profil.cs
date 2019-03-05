@@ -11,18 +11,18 @@ namespace YoutubeClone.Models.View_Models
 {
     public class Profil
     {
-        [DisplayName("Nom d'utilisateur:")]
+        [Required(ErrorMessage = "Veuillez entrer un nom d'utilisateur."), DisplayName("Nom d'utilisateur:")]
         public string UserName { get; set; }
         [DisplayName("Mot de passe:"), DataType(DataType.Password)]
-        [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$")]
+        [Required(ErrorMessage = "Veuillez entrer un mot de passe."), RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$", ErrorMessage = "Votre mot de passe doit contenir au moins une lettre majuscule, une miniscule et un chiffre.")]
         public string HashPassword { get; set; }
         [DisplayName("Vérifiez votre mot de passe:"), DataType(DataType.Password)]
-        [Compare("HashPassword")]
+        [Compare("HashPassword", ErrorMessage = "Les deux champs ne sont pas identiques.")]
         public string VerifiedPass { get; set; }
-        [Required, DisplayName("Courriel:"), DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Veuillez entrer une adresse courriel."), DisplayName("Courriel:"), DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-        [Required, DisplayName("Confirmez votre courriel:"), DataType(DataType.EmailAddress)]
-        [Compare("Email")]
+        [DisplayName("Confirmez votre courriel:"), DataType(DataType.EmailAddress)]
+        [Compare("Email", ErrorMessage = "Les deux champs ne sont pas identiques.")]
         public string VerifiedEmail { get; set; }
         public static string Cryptage(string pass)
         {

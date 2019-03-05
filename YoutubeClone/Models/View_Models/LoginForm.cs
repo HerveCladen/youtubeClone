@@ -9,10 +9,10 @@ namespace YoutubeClone.Models
 {
     public class LoginForm
     {
-        [Required(ErrorMessage = "Entrez un nom d'utilisateur valide"),
+        [Required(ErrorMessage = "Cet utilisateur n'existe pas."),
          DisplayName("Nom d'utilisateur:")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Entrez le bon mot de passe"),
+        [Required(ErrorMessage = "Mot de passe incorrect."),
          DisplayName("Mot de passe:"),
          DataType(DataType.Password)]
         public string HashPassword { get; set; }

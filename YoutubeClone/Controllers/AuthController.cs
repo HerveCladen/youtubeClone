@@ -84,9 +84,9 @@ namespace YoutubeClone.Controllers
             {
                 // tres laid et mediocre... mais efficace
                 if (inscrip != null)
-                    ModelState.AddModelError("", "Le nom d'utilisateur est deja utilise");
+                    ModelState.AddModelError("", "Le nom d'utilisateur est déjà pris.");
                 else if (inscrip2 != null)
-                    ModelState.AddModelError("", "Le courriel est deja utilise");
+                    ModelState.AddModelError("", "Le courriel est déjà pris.");
 
                 return View(i);
             }

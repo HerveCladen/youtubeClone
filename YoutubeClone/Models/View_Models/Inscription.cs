@@ -7,19 +7,19 @@ using System.Web;
 
 namespace YoutubeClone.Models.View_Models
 {
-    [CustomValidation(typeof(Inscription), "Valider")]
     public class Inscription : Profil
     {
-        [Required, DisplayName("J'accepte les termes et conditions d'utilisation du site.")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Vous devez accepter les termes et conditions d'utilisation du site pour continuer."), 
+         DisplayName("J'accepte les termes et conditions d'utilisation du site.")]
         public bool IAgree { get; set; }
-        public static ValidationResult Valider(Inscription i)
+    }
+
+    public class IsTrueAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)
         {
-            if (!i.IAgree)
-            {
-                return new ValidationResult("Clique oui.", new[] { "IAgree" });
-            }
-            else
-                return ValidationResult.Success;
+            if (value == null) return false;
+            return (bool)value;
         }
     }
 }
