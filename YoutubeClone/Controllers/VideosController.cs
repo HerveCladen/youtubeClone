@@ -32,7 +32,9 @@ namespace YoutubeClone.Controllers
             var video = db.Videos.Where(V => V.VideoId == id).First();
             video.Views++;
             if (User.Identity.IsAuthenticated) {
-                //TODO: add historique
+                Utilisateur temp = (Utilisateur)User.Identity;
+                Utilisateur user = db.Utilisateurs.Find(temp.UtilisateurId);
+                user.Historique.Add(video);
             }
             db.SaveChanges();
             return View("~/Views/Videos/VideoViewer.cshtml", video);

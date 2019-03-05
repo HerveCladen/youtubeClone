@@ -111,6 +111,14 @@ namespace YoutubeClone_Bruce.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
+        public ActionResult Historique()
+        {
+            Utilisateur u = (Utilisateur)User.Identity;
+            var user = db.Utilisateurs.Where(c => c.UtilisateurId == u.UtilisateurId);
+            return View("~/Views/Videos/Historique.cshtml", user);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
