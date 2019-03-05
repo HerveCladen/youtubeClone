@@ -34,5 +34,13 @@ namespace YoutubeClone.Controllers
             var Chaine = db.Chaines.Where(C => C.ChaineId == id).First();
             return View("~/Views/Channel/ChannelViewer.cshtml", Chaine);
         }
+
+        //Ne retourne aucune chaîne
+        [Authorize]
+        public ActionResult ChainesUtilisateurs(Utilisateur u)
+        {
+            var Chaines = db.Chaines;
+            return View("~/Views/Channel/ChainesUtilisateurs.cshtml", Chaines.Where(c => c.Utilisateur_FK == u.UtilisateurId));
+        }
     }
 }
