@@ -2,19 +2,20 @@
     <div class="container">
         <div class="navbar-header row" style="display:flex; align-items:center; flex-direction:row">
             @Html.ActionLink("Youtube Clone", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
-            @*NE RETOURNE AUCUN RÉSULTAT (AUCUN PARAMÈTRE DE RECHERCHE DONNÉ?)*@
-            <form method="get" action="/Recherche/Index" class="navbar-form" style="">
-                <div class="col-md-12">
-                    <input type="text" name="search" value="" required>
-                    <input type="submit" value="Recherche" />
-                </div>
-            </form>
+            <div class="row">
+                <form method="get" action="/Recherche/Index" class="navbar-form" style="">
+                    <div class="col-md-12">
+                        <input type="text" name="search" value="" required>
+                        <input type="submit" value="Recherche" />
+                    </div>
+                </form>
+            </div>
 
             <ul>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li>
+                    @*Faudra peut-être créer une sidebar comme sur YouTube pour que le navbar soit moins clustered*@
+                    <li class="greeting">
                         Hi! @User.Identity.Name
                     </li>
                     <li>
@@ -22,6 +23,10 @@
                     </li>
                     <li>
                         @Html.ActionLink("Compte", "Edit", "Utilisateurs", new { Url = Request.Url.AbsolutePath }, null)
+                    </li>
+                    <li>
+                        @*À faire*@
+                        @Html.ActionLink("Historique", "Historique", "Utilisateurs", new { Url = Request.Url.AbsolutePath }, null)
                     </li>
                     <li>
                         @Html.ActionLink("Déconnexion", "Logout", "Auth", new { Url = Request.Url.AbsolutePath }, null)

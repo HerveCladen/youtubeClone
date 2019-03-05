@@ -16,3 +16,30 @@ textarea {
     max-width: 280px;
 }
 
+ul {
+    list-style: none;
+}
+
+li > a {
+    color: #999;
+    text-decoration: none;
+}
+
+li > a:hover {
+    color: lightgray;
+    text-decoration: none;
+}
+
+.greeting {
+    font-size: 1.2em;
+    color: #999;    
+}
+
+.video {
+    margin: 0 10px
+}
+
+.video-populaire {
+    padding-bottom: 15px
+}
+
