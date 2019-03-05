@@ -1,0 +1,23 @@
+﻿@model IEnumerable<YoutubeClone.Models.Data_Models.Video>
+
+@{
+    ViewBag.Title = "Historique";
+}
+
+<div class="MostPopular">
+    <div class="row">
+        <h1 class="col-md-12">Historique:</h1>
+    </div>
+    <div class="row">
+        @foreach (YoutubeClone.Models.Data_Models.Video item in Model)
+        {
+            <div style="background-color:darkgrey">
+                <div class="col-md-2 video">
+                    @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item)
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

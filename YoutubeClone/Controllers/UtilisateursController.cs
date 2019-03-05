@@ -52,7 +52,7 @@ namespace YoutubeClone_Bruce.Controllers
         }
 
         // POST: Utilisateurs/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,9 +71,9 @@ namespace YoutubeClone_Bruce.Controllers
                     user.HashPassword = Profil.Cryptage(u.HashPassword);
                 //**********************************************************************************************************************//
                 // la ligne 80 renvoi une exception des qu'il y a une modification.. a voir comment fix
-                // System.Data.Entity.Infrastructure.DbUpdateConcurrencyException: 
+                // System.Data.Entity.Infrastructure.DbUpdateConcurrencyException:
                 //'Store update, insert, or delete statement affected an unexpected number of rows (0).
-                //Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 
+                //Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540
                 //for information on understanding and handling optimistic concurrency exceptions.'
 
                 db.Entry(user).State = EntityState.Modified;
@@ -109,6 +109,13 @@ namespace YoutubeClone_Bruce.Controllers
             db.Utilisateurs.Remove(utilisateur);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public ActionResult Historique()
+        {
+            Utilisateur user = db.Utilisateurs.First(c => c.Username == User.Identity.Name);
+            return View("~/Views/Videos/Historique.cshtml", user.Historique);
         }
 
         protected override void Dispose(bool disposing)

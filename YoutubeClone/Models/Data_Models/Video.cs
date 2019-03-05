@@ -44,7 +44,7 @@ namespace YoutubeClone.Models.Data_Models {
         [MaxLength(1050)]
         public string Tags_Video { get; set; }
 
-        public virtual ICollection<Utilisateur> Viewers { get; set; }
+        //public virtual ICollection<VideoUtilisateur> Viewers { get; set; }
 
         [MaxLength(300)]
         public string VideoPath { get; set; }

@@ -14,13 +14,13 @@ namespace YoutubeClone.Controllers
 
         public ActionResult RecentlyUploaded() {
             var Videos= db.Videos;
-            //retourne les 5 plus recent 
+            //retourne les 5 plus recent
             return PartialView("~/Views/Shared/_RecentlyUploaded.cshtml", Videos.OrderByDescending(C => C.DatePublished).Take(5));
         }
 
         public ActionResult MostPopularVideos() {
             var Videos = db.Videos;
-            return PartialView("~/Views/Shared/_MostPopularVideos.cshtml", Videos.OrderByDescending(C => C.Views).Take(25));         
+            return PartialView("~/Views/Shared/_MostPopularVideos.cshtml", Videos.OrderByDescending(C => C.Views).Take(25));
         }
 
         public ActionResult ShowVideo(Video  v) {
@@ -32,8 +32,14 @@ namespace YoutubeClone.Controllers
             var video = db.Videos.Where(V => V.VideoId == id).First();
             video.Views++;
             if (User.Identity.IsAuthenticated) {
-                //TODO: add historique
-            }
+                Utilisateur user = db.Utilisateurs.First(c => c.Username == User.Identity.Name);
+                //Faire un model builder
+                if (user.Historique.Where(c => c.VideoId == video.VideoId).Count() == 0)
+                    user.Historique.Add(video);
+                    //user.Historique.Add(new VideoUtilisateur { VideoID = video.VideoId, Video = video });
+                /*if (video.Viewers.Where(c => c.UtilisateurID == user.UtilisateurId).Count() == 0)
+                    video.Viewers.Add(new VideoUtilisateur { UtilisateurID = user.UtilisateurId, Utilisateur = user });
+            */}
             db.SaveChanges();
             return View("~/Views/Videos/VideoViewer.cshtml", video);
         }
