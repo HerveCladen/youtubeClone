@@ -188,7 +188,6 @@
     <Content Include="Views\Channel\Create.cshtml" />
     <Content Include="Views\Channel\Delete.cshtml" />
     <Content Include="Views\Channel\Edit.cshtml" />
-    <Content Include="Views\Auth\AdminPanel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
