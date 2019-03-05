@@ -101,6 +101,7 @@ namespace YoutubeClone.Controllers
             if (ModelState.IsValid && User.Identity.Name == db.Utilisateurs.Where(c => c.UtilisateurId == db.Chaines.Where(C => C.ChaineId == chaine.ChaineId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
                  db.Entry(chaine).State = EntityState.Modified;
                 db.SaveChanges();
+                var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
                 return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
             }
             ViewBag.Utilisateur_FK = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
