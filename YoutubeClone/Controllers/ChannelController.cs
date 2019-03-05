@@ -21,6 +21,7 @@ namespace YoutubeClone.Controllers
         public ActionResult MostPopularVideosOfChannels(Chaine c) {
             //retourne les 5 plus populaires 
             ViewBag.Chaine = c.Name;
+            ViewBag.ChaineId = c.ChaineId;
             var videosChaine = db.Videos.Where(b => b.Chaine_FK == c.ChaineId);
             return PartialView("~/Views/Shared/_Channel.cshtml", videosChaine.OrderByDescending(C => C.Views).Take(5));
         }
