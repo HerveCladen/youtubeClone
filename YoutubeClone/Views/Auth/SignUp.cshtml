@@ -78,13 +78,4 @@
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script> @*Script pour faire fonctionner la validation de checkbox*@
-    var defaultRangeValidator = $.validator.methods.range;
-    $.validator.methods.range = function (value, element, param) {
-        if (element.type === 'checkbox') {
-            return element.checked;
-        } else {
-            return defaultRangeValidator.call(this, value, element, param);
-        }
-    }
-</script>
+<script src="~/Scripts/script.js"></script>
