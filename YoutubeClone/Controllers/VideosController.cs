@@ -14,13 +14,13 @@ namespace YoutubeClone.Controllers
 
         public ActionResult RecentlyUploaded() {
             var Videos= db.Videos;
-            //retourne les 5 plus recent 
+            //retourne les 5 plus recent
             return PartialView("~/Views/Shared/_RecentlyUploaded.cshtml", Videos.OrderByDescending(C => C.DatePublished).Take(5));
         }
 
         public ActionResult MostPopularVideos() {
             var Videos = db.Videos;
-            return PartialView("~/Views/Shared/_MostPopularVideos.cshtml", Videos.OrderByDescending(C => C.Views).Take(25));         
+            return PartialView("~/Views/Shared/_MostPopularVideos.cshtml", Videos.OrderByDescending(C => C.Views).Take(25));
         }
 
         public ActionResult ShowVideo(Video  v) {

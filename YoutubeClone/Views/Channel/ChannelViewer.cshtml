@@ -25,12 +25,12 @@
         <dd>
             @Html.DisplayFor(model => model.Categorie_Chaine)
         </dd>
-
+        @if (User.Identity.IsAuthenticated && ViewBag.EditOK) {
+        <dd>
+            <a href="/Channel/Edit/@Model.ChaineId">Edit Channel </a>
+        </dd>
+        }
     </dl>
 </div>
-<p>
-    <!---NEED TO PUT THE RIGHT LINK--->
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ChaineId })
-</p>
 @Html.Action("MostPopularVideosOfChannels", "Channel", Model);
 @Html.Action("VideosOfChannelsByUpload", "Channel", Model);

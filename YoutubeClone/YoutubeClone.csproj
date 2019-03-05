@@ -186,7 +186,9 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Channel\ChainesUtilisateurs.cshtml" />
-    <Content Include="Views\Videos\Historique.cshtml" />
+    <Content Include="Views\Channel\Create.cshtml" />
+    <Content Include="Views\Channel\Delete.cshtml" />
+    <Content Include="Views\Channel\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
