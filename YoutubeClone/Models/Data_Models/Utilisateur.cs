@@ -36,8 +36,15 @@ namespace YoutubeClone.Models.Data_Models
         public virtual ICollection<Chaine> Chaines { get; set; }
 
         //Sera sauver en ordre chronologique, pas besoin de save la date
-        public ICollection<Video> Historique { get; set; }
+        //public ICollection<VideoUtilisateur> Historique { get; set; }
+        public virtual ICollection<Video> Historique { get; set; }
 
-        public bool IsAdmin { get; set; }
+        public bool IsAdmin { get; set; }   
+        
+        public Utilisateur()
+        {
+            //Historique = new List<VideoUtilisateur>();
+            Historique = new List<Video>();
+        }
     }
 }
