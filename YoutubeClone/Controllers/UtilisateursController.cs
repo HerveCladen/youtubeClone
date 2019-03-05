@@ -68,7 +68,7 @@ namespace YoutubeClone_Bruce.Controllers
             if (ModelState.IsValid)
             {
                 if (user.HashPassword != Profil.Cryptage(u.HashPassword))
-                    u.HashPassword = Profil.Cryptage(u.HashPassword);
+                    user.HashPassword = Profil.Cryptage(u.HashPassword);
                 //**********************************************************************************************************************//
                 // la ligne 80 renvoi une exception des qu'il y a une modification.. a voir comment fix
                 // System.Data.Entity.Infrastructure.DbUpdateConcurrencyException: 
@@ -76,7 +76,7 @@ namespace YoutubeClone_Bruce.Controllers
                 //Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 
                 //for information on understanding and handling optimistic concurrency exceptions.'
 
-                db.Entry(u).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return this.RedirectToAction("Index", "Home");
             }
