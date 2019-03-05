@@ -1,23 +1,22 @@
 ﻿<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header row" style="display:flex; align-items:center; flex-direction:row">
-            @Html.ActionLink("Youtube Clone", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <div class="row">
-                <form method="get" action="/Recherche/Index" class="navbar-form" style="">
-                    <div class="col-md-12">
+    <div class="container ">
+        <div class="row " style="align-items:center; ">
+            @Html.ActionLink("Youtube Clone", "Index", "Home", new { area = "" }, new { @class = "navbar-brand col-md-4" })
+                <form method="get" action="/Recherche/Index" class="navbar-form col-md-4" style="">
+                    <div >
                         <input type="text" name="search" value="" required>
                         <input type="submit" value="Recherche" />
                     </div>
                 </form>
-            </div>
 
-            <ul>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    @*Faudra peut-être créer une sidebar comme sur YouTube pour que le navbar soit moins clustered*@
-                    <li class="greeting">
-                        Hi! @User.Identity.Name
-                    </li>
+                @if (User.Identity.IsAuthenticated) {
+            @*Faudra peut-être créer une sidebar comme sur YouTube pour que le navbar soit moins clustered*@
+            <div class="dropdown col-md-4">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Logged as @User.Identity.Name
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
                     <li>
                         @Html.ActionLink("Chaînes", "Index", "Home", new { Url = Request.Url.AbsolutePath }, null)
                     </li>
@@ -31,18 +30,18 @@
                     <li>
                         @Html.ActionLink("Déconnexion", "Logout", "Auth", new { Url = Request.Url.AbsolutePath }, null)
                     </li>
-
-                }
-                else
-                {
-                    <li>
-                        @Html.ActionLink("Connexion", "Login", "Auth", new { Url = Request.Url.AbsolutePath }, null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("Créer un compte", "SignUp", "Auth", new { Url = Request.Url.AbsolutePath }, null)
-                    </li>
-                }
-            </ul>
+                </ul>
+            </div>
+} else {
+        <ul>
+            <li>
+                @Html.ActionLink("Connexion", "Login", "Auth", new { Url = Request.Url.AbsolutePath }, null)
+            </li>
+            <li>
+                @Html.ActionLink("Créer un compte", "SignUp", "Auth", new { Url = Request.Url.AbsolutePath }, null)
+            </li>
+        </ul>
+}
+            </div>
         </div>
     </div>
-</div>
