@@ -112,9 +112,17 @@ namespace YoutubeClone_Bruce.Controllers
         }
 
         [Authorize]
-        public ActionResult Historique()
-        {
+        public ActionResult Historique() {
             Utilisateur user = db.Utilisateurs.First(c => c.Username == User.Identity.Name);
+            return View("~/Views/Videos/Historique.cshtml", user.Historique);
+        }
+
+        [Authorize]
+        public ActionResult VideHistorique() {
+            Utilisateur user = db.Utilisateurs.First(c => c.Username == User.Identity.Name);
+            user.Historique.Clear();
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
             return View("~/Views/Videos/Historique.cshtml", user.Historique);
         }
 
