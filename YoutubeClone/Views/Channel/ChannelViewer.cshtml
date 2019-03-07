@@ -35,5 +35,8 @@
         }
     </dl>
 </div>
+@if (User.Identity.IsAuthenticated) {
+    @Html.Action("ChannelRecommended", "Recherche", null)
+}
 @Html.Action("MostPopularVideosOfChannels", "Channel", Model)
 @Html.Action("VideosOfChannelsByUpload", "Channel", Model)

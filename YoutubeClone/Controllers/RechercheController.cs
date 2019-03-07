@@ -169,9 +169,60 @@ namespace YoutubeClone.Controllers
             }
             var query = videos.Where(c => RecommendedVideos.Contains(c.VideoId)).Take(5).AsEnumerable();
 
+            if (query.Count() == 0) {
+                ViewBag.MoreToSee = false;
+            } else {
+                ViewBag.MoreToSee = true;
+            }
+
             return PartialView("~/Views/Shared/_Recommended.cshtml", query);
         }
 
+        public ActionResult ChannelRecommended(int id) {
+            var videos = db.Videos.Where(c=>c.Chaine_FK == id);
+            var users = db.Utilisateurs;
+            var historique = users.Find(users.Where(c => c.Username == User.Identity.Name).First().UtilisateurId).Historique.AsEnumerable();
+            List<RechercheCoefficient> videoCoefficients = new List<RechercheCoefficient>();
+            IEnumerable<string> searchWords = new List<string>();
+            foreach (Video v in historique) {
+                searchWords = searchWords.Concat((v.Name + v.Tags_Video + v.Description).Split(' ').ToList());
+            }
 
+            foreach (Video v in videos) {
+                var tempcoefficient = new RechercheCoefficient(v.VideoId);
+                foreach (string s in searchWords) {
+                    var temp = new RechercheCoefficient(s, v.Name, v.Description, v.Tags_Video, v.VideoId);
+                    tempcoefficient.coefficient += temp.coefficient;
+                }
+                videoCoefficients.Add(tempcoefficient);
+            }
+
+            if (historique.Count() == 0) {
+                ViewBag.HasHistorique = false;
+            } else {
+                ViewBag.HasHistorique = true;
+            }
+
+            videoCoefficients = videoCoefficients.OrderByDescending(v => v.coefficient).ToList();
+            List<int> RecommendedVideos = new List<int>();
+            for (int v = 0; v < videoCoefficients.Count(); v++) {
+                bool isOk = true;
+                foreach (Video vid in historique) {
+                    if (vid.VideoId == videoCoefficients[v].id)
+                        isOk = false;
+                }
+                if (isOk)
+                    RecommendedVideos.Add(videoCoefficients[v].id);
+            }
+            var query = videos.Where(c => RecommendedVideos.Contains(c.VideoId)).Take(5).AsEnumerable();
+
+            if (query.Count() == 0) {
+                ViewBag.MoreToSee = false;
+            } else {
+                ViewBag.MoreToSee = true;
+            }
+
+            return PartialView("~/Views/Shared/_Recommended.cshtml", query);
+        }
     }
 }
