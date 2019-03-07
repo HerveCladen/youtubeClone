@@ -50,11 +50,5 @@ namespace YoutubeClone.Models.View_Models
 
             return encoder;
         }
-
-        // --- A VOIR SI VOS MIEUX GARDER CRYPTAGE PRIVATE COMME  DANS TP2 WEB 1 OU SI ONT SENFOU ---
-        //public string Encodage(string pass)
-        //{
-        //    return Cryptage(pass);
-        //}
     }
 }
