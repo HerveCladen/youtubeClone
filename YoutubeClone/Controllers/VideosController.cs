@@ -39,15 +39,11 @@ namespace YoutubeClone.Controllers
             video.Views++;
             if (User.Identity.IsAuthenticated) {
                 Utilisateur user = db.Utilisateurs.First(c => c.Username == User.Identity.Name);
-                //Faire un model builder
                 if (user.Historique.Where(c => c.VideoId == video.VideoId).Count() == 0)
                     user.Historique.Add(video);
-                    //user.Historique.Add(new VideoUtilisateur { VideoID = video.VideoId, Video = video });
-                /*if (video.Viewers.Where(c => c.UtilisateurID == user.UtilisateurId).Count() == 0)
-                    video.Viewers.Add(new VideoUtilisateur { UtilisateurID = user.UtilisateurId, Utilisateur = user });
-            */}
-            
-            if (User.Identity.IsAuthenticated && User.Identity.Name == utilisateurs.Where(c => c.UtilisateurId == chaines.Where(C => C.ChaineId == utilisateurs.Where(D => D.Username == User.Identity.Name).FirstOrDefault().UtilisateurId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
+            }
+            if (User.Identity.IsAuthenticated && User.Identity.Name == utilisateurs.Find(chaines.Find(videos.Find(id).Chaine_FK).Utilisateur_FK).Username)
+            /*if (User.Identity.IsAuthenticated && User.Identity.Name == utilisateurs.Where(c => c.UtilisateurId == chaines.Where(C => C.ChaineId == utilisateurs.Where(D => D.Username == User.Identity.Name).FirstOrDefault().UtilisateurId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username)*/ {
                 ViewBag.EditOK = true;
             } else {
                 ViewBag.EditOK = false;

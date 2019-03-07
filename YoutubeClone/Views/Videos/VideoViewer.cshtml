@@ -8,7 +8,13 @@
 
 <div>
     <hr />
-    <video controls src="@Model.VideoPath" poster="@Model.ThumbnailPath"></video>
+    @if (!String.IsNullOrEmpty(Model.VideoPath))
+    {
+        <video controls src="@Model.VideoPath" poster="@Model.ThumbnailPath"></video>
+    } else
+    {
+        <video controls src="https://ak5.picdn.net/shutterstock/videos/5770835/preview/stock-footage-the-decorated-archway-and-red-lanterns-in-the-snow.webm" poster="https://i.imgur.com/DS2bwux.png"></video>
+    }
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -59,7 +65,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.Tags_Video)
-        </dd>        <!---NEED TO PUT THE RIGHT LINK--->
+        </dd>
         @if (User.Identity.IsAuthenticated && ViewBag.EditOK) {
             <dd>
                 <a href="/Videos/Edit/@Model.VideoId">Edit Video </a>
@@ -70,4 +76,4 @@
 </div>
 <p>
 </p>
-@Html.Action("MostPopularVideosOfChannels", "Channel", Model.Channel);
+@Html.Action("MostPopularVideosOfChannels", "Channel", Model.Channel)
