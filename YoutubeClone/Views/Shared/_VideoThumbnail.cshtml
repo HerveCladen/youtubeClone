@@ -6,7 +6,7 @@
         <dt @*class="thumbnail"*@>
             @*Thumbnail*@
             <a href="~/Videos/Details/@(Model.VideoId)">
-                <img src="~/Content/Thumbnails/@(Model.VideoId).png" onerror="this.src='https://i.imgur.com/P5xGiIQ.jpg'"  class="thumbnail-image"/>
+                <img src="@Model.ThumbnailPath" onerror="this.src='https://i.imgur.com/P5xGiIQ.jpg'"  class="thumbnail-image"/>
             </a>
         </dt>
 

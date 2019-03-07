@@ -46,8 +46,8 @@ namespace YoutubeClone.Controllers
                 /*if (video.Viewers.Where(c => c.UtilisateurID == user.UtilisateurId).Count() == 0)
                     video.Viewers.Add(new VideoUtilisateur { UtilisateurID = user.UtilisateurId, Utilisateur = user });
             */}
-            
-            if (User.Identity.IsAuthenticated && User.Identity.Name == utilisateurs.Where(c => c.UtilisateurId == chaines.Where(C => C.ChaineId == utilisateurs.Where(D => D.Username == User.Identity.Name).FirstOrDefault().UtilisateurId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
+
+            if (User.Identity.IsAuthenticated && User.Identity.Name == utilisateurs.Find(chaines.Find(videos.Find(id).Chaine_FK).Utilisateur_FK).Username) {
                 ViewBag.EditOK = true;
             } else {
                 ViewBag.EditOK = false;
@@ -117,7 +117,7 @@ namespace YoutubeClone.Controllers
         public ActionResult Edit([Bind(Include = "VideoId,Name,Description,Categorie_Video,Tags_Video")] VideoEdit videoEdit) {
             var utilisateurs = db.Utilisateurs;
             var chaines = db.Chaines;
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid && db.Utilisateurs.Find(db.Chaines.Find(db.Videos.Find(videoEdit.VideoId).Chaine_FK).Utilisateur_FK).Username == User.Identity.Name) {
                 Video video = db.Videos.Find(videoEdit.VideoId);
                 video.Name = videoEdit.Name;
                 video.Description = videoEdit.Description;
@@ -150,10 +150,18 @@ namespace YoutubeClone.Controllers
         public ActionResult DeleteConfirmed(int id) {
             var utilisateurs = db.Utilisateurs;
             var chaines = db.Chaines;
-            if ( true) {
+            if (db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin
+                ||
+                db.Utilisateurs.Find(db.Chaines.Find(db.Videos.Find(id).Chaine_FK).Utilisateur_FK).Username == User.Identity.Name
+                ) {
                 Video video = db.Videos.Find(id);
-                System.IO.File.Delete(Server.MapPath("~") + video.ThumbnailPath);
-                System.IO.File.Delete(Server.MapPath("~") +  video.VideoPath);
+                try {
+                    System.IO.File.Delete(Server.MapPath("~") + video.ThumbnailPath);
+                    System.IO.File.Delete(Server.MapPath("~") + video.VideoPath);
+                } catch (Exception e) {
+
+                }
+                db.Videos.Remove(video);
                 db.SaveChanges();
             }
             var user = utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;

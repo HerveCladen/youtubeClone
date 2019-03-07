@@ -134,5 +134,22 @@ namespace YoutubeClone_Bruce.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Admin() {
+            if (User.Identity.IsAuthenticated) {
+                if (db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin) {
+
+                    ViewBag.Videos = db.Videos.AsEnumerable();
+                    ViewBag.Chaines = db.Chaines.AsEnumerable();
+                    ViewBag.Utilisateurs = db.Utilisateurs.AsEnumerable();
+
+                    return View("~/Views/Utilisateurs/Admin.cshtml");
+                } else {
+                    return RedirectToAction("Index", "Home");
+                }
+            } else {
+                return RedirectToAction("Index", "Home");
+            }
+        }
     }
 }

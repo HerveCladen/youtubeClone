@@ -126,8 +126,15 @@ namespace YoutubeClone.Controllers
         [ValidateAntiForgeryToken]
         [Authorize]
         public ActionResult DeleteConfirmed(int id) {
-            if (User.Identity.Name == db.Utilisateurs.Where(c => c.UtilisateurId == db.Chaines.Where(C => C.ChaineId == id).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
+            if (User.Identity.Name == db.Utilisateurs.Where(c => c.UtilisateurId == db.Chaines.Where(C => C.ChaineId == id).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username 
+                ||
+                db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin
+                ) {
                 Chaine chaine = db.Chaines.Find(id);
+                var videos = chaine.Videos.ToList();
+                foreach (Video v in videos) {
+                    db.Videos.Remove(v);
+                }
                 db.Chaines.Remove(chaine);
                 db.SaveChanges();
             }
