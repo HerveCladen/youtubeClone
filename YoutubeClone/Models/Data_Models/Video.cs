@@ -18,17 +18,17 @@ namespace YoutubeClone.Models.Data_Models {
 
         [Required]
         [StringLength(40, MinimumLength = 5)]
-        [DisplayName("Entrez le nom de la video")]
+        [DisplayName("Veuillez entrer le nom de la vidéo")]
         public string Name { get; set; }
 
         [Required]
         [MaxLength(180)]
-        [DisplayName("Entrez une description")]
+        [DisplayName("Veuillez entrer une description")]
         [RegularExpression(@"(\S*\s){2,}(\S+){1}")]
         public string Description { get; set; }
 
         [Required]
-        [DisplayName("Choisissez la categorie")]
+        [DisplayName("Veuillez choisir une catégorie")]
         public Categorie Categorie_Video { get; set; }
 
         [Required]
@@ -43,8 +43,6 @@ namespace YoutubeClone.Models.Data_Models {
         [RegularExpression("(([A-Za-z0-9_ ]{2,20},){0,49}([A-Za-z0-9_ ]{2,20})){0,1}")]
         [MaxLength(1050)]
         public string Tags_Video { get; set; }
-
-        //public virtual ICollection<VideoUtilisateur> Viewers { get; set; }
 
         [MaxLength(300)]
         public string VideoPath { get; set; }

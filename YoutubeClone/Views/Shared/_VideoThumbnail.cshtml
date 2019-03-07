@@ -6,7 +6,12 @@
         <dt @*class="thumbnail"*@>
             @*Thumbnail*@
             <a href="~/Videos/Details/@(Model.VideoId)">
-                <img src="@Model.ThumbnailPath" onerror="this.src='https://i.imgur.com/P5xGiIQ.jpg'"  class="thumbnail-image"/>
+                @if (!String.IsNullOrEmpty(Model.ThumbnailPath)) {
+                    <img src="@Model.ThumbnailPath" alt="nothing" class="thumbnail-image"/>
+                } else
+                {
+                    <img src="https://i.imgur.com/P5xGiIQ.jpg" alt="nothing" class="thumbnail-image"/>
+                }
             </a>
         </dt>
 
@@ -23,8 +28,8 @@
         </dt>
 
         <dt class="video-details-part">
-            @*Views and published date (maybe change to how many days/weeks/months/years ago it was released)*@
-            @(Model.Views) Views · @YoutubeClone.Controllers.VideosController.GetTimeDifference(Model.DatePublished) @*@(Model.DatePublished.Day)-@(Model.DatePublished.Month)-@(Model.DatePublished.Year)*@
+            @*Views and published date*@
+            @(Model.Views) Views · @YoutubeClone.Controllers.VideosController.GetTimeDifference(Model.DatePublished)
         </dt>
     </dl>
 </div>

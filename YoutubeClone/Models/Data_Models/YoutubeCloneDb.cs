@@ -34,7 +34,6 @@ namespace YoutubeClone.Models.Data_Models
         public override void InitializeDatabase(YoutubeCloneDb context)
         {
             base.InitializeDatabase(context);
-
         }
         protected override void Seed(YoutubeCloneDb context)
         {
