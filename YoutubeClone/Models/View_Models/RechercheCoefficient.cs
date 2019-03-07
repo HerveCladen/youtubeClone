@@ -27,6 +27,10 @@ namespace YoutubeClone.Models.View_Models
         private double coefficientTags = 1.0;
         private string[] keywords;
 
+        public RechercheCoefficient(int id) {
+            this.id = id;
+        }
+
         public RechercheCoefficient(string searchQuery, string itemName, string itemDescription, string itemTags, int id)
         {
             this.searchQuery = searchQuery;
