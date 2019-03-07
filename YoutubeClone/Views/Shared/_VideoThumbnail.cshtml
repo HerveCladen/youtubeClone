@@ -7,10 +7,10 @@
             @*Thumbnail*@
             <a href="~/Videos/Details/@(Model.VideoId)">
                 @if (!String.IsNullOrEmpty(Model.ThumbnailPath)) {
-                    <img src="@Model.ThumbnailPath" alt="nothing" class="thumbnail-image"/>
+                    <img src="@Model.ThumbnailPath" onerror="this.src ='https://i.imgur.com/P5xGiIQ.jpg'" class="thumbnail-image"/>
                 } else
                 {
-                    <img src="https://i.imgur.com/P5xGiIQ.jpg" alt="nothing" class="thumbnail-image"/>
+                    <img src="https://i.imgur.com/P5xGiIQ.jpg" class="thumbnail-image"/>
                 }
             </a>
         </dt>
