@@ -1,4 +1,4 @@
-﻿@model YoutubeClone.Models.Data_Models.Video
+﻿@model YoutubeClone.Models.View_Models.VideoEdit
 
 @{
     ViewBag.Title = "Edit";
@@ -39,12 +39,6 @@
                 @Html.ValidationMessageFor(model => model.Categorie_Video, "", new { @class = "text-danger" })
             </div>
         </div>
-
-                @Html.Hidden("Chaine_FK")
-                @Html.Hidden("ThumbnailPath")
-                        @Html.Hidden("VideoPath")
-                                @Html.Hidden("DatePublished")
-                                @Html.Hidden("Views")
 
         <div class="form-group">
             @Html.LabelFor(model => model.Tags_Video, htmlAttributes: new { @class = "control-label col-md-2" })

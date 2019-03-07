@@ -26,9 +26,12 @@
             @Html.DisplayFor(model => model.Categorie_Chaine)
         </dd>
         @if (User.Identity.IsAuthenticated && ViewBag.EditOK) {
-        <dd>
-            <a href="/Channel/Edit/@Model.ChaineId">Edit Channel </a>
-        </dd>
+            <dd>
+                <a href="/Channel/Edit/@Model.ChaineId">Edit Channel </a>
+            </dd>
+            <dd>
+                <a href="/Videos/Create/@Model.ChaineId">Upload Video </a>
+            </dd>
         }
     </dl>
 </div>

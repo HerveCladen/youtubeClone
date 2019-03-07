@@ -8,6 +8,7 @@ using PagedList;
 using PagedList.Mvc;
 using System.Data.Entity;
 using System.Net;
+using YoutubeClone.Models.View_Models;
 
 namespace YoutubeClone.Controllers
 {
@@ -56,9 +57,8 @@ namespace YoutubeClone.Controllers
 
         // GET: Videos1/Create
         [Authorize]
-        public ActionResult Create() {
-            ViewBag.Chaine_FK = new SelectList(db.Chaines, "ChaineId", "Name");
-            return View();
+        public ActionResult Create(int id) {
+            return View(new VideoCreate {Chaine_FK=id});
         }
 
         // POST: Videos1/Create
@@ -67,15 +67,26 @@ namespace YoutubeClone.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "VideoId,Views,Name,Description,Categorie_Video,DatePublished,Chaine_FK,Tags_Video,VideoPath,ThumbnailPath")] Video video) {
+        public ActionResult Create([Bind(Include = "Name,Description,Categorie_Video,Chaine_FK,Tags_Video")] VideoCreate videoCreate, HttpPostedFileBase videoUP, HttpPostedFileBase posterUP ) {
             if (ModelState.IsValid) {
+                Video video = new Video();
+                video.Name = videoCreate.Name;
+                video.Description = videoCreate.Description;
+                video.Categorie_Video = videoCreate.Categorie_Video;
+                video.Tags_Video = videoCreate.Tags_Video;
+                video.Channel = db.Chaines.Find(videoCreate.Chaine_FK);
+                video.Chaine_FK = videoCreate.Chaine_FK;
+                
+
                 db.Videos.Add(video);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.Chaine_FK = new SelectList(db.Chaines, "ChaineId", "Name", video.Chaine_FK);
-            return View(video);
+                posterUP.SaveAs(Server.MapPath("~") + "/Content/Thumbnails/" + video.VideoId + ".png");
+                videoUP.SaveAs(Server.MapPath("~") + "/Content/Videos/" + video.VideoId + ".mp4");
+                return RedirectToAction("Details", video.VideoId);
+            }
+            
+            return View(videoCreate);
         }
 
         // GET: Videos1/Edit/5
@@ -85,11 +96,11 @@ namespace YoutubeClone.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Video video = db.Videos.Find(id);
+            VideoEdit videoEdit = new VideoEdit {VideoId= video.VideoId,Description = video.Description,Tags_Video=video.Tags_Video,Name=video.Name,Categorie_Video=video.Categorie_Video };
             if (video == null) {
                 return HttpNotFound();
             }
-            ViewBag.Chaine_FK = db.Videos.Find(id).Chaine_FK;
-            return View(video);
+            return View(videoEdit);
         }
 
         // POST: Videos1/Edit/5
@@ -98,15 +109,21 @@ namespace YoutubeClone.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VideoId,Views,Name,Description,Categorie_Video,DatePublished,Chaine_FK,Tags_Video,VideoPath,ThumbnailPath")] Video video) {
+        public ActionResult Edit([Bind(Include = "VideoId,Name,Description,Categorie_Video,Tags_Video")] VideoEdit videoEdit) {
+            var utilisateurs = db.Utilisateurs;
+            var chaines = db.Chaines;
             if (ModelState.IsValid) {
+                Video video = db.Videos.Find(videoEdit.VideoId);
+                video.Name = videoEdit.Name;
+                video.Description = videoEdit.Description;
+                video.Categorie_Video = videoEdit.Categorie_Video;
+                video.Tags_Video = videoEdit.Tags_Video;
                 db.Entry(video).State = EntityState.Modified;
                 db.SaveChanges();
                 var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
                 return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
             }
-            ViewBag.Chaine_FK = db.Videos.Find(video).Chaine_FK;
-            return View(video);
+            return View(videoEdit);
         }
 
         // GET: Videos1/Delete/5
@@ -129,7 +146,7 @@ namespace YoutubeClone.Controllers
         public ActionResult DeleteConfirmed(int id) {
             var utilisateurs = db.Utilisateurs;
             var chaines = db.Chaines;
-            if ( User.Identity.Name == utilisateurs.Where(c => c.UtilisateurId == chaines.Where(C => C.ChaineId == utilisateurs.Where(D => D.Username == User.Identity.Name).FirstOrDefault().UtilisateurId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
+            if ( true) {
                 Video video = db.Videos.Find(id);
                 db.Videos.Remove(video);
                 db.SaveChanges();

@@ -1,4 +1,4 @@
-﻿@model YoutubeClone.Models.Data_Models.Video
+﻿@model YoutubeClone.Models.View_Models.VideoCreate
 
 @{
     ViewBag.Title = "Create";
@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Videos", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -14,13 +14,6 @@
         <h4>Video</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Views, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Views, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Views, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -44,23 +37,8 @@
                 @Html.EnumDropDownListFor(model => model.Categorie_Video, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Categorie_Video, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DatePublished, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DatePublished, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DatePublished, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Chaine_FK, "Chaine_FK", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Chaine_FK", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Chaine_FK, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        </div>        
+        @Html.Hidden("Chaine_FK",Model.Chaine_FK + "")
 
         <div class="form-group">
             @Html.LabelFor(model => model.Tags_Video, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -69,20 +47,16 @@
                 @Html.ValidationMessageFor(model => model.Tags_Video, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.VideoPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VideoPath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.VideoPath, "", new { @class = "text-danger" })
+            <div class="col-md-offset-2 col-md-10">
+                <p>Video:</p>
+                <input type="file" id="videoUP" name="videoUP" accept="video/mp4" required>
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.ThumbnailPath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ThumbnailPath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ThumbnailPath, "", new { @class = "text-danger" })
+            <div class="col-md-offset-2 col-md-10">
+                <p>Thumbnail du video:</p>
+                <input type="file" id="posterUP" name="posterUP" accept="image/png" required>
             </div>
         </div>
 
@@ -92,8 +66,10 @@
             </div>
         </div>
     </div>
+
+
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="/Channel/Details/@Model.Chaine_FK">Back To Channel </a>
 </div>

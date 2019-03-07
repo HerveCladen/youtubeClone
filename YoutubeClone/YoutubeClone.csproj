@@ -153,6 +153,8 @@
     </Compile>
     <Compile Include="Models\Data_Models\Chaine.cs" />
     <Compile Include="Models\Data_Models\Utilisateur.cs" />
+    <Compile Include="Models\View_Models\VideoCreate.cs" />
+    <Compile Include="Models\View_Models\VideoEdit.cs" />
     <Compile Include="Models\Data_Models\Video.cs" />
     <Compile Include="Models\Data_Models\VideoUtilisateur.cs" />
     <Compile Include="Models\Data_Models\YoutubeCloneDb.cs" />
@@ -189,6 +191,8 @@
     <Content Include="Views\Channel\Create.cshtml" />
     <Content Include="Views\Channel\Delete.cshtml" />
     <Content Include="Views\Channel\Edit.cshtml" />
+    <Content Include="Views\Videos\Create.cshtml" />
+    <Content Include="Views\Videos\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
