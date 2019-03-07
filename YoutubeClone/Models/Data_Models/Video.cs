@@ -46,11 +46,11 @@ namespace YoutubeClone.Models.Data_Models {
 
         //public virtual ICollection<VideoUtilisateur> Viewers { get; set; }
 
-      /*  [MaxLength(300)]
+        [MaxLength(300)]
         public string VideoPath { get; set; }
 
         [MaxLength(300)]
-        public string ThumbnailPath { get; set; }*/
+        public string ThumbnailPath { get; set; }
 
         public Video() {
            // ThumbnailPath = "/Content/Thumbnails/" + VideoId+".png";

@@ -9,6 +9,7 @@ using PagedList.Mvc;
 using System.Data.Entity;
 using System.Net;
 using YoutubeClone.Models.View_Models;
+using System.IO;
 
 namespace YoutubeClone.Controllers
 {
@@ -69,21 +70,25 @@ namespace YoutubeClone.Controllers
         [Authorize]
         public ActionResult Create([Bind(Include = "Name,Description,Categorie_Video,Chaine_FK,Tags_Video")] VideoCreate videoCreate, HttpPostedFileBase videoUP, HttpPostedFileBase posterUP ) {
             if (ModelState.IsValid) {
-                Video video = new Video();
-                video.Name = videoCreate.Name;
-                video.Description = videoCreate.Description;
-                video.Categorie_Video = videoCreate.Categorie_Video;
-                video.Tags_Video = videoCreate.Tags_Video;
-                video.Channel = db.Chaines.Find(videoCreate.Chaine_FK);
-                video.Chaine_FK = videoCreate.Chaine_FK;
-                
-
-                db.Videos.Add(video);
-                db.SaveChanges();
-
-                posterUP.SaveAs(Server.MapPath("~") + "/Content/Thumbnails/" + video.VideoId + ".png");
-                videoUP.SaveAs(Server.MapPath("~") + "/Content/Videos/" + video.VideoId + ".mp4");
-                return RedirectToAction("Details", video.VideoId);
+                try {
+                    Video video = new Video();
+                    video.Name = videoCreate.Name;
+                    video.Description = videoCreate.Description;
+                    video.Categorie_Video = videoCreate.Categorie_Video;
+                    video.Tags_Video = videoCreate.Tags_Video;
+                    video.Channel = db.Chaines.Find(videoCreate.Chaine_FK);
+                    video.Chaine_FK = videoCreate.Chaine_FK;
+                    db.Videos.Add(video);
+                    db.SaveChanges();
+                    video.ThumbnailPath = "/Content/Thumbnails/" + video.VideoId + Path.GetExtension(posterUP.FileName);
+                    video.VideoPath =  "/Content/Videos/" + video.VideoId + Path.GetExtension(videoUP.FileName);
+                    posterUP.SaveAs(Server.MapPath("~") + "Content\\Thumbnails\\" + video.VideoId + Path.GetExtension(posterUP.FileName));
+                    videoUP.SaveAs(Server.MapPath("~") + "Content\\Videos\\" + video.VideoId + Path.GetExtension(videoUP.FileName));
+                    db.SaveChanges();
+                    return RedirectToAction("Details", new { id = video.VideoId });
+                } catch (Exception e) {
+                    return View(videoCreate);
+                }
             }
             
             return View(videoCreate);
@@ -120,8 +125,7 @@ namespace YoutubeClone.Controllers
                 video.Tags_Video = videoEdit.Tags_Video;
                 db.Entry(video).State = EntityState.Modified;
                 db.SaveChanges();
-                var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
-                return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
+                return RedirectToAction("Details", new { id = video.VideoId });
             }
             return View(videoEdit);
         }
@@ -148,7 +152,8 @@ namespace YoutubeClone.Controllers
             var chaines = db.Chaines;
             if ( true) {
                 Video video = db.Videos.Find(id);
-                db.Videos.Remove(video);
+                System.IO.File.Delete(Server.MapPath("~") + video.ThumbnailPath);
+                System.IO.File.Delete(Server.MapPath("~") +  video.VideoPath);
                 db.SaveChanges();
             }
             var user = utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
