@@ -6,15 +6,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace YoutubeClone.Models.Data_Models {
-    public enum Categorie {Jeux ,Sport,Fashion,Review,React,Meme}
-    public class Video
+namespace YoutubeClone.Models.View_Models {
+    public class VideoEdit
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VideoId { get; set; }
 
-        public int Views { get; set; }
+        [ForeignKey("Channel")]
+        public int Chaine_FK { get; set; }
 
         [Required]
         [StringLength(40, MinimumLength = 5)]
@@ -29,33 +29,11 @@ namespace YoutubeClone.Models.Data_Models {
 
         [Required]
         [DisplayName("Choisissez la categorie")]
-        public Categorie Categorie_Video { get; set; }
-
-        [Required]
-        public DateTime DatePublished { get; set; }
-
-        [ForeignKey("Channel")]
-        public int Chaine_FK { get; set; }
-
-        [ForeignKey("Chaine_FK")]
-        public virtual Chaine Channel { get; set; }
+        public Data_Models.Categorie Categorie_Video { get; set; }
 
         [RegularExpression("(([A-Za-z0-9_ ]{2,20},){0,49}([A-Za-z0-9_ ]{2,20})){0,1}")]
         [MaxLength(1050)]
         public string Tags_Video { get; set; }
-
-        //public virtual ICollection<VideoUtilisateur> Viewers { get; set; }
-
-      /*  [MaxLength(300)]
-        public string VideoPath { get; set; }
-
-        [MaxLength(300)]
-        public string ThumbnailPath { get; set; }*/
-
-        public Video() {
-           // ThumbnailPath = "/Content/Thumbnails/" + VideoId+".png";
-           // VideoPath = "/Content/Videos/" + VideoId +".mp4";
-            DatePublished = DateTime.Now;
-        }
+        
     }
 }
