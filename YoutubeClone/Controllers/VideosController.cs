@@ -166,5 +166,16 @@ namespace YoutubeClone.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public static string GetTimeDifference(DateTime d)
+        {
+            int diff = Convert.ToInt32(Math.Floor(DateTime.Now.Subtract(d).TotalDays));
+            if (diff == 0) return "Aujourd'hui";
+            else if (diff == 1) return "Hier";
+            else if (diff < 7) return "Il y a " + diff + " jours";
+            else if (diff < 30) return "Il y a " + (diff / 7) + " semaines";
+            else if (diff < 365) return "Il y a " + (((DateTime.Now.Year - d.Year) * 12) + DateTime.Now.Month - d.Month) + " mois";
+            else return "Il y a " + (DateTime.Now.Year - d.Year) + " ans";
+        }
     }
 }

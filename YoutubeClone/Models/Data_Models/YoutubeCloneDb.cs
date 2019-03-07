@@ -38,6 +38,7 @@ namespace YoutubeClone.Models.Data_Models
         }
         protected override void Seed(YoutubeCloneDb context)
         {
+            Random rnd = new Random();
 
             Utilisateur u1 = new Utilisateur() { Username = "kidbestcode", Courriel = "David.genois13@gmail.com", HashPassword = Profil.Cryptage("patate"), IsAdmin = true };
             Utilisateur u2 = new Utilisateur() { Username = "ace13", Courriel = "e1671873@cmaisonneuve.qc.ca", HashPassword = Profil.Cryptage("patate"), IsAdmin = false };
@@ -49,20 +50,21 @@ namespace YoutubeClone.Models.Data_Models
             Chaine ch3 = new Chaine() { Categorie_Chaine = Categorie.Fashion, Name = "Jacksepticeye", Description = "Patate asdasd asdas Patate Patate", Utilisateur = u4 };
             Chaine ch4 = new Chaine() { Categorie_Chaine = Categorie.Fashion, Name = "SxyHxy", Description = "Patate Patat sdfas asdas nne Patate", Utilisateur = u5 };
             Chaine ch5 = new Chaine() { Categorie_Chaine = Categorie.Fashion, Name = "Molfried", Description = "Patate Ps asdasd asdasd atate Patate", Utilisateur = u4 };
-            Video v1 = new Video() { Views = new Random().Next(1, 100), Name = "Potato Patata", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch3 };
-            Video v2 = new Video() { Views = new Random().Next(1, 100), Name = "Preztel Apocalypse", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch3 };
-            Video v3 = new Video() { Views = new Random().Next(1, 100), Name = "Pizza mania", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch1 };
-            Video v4 = new Video() { Views = new Random().Next(1, 100), Name = "Patata On a Pazza", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch5 };
-            Video v5 = new Video() { Views = new Random().Next(1, 100), Name = "Why are we not rocks", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch2 };
-            Video v6 = new Video() { Views = new Random().Next(1, 100), Name = "Why are we not rocks 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch2 };
-            Video v7 = new Video() { Views = new Random().Next(1, 100), Name = "high school bully", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch4 };
-            Video v8 = new Video() { Views = new Random().Next(1, 100), Name = "Potato Patata 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch3 };
-            Video v9 = new Video() { Views = new Random().Next(1, 100), Name = "Preztel Apocalypse 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch3 };
-            Video v10 = new Video() { Views = new Random().Next(1, 100), Name = "Pizza mania 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch1 };
-            Video v11 = new Video() { Views = new Random().Next(1, 100), Name = "Patata On a Pazza 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch5 };
-            Video v12 = new Video() { Views = new Random().Next(1, 100), Name = "Why are we not rocks 4", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch2 };
-            Video v13 = new Video() { Views = new Random().Next(1, 100), Name = "Why are we not rocks 3", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch2 };
-            Video v14 = new Video() { Views = new Random().Next(1, 100), Name = "high school bully 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch4 };
+            Video v1 = new Video() { Views = rnd.Next(1, 100), Name = "Potato Patata", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today, Channel = ch3 };
+            Video v2 = new Video() { Views = rnd.Next(1, 100), Name = "Preztel Apocalypse", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-10), Channel = ch3 };
+            Video v3 = new Video() { Views = rnd.Next(1, 100), Name = "Pizza mania", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-15), Channel = ch1 };
+            Video v4 = new Video() { Views = rnd.Next(1, 100), Name = "Patata On a Pazza", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-31), Channel = ch5 };
+            Video v5 = new Video() { Views = rnd.Next(1, 100), Name = "Why are we not rocks", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-62), Channel = ch2 };
+            Video v6 = new Video() { Views = rnd.Next(1, 100), Name = "Why are we not rocks 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-365), Channel = ch2 };
+            Video v7 = new Video() { Views = rnd.Next(1, 100), Name = "high school bully", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-750), Channel = ch4 };
+            Video v8 = new Video() { Views = rnd.Next(1, 100), Name = "Potato Patata 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-2), Channel = ch3 };
+            Video v9 = new Video() { Views = rnd.Next(1, 100), Name = "Preztel Apocalypse 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-160), Channel = ch3 };
+            Video v10 = new Video() { Views = rnd.Next(1, 100), Name = "Pizza mania 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-985), Channel = ch1 };
+            Video v11 = new Video() { Views = rnd.Next(1, 100), Name = "Patata On a Pazza 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-3250), Channel = ch5 };
+            Video v12 = new Video() { Views = rnd.Next(1, 100), Name = "Why are we not rocks 4", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-1), Channel = ch2 };
+            Video v13 = new Video() { Views = rnd.Next(1, 100), Name = "Why are we not rocks 3", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-3), Channel = ch2 };
+            Video v14 = new Video() { Views = rnd.Next(1, 100), Name = "high school bully 2", Description = "This is a description", Categorie_Video = Categorie.React, DatePublished = DateTime.Today.AddDays(-7), Channel = ch4 };
+            Video v15 = new Video() { Views = rnd.Next(1, 100), Name = "video", Description = "This is a description", Categorie_Video = Categorie.Meme, DatePublished = DateTime.Today.AddDays(-7), Channel = ch4 };
 
             context.Utilisateurs.Add(u1);
             context.Utilisateurs.Add(u2);
@@ -88,6 +90,7 @@ namespace YoutubeClone.Models.Data_Models
             context.Videos.Add(v12);
             context.Videos.Add(v13);
             context.Videos.Add(v14);
+            context.Videos.Add(v15);
             context.SaveChanges();
         }
     }

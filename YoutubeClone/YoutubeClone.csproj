@@ -115,10 +115,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\YoutubeCloneDb.mdf" />
-    <Content Include="App_Data\YoutubeCloneDb_log.ldf">
-      <DependentUpon>YoutubeCloneDb.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
@@ -201,6 +197,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\Thumbnails\" />
     <Folder Include="Content\Videos\" />
     <Folder Include="Views\Default\" />
