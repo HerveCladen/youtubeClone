@@ -6,12 +6,16 @@
     </div>
     <div id="targetElement" class="row">
         @if (ViewBag.HasHistorique) {
-            foreach (var item in Model) {
-            <div style="background-color:darkgrey">
-                <div class="col-md-2 video">
-                    @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item)
+             if(ViewBag.MoreToSee){
+                foreach (var item in Model) {
+                <div style="background-color:darkgrey">
+                    <div class="col-md-2 video">
+                        @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item)
+                    </div>
                 </div>
-            </div>
+                }
+            }else{
+                <p>You've seen everything we have to offer here, come back later!</p>
             }
         } else {
             <p>Start watching videos to see your recommended's list</p>
