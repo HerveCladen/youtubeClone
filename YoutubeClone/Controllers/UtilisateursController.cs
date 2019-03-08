@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using YoutubeClone.Models.Data_Models;
 using YoutubeClone.Models.View_Models;
 
@@ -114,9 +115,16 @@ namespace YoutubeClone_Bruce.Controllers
                     var videos = c.Videos.ToList();
                     foreach (Video v in videos) {
                         db.Videos.Remove(v);
+                        try {
+                            System.IO.File.Delete(Server.MapPath("~") + v.ThumbnailPath);
+                            System.IO.File.Delete(Server.MapPath("~") + v.VideoPath);
+                        } catch (Exception e) {
+                        }
                     }
                     db.Chaines.Remove(c);
                 }
+                if(!db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin)
+                    FormsAuthentication.SignOut();
                 db.Utilisateurs.Remove(utilisateur);
                 db.SaveChanges();
             } else {

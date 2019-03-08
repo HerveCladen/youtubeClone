@@ -152,6 +152,11 @@ namespace YoutubeClone.Controllers
                 var videos = chaine.Videos.ToList();
                 foreach (Video v in videos) {
                     db.Videos.Remove(v);
+                    try {
+                        System.IO.File.Delete(Server.MapPath("~") + v.ThumbnailPath);
+                        System.IO.File.Delete(Server.MapPath("~") + v.VideoPath);
+                    } catch (Exception e) {
+                    }
                 }
                 db.Chaines.Remove(chaine);
                 db.SaveChanges();
