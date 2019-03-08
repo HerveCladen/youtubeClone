@@ -98,7 +98,7 @@ namespace YoutubeClone.Controllers
             ViewBag.error = "";
             ViewBag.ReturnUrl = ReturnUrl;
             FormsAuthentication.SignOut();
-            return this.Redirect(ReturnUrl);
+            return RedirectToAction("Index", "Home");
         }
 
 
