@@ -152,7 +152,6 @@
     <Compile Include="Models\View_Models\VideoCreate.cs" />
     <Compile Include="Models\View_Models\VideoEdit.cs" />
     <Compile Include="Models\Data_Models\Video.cs" />
-    <Compile Include="Models\Data_Models\VideoUtilisateur.cs" />
     <Compile Include="Models\Data_Models\YoutubeCloneDb.cs" />
     <Compile Include="Models\View_Models\Inscription.cs" />
     <Compile Include="Models\View_Models\LoginForm.cs" />

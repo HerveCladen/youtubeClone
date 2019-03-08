@@ -24,3 +24,8 @@ YoutubeClone/obj/Debug/YoutubeClone.csproj.CoreCompileInputs.cache
 *.lock
 *.cache
 *.ide
+*.mdf
+YoutubeClone/bin/YoutubeClone.dll
+*.dll
+*.pdb
+*.cache

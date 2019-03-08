@@ -72,6 +72,7 @@ namespace YoutubeClone.Controllers
                     db.SaveChanges();
                 } catch (Exception se) {
                     //Here you can send an error message if save crashes from unique index
+                    ModelState.AddModelError("Name", "The chosen name is not unique");
                     return RedirectToAction("Create");
                 }
                 return RedirectToAction("ChainesUtilisateurs");
@@ -104,15 +105,20 @@ namespace YoutubeClone.Controllers
         [ValidateAntiForgeryToken]
         [Authorize]
         public ActionResult Edit([Bind(Include = "ChaineId,Name,Description,Utilisateur_FK,Categorie_Chaine,Tags_Chaine")] Chaine chaine) {
-            if (ModelState.IsValid && User.Identity.Name == db.Utilisateurs.Where(c => c.UtilisateurId == db.Chaines.Where(C => C.ChaineId == chaine.ChaineId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
-                 db.Entry(chaine).State = EntityState.Modified;
-                try {
-                    db.SaveChanges();
-                    var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
-                    return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
-                } catch (Exception se) {
-                    //Here you can send an error message if save crashes from unique index
-                    return View("~/Views/Channel/Edit.cshtml", chaine);
+            if (ModelState.IsValid) {
+                if (User.Identity.Name == db.Utilisateurs.Where(c => c.UtilisateurId == db.Chaines.Where(C => C.ChaineId == chaine.ChaineId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
+                    db.Entry(chaine).State = EntityState.Modified;
+                    try {
+                        db.SaveChanges();
+                        var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
+                        return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
+                    } catch (Exception se) {
+                        //Here you can send an error message if save crashes from unique index
+                        ModelState.AddModelError("Name", "The chosen name is not unique");
+                        return View("~/Views/Channel/Edit.cshtml", chaine);
+                    }
+                } else {
+                    ModelState.AddModelError("Name", "You may not edit a channel owned by someone else");
                 }
             }
             ViewBag.Utilisateur_FK = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
@@ -121,7 +127,7 @@ namespace YoutubeClone.Controllers
 
         // GET: Chaines/Delete/5
         [Authorize]
-        public ActionResult Delete(int? id) {
+        public ActionResult Delete(int? id, string error = "") {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -129,6 +135,7 @@ namespace YoutubeClone.Controllers
             if (chaine == null) {
                 return HttpNotFound();
             }
+            ViewBag.Error = error;
             return View("~/Views/Channel/Delete.cshtml",chaine);
         }
 
@@ -148,6 +155,8 @@ namespace YoutubeClone.Controllers
                 }
                 db.Chaines.Remove(chaine);
                 db.SaveChanges();
+            } else {
+                return RedirectToAction("Delete", "Channel", new { error = "You may not delete a channel owned by someone else" });
             }
             var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
             return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));

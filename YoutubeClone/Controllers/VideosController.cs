@@ -113,22 +113,27 @@ namespace YoutubeClone.Controllers
         public ActionResult Edit([Bind(Include = "VideoId,Name,Description,Categorie_Video,Tags_Video")] VideoEdit videoEdit) {
             var utilisateurs = db.Utilisateurs;
             var chaines = db.Chaines;
-            if (ModelState.IsValid && db.Utilisateurs.Find(db.Chaines.Find(db.Videos.Find(videoEdit.VideoId).Chaine_FK).Utilisateur_FK).Username == User.Identity.Name) {
-                Video video = db.Videos.Find(videoEdit.VideoId);
-                video.Name = videoEdit.Name;
-                video.Description = videoEdit.Description;
-                video.Categorie_Video = videoEdit.Categorie_Video;
-                video.Tags_Video = videoEdit.Tags_Video;
-                db.Entry(video).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Details", new { id = video.VideoId });
+            if (ModelState.IsValid) {
+                if (db.Utilisateurs.Find(db.Chaines.Find(db.Videos.Find(videoEdit.VideoId).Chaine_FK).Utilisateur_FK).Username == User.Identity.Name) {
+                    Video video = db.Videos.Find(videoEdit.VideoId);
+                    video.Name = videoEdit.Name;
+                    video.Description = videoEdit.Description;
+                    video.Categorie_Video = videoEdit.Categorie_Video;
+                    video.Tags_Video = videoEdit.Tags_Video;
+                    db.Entry(video).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Details", new { id = video.VideoId });
+                } else {
+                    ModelState.AddModelError("Name", "You may not edit a video owned by someone else");
+                    return View(videoEdit);
+                }
             }
             return View(videoEdit);
         }
 
         // GET: Videos1/Delete/5
         [Authorize]
-        public ActionResult Delete(int? id) {
+        public ActionResult Delete(int? id, string error ="") {
             if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -136,6 +141,7 @@ namespace YoutubeClone.Controllers
             if (video == null) {
                 return HttpNotFound();
             }
+            ViewBag.Error = error;
             return View(video);
         }
 
@@ -155,10 +161,11 @@ namespace YoutubeClone.Controllers
                     System.IO.File.Delete(Server.MapPath("~") + video.ThumbnailPath);
                     System.IO.File.Delete(Server.MapPath("~") + video.VideoPath);
                 } catch (Exception e) {
-
                 }
                 db.Videos.Remove(video);
                 db.SaveChanges();
+            } else {
+                return RedirectToAction("Delete", "Videos",new {error="You may not delete a video owned by someone else"});
             }
             var user = utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
             return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
