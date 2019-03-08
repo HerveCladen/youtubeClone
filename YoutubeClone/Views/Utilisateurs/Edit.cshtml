@@ -41,7 +41,6 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" required />
                 <input type="submit" value="Modifier" class="btn btn-default" />
             </div>
         </div>
@@ -49,7 +48,8 @@
 }
 
 <div>
-    @Html.ActionLink("Annuler", "Index", "Home")
+        @Html.ActionLink("Delete le compte", "/Delete", new {id = Model.UtilisateurId})
+        @Html.ActionLink("Annuler", "Index", "Home")
 </div>
 
 

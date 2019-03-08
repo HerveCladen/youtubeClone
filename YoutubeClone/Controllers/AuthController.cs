@@ -100,5 +100,15 @@ namespace YoutubeClone.Controllers
             FormsAuthentication.SignOut();
             return this.Redirect(ReturnUrl);
         }
+
+
+        // GET: InfoUser
+        [Authorize]
+        public ActionResult InfoUser() {
+            var user = db.Utilisateurs.FirstOrDefault(model => model.Username == User.Identity.Name);
+            Profil info = new Profil { UserName = user.Username, Email = user.Courriel };
+
+            return View(info);
+        }
     }
 }

@@ -188,6 +188,8 @@
     <Content Include="Views\Channel\Edit.cshtml" />
     <Content Include="Views\Videos\Create.cshtml" />
     <Content Include="Views\Videos\Edit.cshtml" />
+    <Content Include="Views\Auth\InfoUser.cshtml" />
+    <Content Include="Views\Utilisateurs\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,38 @@
+﻿@model YoutubeClone.Models.View_Models.Profil
+
+@{
+    ViewBag.Title = "Information compte";
+}
+
+<h2>Compte</h2>
+
+<div>
+    <h4>Information de @User.Identity.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt class="control-label">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", "Utilisateurs", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Retourner a l'acceuil", "Index", "Home", null, new { @class = "btn btn-default" })
+</p>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

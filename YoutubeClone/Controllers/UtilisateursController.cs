@@ -40,8 +40,7 @@ namespace YoutubeClone_Bruce.Controllers
 
         // GET: Utilisateurs/Edit/5
         [Authorize]
-        public ActionResult Edit(string ReturnUrl = "") {
-            ViewBag.ReturnUrl = ReturnUrl;
+        public ActionResult Edit() {
             // ma methode == plus efficace
             var u = db.Utilisateurs.FirstOrDefault(user => user.Username == User.Identity.Name);
 
@@ -57,11 +56,10 @@ namespace YoutubeClone_Bruce.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit(Utilisateur u, string ReturnUrl = "")
+        public ActionResult Edit(Utilisateur u)
         {
             //   ne fonctionne pas comme prevue...
             ViewBag.error = "";
-            ViewBag.ReturnUrl = ReturnUrl;
             //u.UtilisateurId = Convert.ToInt32(User.Identity);
             var user = db.Utilisateurs.FirstOrDefault(model => model.Username == User.Identity.Name);
 
@@ -78,14 +76,14 @@ namespace YoutubeClone_Bruce.Controllers
 
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return Redirect(ReturnUrl);
+                return RedirectToAction("InfoUser","Auth",null);
             }
             return this.View(u);
         }
 
         // GET: Utilisateurs/Delete/5
         [Authorize]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, string error = "")
         {
             if (id == null)
             {
@@ -96,6 +94,7 @@ namespace YoutubeClone_Bruce.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Error = error;
             return View(utilisateur);
         }
 
@@ -105,10 +104,25 @@ namespace YoutubeClone_Bruce.Controllers
         [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
-            Utilisateur utilisateur = db.Utilisateurs.Find(id);
-            db.Utilisateurs.Remove(utilisateur);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (User.Identity.Name == db.Utilisateurs.Find(id).Username
+                ||
+                db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin
+                ) {
+                Utilisateur utilisateur = db.Utilisateurs.Find(id);
+                var chaines = utilisateur.Chaines.ToList();
+                foreach (Chaine c in chaines) {
+                    var videos = c.Videos.ToList();
+                    foreach (Video v in videos) {
+                        db.Videos.Remove(v);
+                    }
+                    db.Chaines.Remove(c);
+                }
+                db.Utilisateurs.Remove(utilisateur);
+                db.SaveChanges();
+            } else {
+                return RedirectToAction("Delete", "Utilisateurs", new { error = "You may not delete someone else's account" });
+            }
+            return RedirectToAction("Index","Home",null);
         }
 
         [Authorize]
