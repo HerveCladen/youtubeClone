@@ -3,8 +3,10 @@
         <div class="row " style="align-items:center; ">
             @Html.ActionLink("Youtube Clone", "Index", "Home", new { area = "" }, new { @class = "navbar-brand col-md-4" })
                 <form method="get" action="/Recherche/Index" class="navbar-form col-md-4" style="">
-                    <div >
+                    <div>
                         <input type="text" name="search" value="" required>
+                        <input type="hidden" name="isVideo" value="on" />
+                        <input type="hidden" name="isChaine" value="on" />
                         <input type="submit" value="Recherche" />
                     </div>
                 </form>

@@ -15,7 +15,7 @@ namespace YoutubeClone.Controllers
         private YoutubeCloneDb db = new YoutubeCloneDb();
         // GET: Recherche
 
-        public ActionResult Index(bool isFromCat = false, string categorie = "All", string search = "", string isChaine = "on", string isVideo = "on", string uploadFrame = "All", string sortBy = "Popular", int page = 1)
+        public ActionResult Index(bool isFromCat = false, string categorie = "All", string search = "", string isChaine = "off", string isVideo = "off", string uploadFrame = "All", string sortBy = "Popular", int page = 1)
         {
             /*
              * page est automatique
