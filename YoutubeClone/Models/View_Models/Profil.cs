@@ -14,7 +14,7 @@ namespace YoutubeClone.Models.View_Models
         [Required(ErrorMessage = "Veuillez entrer un nom d'utilisateur.")]
         [DisplayName("Nom d'utilisateur:")]
         [StringLength(18, MinimumLength = 5, ErrorMessage = "Le nom d'utilisateur doit être en 5 et 18 caractères.")]
-        [RegularExpression("^[a-zA-Z0-9_.-]*")]
+        [RegularExpression("^[a-zA-Z0-9_.-]*", ErrorMessage = "Le nom d'utilisateur doit contenir seulement des lettres/chiffres ou characteres simples")]
         public string UserName { get; set; }
 
         [DisplayName("Mot de passe:")]

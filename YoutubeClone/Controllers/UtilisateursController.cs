@@ -40,8 +40,8 @@ namespace YoutubeClone_Bruce.Controllers
 
         // GET: Utilisateurs/Edit/5
         [Authorize]
-        public ActionResult Edit()
-        {
+        public ActionResult Edit(string ReturnUrl = "") {
+            ViewBag.ReturnUrl = ReturnUrl;
             // ma methode == plus efficace
             var u = db.Utilisateurs.FirstOrDefault(user => user.Username == User.Identity.Name);
 
@@ -60,8 +60,8 @@ namespace YoutubeClone_Bruce.Controllers
         public ActionResult Edit(Utilisateur u, string ReturnUrl = "")
         {
             //   ne fonctionne pas comme prevue...
-            //ViewBag.error = "";
-            //ViewBag.ReturnUrl = ReturnUrl;
+            ViewBag.error = "";
+            ViewBag.ReturnUrl = ReturnUrl;
             //u.UtilisateurId = Convert.ToInt32(User.Identity);
             var user = db.Utilisateurs.FirstOrDefault(model => model.Username == User.Identity.Name);
 
@@ -78,7 +78,7 @@ namespace YoutubeClone_Bruce.Controllers
 
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return this.RedirectToAction("Index", "Home");
+                return Redirect(ReturnUrl);
             }
             return this.View(u);
         }

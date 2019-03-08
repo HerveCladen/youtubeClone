@@ -37,7 +37,7 @@ namespace YoutubeClone.Controllers
                 if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(f.UserName, f.RemindMe);
-                    return this.RedirectToAction("Index", "Home");
+                    return this.Redirect(ReturnUrl);
                 }
                 else
                 {
@@ -53,8 +53,8 @@ namespace YoutubeClone.Controllers
 
         // GET: SignUp
         [AllowAnonymous]
-        public ActionResult SignUp()
-        {
+        public ActionResult SignUp(string ReturnUrl = "") {
+            ViewBag.ReturnUrl = ReturnUrl;
             return View(new Inscription());
         }
 
@@ -90,7 +90,7 @@ namespace YoutubeClone.Controllers
 
                 return View(i);
             }
-            return this.RedirectToAction("Index", "Home");
+            return this.Redirect(ReturnUrl);
         }
         [Authorize]
         public ActionResult Logout(string ReturnUrl = "")
@@ -98,7 +98,7 @@ namespace YoutubeClone.Controllers
             ViewBag.error = "";
             ViewBag.ReturnUrl = ReturnUrl;
             FormsAuthentication.SignOut();
-            return this.RedirectToAction("Index", "Home");
+            return this.Redirect(ReturnUrl);
         }
     }
 }

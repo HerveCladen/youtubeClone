@@ -20,27 +20,27 @@
                     @Html.Action("AdminMenuOption", "Utilisateurs", null)
 
                     <li>
-                        @Html.ActionLink("Chaînes", "ChainesUtilisateurs", "Channel", new { Url = Request.Url.AbsolutePath }, null)
+                        @Html.ActionLink("Chaînes", "ChainesUtilisateurs", "Channel", new { ReturnUrl = Request.Url }, null)
                     </li>
                     <li>
-                        @Html.ActionLink("Compte", "InfoUser", "Auth", new { Url = Request.Url.AbsolutePath }, null)
+                        @Html.ActionLink("Compte", "InfoUser", "Auth", new { ReturnUrl = Request.Url }, null)
                     </li>
                     <li>
                         @*À faire*@
-                        @Html.ActionLink("Historique", "Historique", "Utilisateurs", new { Url = Request.Url.AbsolutePath }, null)
+                        @Html.ActionLink("Historique", "Historique", "Utilisateurs", new { ReturnUrl = Request.Url }, null)
                     </li>
                     <li>
-                        @Html.ActionLink("Déconnexion", "Logout", "Auth", new { Url = Request.Url.AbsolutePath }, null)
+                        @Html.ActionLink("Déconnexion", "Logout", "Auth", new { ReturnUrl = Request.Url }, null)
                     </li>
                 </ul>
             </div>
 } else {
         <ul>
             <li>
-                @Html.ActionLink("Connexion", "Login", "Auth", new { Url = Request.Url.AbsolutePath }, null)
+                @Html.ActionLink("Connexion", "Login", "Auth", new { ReturnUrl = Request.Url }, null)
             </li>
             <li>
-                @Html.ActionLink("Créer un compte", "SignUp", "Auth", new { Url = Request.Url.AbsolutePath }, null)
+                @Html.ActionLink("Créer un compte", "SignUp", "Auth", new { ReturnUrl = Request.Url }, null)
             </li>
         </ul>
 }
