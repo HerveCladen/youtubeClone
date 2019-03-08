@@ -8,6 +8,7 @@ using PagedList;
 using PagedList.Mvc;
 using System.Net;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace YoutubeClone.Controllers
 {
@@ -67,7 +68,12 @@ namespace YoutubeClone.Controllers
         public ActionResult Create([Bind(Include = "Name,Description,Utilisateur_FK,Categorie_Chaine,Tags_Chaine")] Chaine chaine) {
             if (ModelState.IsValid) {
                 db.Chaines.Add(chaine);
-                db.SaveChanges();
+                try {
+                    db.SaveChanges();
+                } catch (Exception se) {
+                    //Here you can send an error message if save crashes from unique index
+                    return RedirectToAction("Create");
+                }
                 return RedirectToAction("ChainesUtilisateurs");
             }
 
@@ -100,9 +106,14 @@ namespace YoutubeClone.Controllers
         public ActionResult Edit([Bind(Include = "ChaineId,Name,Description,Utilisateur_FK,Categorie_Chaine,Tags_Chaine")] Chaine chaine) {
             if (ModelState.IsValid && User.Identity.Name == db.Utilisateurs.Where(c => c.UtilisateurId == db.Chaines.Where(C => C.ChaineId == chaine.ChaineId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
                  db.Entry(chaine).State = EntityState.Modified;
-                db.SaveChanges();
-                var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
-                return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
+                try {
+                    db.SaveChanges();
+                    var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
+                    return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
+                } catch (Exception se) {
+                    //Here you can send an error message if save crashes from unique index
+                    return View("~/Views/Channel/Edit.cshtml", chaine);
+                }
             }
             ViewBag.Utilisateur_FK = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
             return View("~/Views/Channel/Edit.cshtml",chaine);

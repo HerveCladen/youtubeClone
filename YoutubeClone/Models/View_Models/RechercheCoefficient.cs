@@ -22,7 +22,7 @@ namespace YoutubeClone.Models.View_Models
         public double MatchesDescription = 0;
         public double MatchesTags = 0;
         //Variables to tune the algorythm
-        private double coefficientName = 1.5;
+        private double coefficientName = 2.5;
         private double coefficientDescription = 1.25;
         private double coefficientTags = 1.0;
         private string[] keywords;
@@ -33,9 +33,9 @@ namespace YoutubeClone.Models.View_Models
 
         public RechercheCoefficient(string searchQuery, string itemName, string itemDescription, string itemTags, int id)
         {
-            this.searchQuery = searchQuery;
-            this.itemName = itemName;
-            this.itemDescription = itemDescription;
+            this.searchQuery = searchQuery.ToLower();
+            this.itemName = itemName.ToLower();
+            this.itemDescription = itemDescription.ToLower();
             this.itemTags = itemTags;
             this.id = id;
 
@@ -45,7 +45,7 @@ namespace YoutubeClone.Models.View_Models
             {
                 MatchesName += CountPoints(itemName, keyword);
                 if (itemTags != null)
-                    MatchesTags += CountPoints(itemTags, keyword);
+                    MatchesTags += CountPoints(itemTags.ToLower(), keyword);
                 MatchesDescription += CountPoints(itemDescription, keyword);
             }
 

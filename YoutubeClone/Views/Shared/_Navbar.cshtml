@@ -17,6 +17,8 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
+                    @Html.Action("AdminMenuOption", "Utilisateurs", null)
+
                     <li>
                         @Html.ActionLink("Chaînes", "ChainesUtilisateurs", "Channel", new { Url = Request.Url.AbsolutePath }, null)
                     </li>

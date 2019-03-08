@@ -138,7 +138,8 @@ namespace YoutubeClone.Controllers
             List<RechercheCoefficient> videoCoefficients = new List<RechercheCoefficient>();
             IEnumerable<string> searchWords = new List<string>();
             foreach (Video v in historique) {
-                searchWords = searchWords.Concat((v.Name + v.Tags_Video + v.Description).Split(' ').ToList());
+                //only factor in the name of the videos you watched
+                searchWords = searchWords.Concat((v.Name /*+ v.Tags_Video + v.Description*/).Split(' ').ToList());
             }
 
             foreach (Video v in videos) {

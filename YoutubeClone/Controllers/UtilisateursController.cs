@@ -135,6 +135,7 @@ namespace YoutubeClone_Bruce.Controllers
             base.Dispose(disposing);
         }
 
+        [Authorize]
         public ActionResult Admin() {
             if (User.Identity.IsAuthenticated) {
                 if (db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin) {
@@ -151,5 +152,18 @@ namespace YoutubeClone_Bruce.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        public ActionResult AdminMenuOption() {
+            if (User.Identity.IsAuthenticated) {
+                if (db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin) {
+                    return PartialView("~/Views/Shared/_AdminMenuOption.cshtml");
+                } else {
+                    return Content("");
+                }
+            } else {
+                return Content("");
+            }
+        }
+
     }
 }
