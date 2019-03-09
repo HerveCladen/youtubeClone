@@ -1,13 +1,9 @@
-﻿@model PagedList.IPagedList<YoutubeClone.Models.Data_Models.Video>
-@using PagedList.Mvc;
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-
-@{
+﻿@{
     ViewBag.Title = "Recherche";
 }
 
 
-<h2><b>Search of</b> @ViewBag.Recherche</h2>
+<h2><b>Recherche de</b> @ViewBag.Recherche</h2>
 
 <!-- BAR+FILTRE -->
 <div class="row">
@@ -56,7 +52,7 @@
     <!--VIDEO-->
     <div class="col-md-6">
         <div class="col-md-12">
-            <h3>Videos - Resultat(s)</h3>
+            <h3>Vidéos - Résultat(s)</h3>
             <hr />
         </div>
         @{if (ViewBag.StatusVideo)
@@ -69,16 +65,10 @@
                         </div>
                     </div>
                 }
-                @*<div>
-                    <br />
-                    <span>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
-
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-                </div>*@
             }
             else
             {
-                <p>No results</p>
+                <p>Aucun résultat</p>
             }
 
         }
@@ -87,7 +77,7 @@
     <!--CHAINE-->
     <div class="col-md-6" style="border-left: 2px red solid">
         <div class="col-md-12">
-            <h3>Chaines - Resultat(s)</h3>
+            <h3>Chaînes - Résultat(s)</h3>
             <hr />
         </div>
 
@@ -114,7 +104,7 @@
             }
             else
             {
-                <p>No results</p>
+                <p>Aucun résultat</p>
             }
 
         }
