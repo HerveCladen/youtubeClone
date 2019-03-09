@@ -1,4 +1,7 @@
-﻿
+﻿@model PagedList.IPagedList<YoutubeClone.Models.Data_Models.Video>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @{
     ViewBag.Title = "Recherche";
 }
@@ -51,7 +54,7 @@
 <!-- CONTENU DE LA RECHERCHE -->
 <div class="row">
     <!--VIDEO-->
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="col-md-12">
             <h3>Videos - Resultat(s)</h3>
             <hr />
@@ -61,11 +64,17 @@
                 foreach (var item in ViewBag.Videos)
                 {
                     <div>
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                             @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", (YoutubeClone.Models.Data_Models.Video)item)
                         </div>
                     </div>
                 }
+                @*<div>
+                    <br />
+                    <span>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</span>
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                </div>*@
             }
             else
             {
@@ -76,7 +85,7 @@
     </div>
 
     <!--CHAINE-->
-    <div class="col-md-8" style="border-left: 5px red solid">
+    <div class="col-md-6" style="border-left: 2px red solid">
         <div class="col-md-12">
             <h3>Chaines - Resultat(s)</h3>
             <hr />
@@ -88,7 +97,17 @@
                 {
                     <div>
                         <div class="col-md-12">
-                            @Html.Action("MostPopularVideosOfChannels", "Channel", (YoutubeClone.Models.Data_Models.Chaine)item)
+                            @*@Html.Action("MostPopularVideosOfChannels", "Channel", (YoutubeClone.Models.Data_Models.Chaine)item)*@
+                            <div class="row">
+                                @{ var r = (YoutubeClone.Models.Data_Models.Chaine)item; }
+                                <a href="/Channel/Details/@r.ChaineId">
+                                    <div style="border:1px solid black; color:black; border-radius:15px; margin-bottom:20px; padding-left:30px; padding-bottom:10px">
+                                        <h3>@r.Name</h3>
+                                        <h4>@r.Videos.Count() vidéos</h4>
+                                        <h4>@r.Description</h4>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 }
