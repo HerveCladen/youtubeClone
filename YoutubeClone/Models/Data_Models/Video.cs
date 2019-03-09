@@ -18,20 +18,21 @@ namespace YoutubeClone.Models.Data_Models {
 
         [Required]
         [StringLength(40, MinimumLength = 5)]
-        [DisplayName("Veuillez entrer le nom de la vidéo")]
+        [DisplayName("Nom de la vidéo")]
         public string Name { get; set; }
 
         [Required]
         [MaxLength(180)]
-        [DisplayName("Veuillez entrer une description")]
+        [DisplayName("Description")]
         [RegularExpression(@"(\S*\s){2,}(\S+){1}")]
         public string Description { get; set; }
 
         [Required]
-        [DisplayName("Veuillez choisir une catégorie")]
+        [DisplayName("Catégorie")]
         public Categorie Categorie_Video { get; set; }
 
         [Required]
+        [DisplayName("Date de publication")]
         public DateTime DatePublished { get; set; }
 
         [ForeignKey("Channel")]

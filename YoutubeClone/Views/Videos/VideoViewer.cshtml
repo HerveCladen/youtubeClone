@@ -1,7 +1,7 @@
 ﻿@model YoutubeClone.Models.Data_Models.Video
 
 @{
-    ViewBag.Title = "VideoViewer";
+    ViewBag.Title = Model.Name;
 }
 
 <h2>@Html.DisplayFor(model => model.Name)</h2>
@@ -68,7 +68,7 @@
         </dd>
         @if (User.Identity.IsAuthenticated && ViewBag.EditOK) {
             <dd>
-                <a href="/Videos/Edit/@Model.VideoId">Edit Video </a>
+                <a href="/Videos/Edit/@Model.VideoId" class="btn btn-default">Edit Video </a>
             </dd>
         }
 

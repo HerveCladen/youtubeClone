@@ -190,6 +190,7 @@
     <Content Include="Views\Videos\Edit.cshtml" />
     <Content Include="Views\Auth\InfoUser.cshtml" />
     <Content Include="Views\Utilisateurs\Delete.cshtml" />
+    <Content Include="Views\Videos\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
