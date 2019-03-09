@@ -11,6 +11,7 @@ namespace YoutubeClone.Models.Data_Models
     public class Commentaire
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string CommentaireId { get; set; }
 
         [Required]
@@ -33,7 +34,7 @@ namespace YoutubeClone.Models.Data_Models
         [ForeignKey("Video_FK")]
         public virtual Video Video { get; set; }
 
-        public virtual ICollection<Commentaire> Reponses { get; set; }
+        //public virtual ICollection<Commentaire> Reponses { get; set; }
 
         public Commentaire()
         {

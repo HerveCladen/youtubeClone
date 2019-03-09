@@ -94,9 +94,36 @@
                 </div>
                 <div class="form-group col-md-1">
                     <div class="col-md-offset-2 col-md-3">
+                        <input type="hidden" name="Chaine_FK" value="@Model.Chaine_FK" />
+                        <input type="hidden" name="Video_FK" value="@Model.VideoId" />
                         <input type="submit" value="Poster" id="btnPoster" class="btn btn-default" style="height:70px; width:115px" disabled />
                     </div>
                 </div>
+            </div>
+        }
+    } else
+    {
+        <h3>
+            @Html.ActionLink("Se connecter", "Login", "Auth", new { ReturnUrl = Request.Url }, null) pour poster un commentaire.
+        </h3>
+    }
+    @if (Model.Commentaires.Count() == 0)
+    {
+        <h3>Aucun commentaire n'a été posté sur cette vidéo.</h3>
+    }
+    else
+    {
+        foreach(var item in Model.Commentaires)
+        {
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        <a href="/Channel/Details/@item.Chaine_FK">@item.Auteur.Name</a> @item.DatePublication
+                    </dt>
+                    <dt>
+                        @item.Contenu
+                    </dt>
+                </dl>
             </div>
         }
     }

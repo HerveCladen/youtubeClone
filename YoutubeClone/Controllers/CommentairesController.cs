@@ -49,13 +49,26 @@ namespace YoutubeClone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentaireId,Contenu,DatePublication,Chaine_FK,Video_FK")] Commentaire commentaire)
+        public ActionResult Create([Bind(Include = "Contenu")] Commentaire commentaire, int Chaine_FK, int Video_FK)
         {
             if (ModelState.IsValid)
             {
-                db.Commentaires.Add(commentaire);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                //try
+                {
+                    Commentaire c = new Commentaire();
+                    c.Contenu = commentaire.Contenu;
+                    c.Auteur = db.Chaines.Find(Chaine_FK);
+                    c.Chaine_FK = Chaine_FK;
+                    c.Video = db.Videos.Find(Video_FK);
+                    c.Video_FK = Video_FK;
+                    db.Commentaires.Add(c);
+                    db.Chaines.Find(Chaine_FK).Commentaires.Add(c);
+                    db.Videos.Find(Video_FK).Commentaires.Add(c);
+                    db.SaveChanges();
+                    return RedirectToAction("Details", "Videos", new { id = c.Video_FK });
+                } //catch (Exception e) {
+                    //return RedirectToAction("Details", "Videos", new { id = Video_FK });
+                //}
             }
 
             ViewBag.Chaine_FK = new SelectList(db.Chaines, "ChaineId", "Name", commentaire.Chaine_FK);
