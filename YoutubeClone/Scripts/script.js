@@ -6,3 +6,11 @@ $.validator.methods.range = function (value, element, param) {
         return defaultRangeValidator.call(this, value, element, param);
     }
 }
+
+function verifier() {
+    if (document.getElementById("commentaire").value === "") {
+        document.getElementById('btnPoster').disabled = true;
+    } else {
+        document.getElementById('btnPoster').disabled = false;
+    }
+}
