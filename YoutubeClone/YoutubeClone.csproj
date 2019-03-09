@@ -140,6 +140,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ChannelController.cs" />
+    <Compile Include="Controllers\CommentairesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RechercheController.cs" />
     <Compile Include="Controllers\UtilisateursController.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Commentaire.cs" />
     <Compile Include="Models\Data_Models\Chaine.cs" />
     <Compile Include="Models\Data_Models\Utilisateur.cs" />
     <Compile Include="Models\View_Models\VideoCreate.cs" />
@@ -191,6 +193,11 @@
     <Content Include="Views\Auth\InfoUser.cshtml" />
     <Content Include="Views\Utilisateurs\Delete.cshtml" />
     <Content Include="Views\Videos\Delete.cshtml" />
+    <Content Include="Views\Commentaires\Create.cshtml" />
+    <Content Include="Views\Commentaires\Delete.cshtml" />
+    <Content Include="Views\Commentaires\Details.cshtml" />
+    <Content Include="Views\Commentaires\Edit.cshtml" />
+    <Content Include="Views\Commentaires\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

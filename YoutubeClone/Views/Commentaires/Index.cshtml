@@ -1,0 +1,51 @@
+﻿@model IEnumerable<YoutubeClone.Models.Data_Models.Commentaire>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Auteur.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Video.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePublication)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Auteur.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Video.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatePublication)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CommentaireId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CommentaireId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CommentaireId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -18,12 +18,12 @@ namespace YoutubeClone.Models.Data_Models
         public DbSet<Video> Videos { get; set; }
         public DbSet<Utilisateur> Utilisateurs { get; set; }
         public DbSet<Chaine> Chaines { get; set; }
-        //public DbSet<VideoUtilisateur> VideoUtilisateur { get; set; }
+        public DbSet<Commentaire> Commentaires { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Entity<Utilisateur>().HasMany(p => p.Historique)/*.WithRequired()*/;
+            modelBuilder.Entity<Utilisateur>().HasMany(p => p.Historique);
         }
     }
 

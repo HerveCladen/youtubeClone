@@ -27,6 +27,14 @@ namespace YoutubeClone.Models.Data_Models
         [ForeignKey("Chaine_FK")]
         public virtual Chaine Auteur { get; set; }
 
+        [ForeignKey("Video")]
+        public int Video_FK { get; set; }
+
+        [ForeignKey("Video_FK")]
+        public virtual Video Video { get; set; }
+
+        public virtual ICollection<Commentaire> Reponses { get; set; }
+
         public Commentaire()
         {
             DatePublication = DateTime.Now;

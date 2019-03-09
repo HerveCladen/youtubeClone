@@ -50,6 +50,10 @@ namespace YoutubeClone.Models.Data_Models {
 
         [MaxLength(300)]
         public string ThumbnailPath { get; set; }
+        
+        /****************************************************************/
+        public virtual ICollection<Commentaire> Commentaires { get; set; }
+        /****************************************************************/
 
         public Video() {
            // ThumbnailPath = "/Content/Thumbnails/" + VideoId+".png";
