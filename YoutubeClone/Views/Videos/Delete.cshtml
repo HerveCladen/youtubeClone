@@ -1,7 +1,7 @@
 ﻿@model YoutubeClone.Models.Data_Models.Video
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Supprimer vidéo";
 }
 
 <h2>Delete</h2>
@@ -10,7 +10,6 @@
 <div>
     <h4>Video</h4>
     <hr />
-    <h5 style="color:red">@ViewBag.Error</h5>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Channel.Name)
@@ -60,38 +59,14 @@
             @Html.DisplayFor(model => model.DatePublished)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tags_Video)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tags_Video)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VideoPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VideoPath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThumbnailPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThumbnailPath)
-        </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Supprimer" class="btn btn-default" />
+            <a href="/Videos/Edit/@Model.VideoId" class="btn btn-default">Retour</a>
         </div>
     }
 </div>

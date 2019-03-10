@@ -1,10 +1,9 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Recherche";
 }
 
 
-<h2><b>Search of</b> @ViewBag.Recherche</h2>
+<h2><b>Recherche de</b> @ViewBag.Recherche</h2>
 
 <!-- BAR+FILTRE -->
 <div class="row">
@@ -51,9 +50,9 @@
 <!-- CONTENU DE LA RECHERCHE -->
 <div class="row">
     <!--VIDEO-->
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="col-md-12">
-            <h3>Videos - Resultat(s)</h3>
+            <h3>Vidéos - Résultat(s)</h3>
             <hr />
         </div>
         @{if (ViewBag.StatusVideo)
@@ -61,7 +60,7 @@
                 foreach (var item in ViewBag.Videos)
                 {
                     <div>
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                             @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", (YoutubeClone.Models.Data_Models.Video)item)
                         </div>
                     </div>
@@ -69,16 +68,16 @@
             }
             else
             {
-                <p>No results</p>
+                <p>Aucun résultat</p>
             }
 
         }
     </div>
 
     <!--CHAINE-->
-    <div class="col-md-8" style="border-left: 5px red solid">
+    <div class="col-md-6" style="border-left: 2px red solid">
         <div class="col-md-12">
-            <h3>Chaines - Resultat(s)</h3>
+            <h3>Chaînes - Résultat(s)</h3>
             <hr />
         </div>
 
@@ -88,14 +87,24 @@
                 {
                     <div>
                         <div class="col-md-12">
-                            @Html.Action("MostPopularVideosOfChannels", "Channel", (YoutubeClone.Models.Data_Models.Chaine)item)
+                            @*@Html.Action("MostPopularVideosOfChannels", "Channel", (YoutubeClone.Models.Data_Models.Chaine)item)*@
+                            <div class="row">
+                                @{ var r = (YoutubeClone.Models.Data_Models.Chaine)item; }
+                                <a href="/Channel/Details/@r.ChaineId">
+                                    <div style="border:1px solid black; color:black; border-radius:15px; margin-bottom:20px; padding-left:30px; padding-bottom:10px">
+                                        <h3>@r.Name</h3>
+                                        <h4>@r.Videos.Count() vidéos</h4>
+                                        <h4>@r.Description</h4>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 }
             }
             else
             {
-                <p>No results</p>
+                <p>Aucun résultat</p>
             }
 
         }

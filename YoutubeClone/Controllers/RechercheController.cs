@@ -15,7 +15,7 @@ namespace YoutubeClone.Controllers
         private YoutubeCloneDb db = new YoutubeCloneDb();
         // GET: Recherche
 
-        public ActionResult Index(bool isFromCat = false, string categorie = "All", string search = "", string isChaine = "off", string isVideo = "off", string uploadFrame = "All", string sortBy = "Popular", int page = 1)
+        public ActionResult Index(bool isFromCat = false, string categorie = "All", string search = "", string isChaine = "off", string isVideo = "off", string uploadFrame = "All", string sortBy = "Popular")
         {
             /*
              * page est automatique
@@ -93,7 +93,6 @@ namespace YoutubeClone.Controllers
                     queriedVideos = queriedVideos.Where(C => C.DatePublished > CompareDate);
                     queriedChaines = queriedChaines.Where(C => C.Videos.Max(t => t.DatePublished) > CompareDate);
                 }
-
 
                 ViewBag.Videos = queriedVideos;
                 ViewBag.Chaines = queriedChaines;

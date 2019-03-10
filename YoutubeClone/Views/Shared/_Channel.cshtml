@@ -5,19 +5,18 @@
         <h2 class="col-md-12">
             <a href="/Channel/Details/@ViewBag.ChaineId">
                 @ViewBag.Chaine
-            </a>'s most popular video
+            </a>'s most popular videos
             
         </h2>
     </div>
-
-        <div class="row">
-            @foreach (var item in Model) {
-                <div style="background-color:darkgrey">
-                    <div class="col-md-2 video">
-                        @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item)
-                    </div>
+    <div class="row">
+        @foreach (var item in Model) {
+            <div style="background-color:darkgrey">
+                <div class="col-md-2 video">
+                    @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item)
                 </div>
-            }
-        </div>
+            </div>
+        }
     </div>
+</div>
 
