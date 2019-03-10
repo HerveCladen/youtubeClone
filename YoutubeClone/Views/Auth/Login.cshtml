@@ -46,10 +46,10 @@
     </div>
 }
 
-    <ul>
-        <li>@Html.ActionLink("Revenir a l'accueil", "Index", "Home")</li>
-        <li>@Html.ActionLink("Créer un compte", "SignUp", "Auth")</li>
-    </ul>
+<ul>
+    <li>@Html.ActionLink("Revenir a l'accueil", "Index", "Home")</li>
+    <li>@Html.ActionLink("Créer un compte", "SignUp", "Auth", new { ReturnUrl = Request.Url }, null)</li>
+</ul>
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
