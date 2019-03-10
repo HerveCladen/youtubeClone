@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using YoutubeClone.Models.Data_Models;
 
-namespace YoutubeClone_Bruce.Controllers
+namespace YoutubeClone.Controllers
 {
     public class UtilisateursController : Controller
     {

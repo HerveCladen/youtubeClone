@@ -65,14 +65,11 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" required />
                 <input type="submit" value="Create" class="btn btn-default" />
+                @Html.ActionLink("Annuler", "Index", "Home", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Annuler", "Index", "Home")
-</div>
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
