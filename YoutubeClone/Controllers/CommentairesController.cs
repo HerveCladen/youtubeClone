@@ -49,20 +49,21 @@ namespace YoutubeClone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Contenu")] Commentaire commentaire, int Chaine_FK, int Video_FK)
+        public ActionResult Create([Bind(Include = "Contenu")] Commentaire commentaire, int Utilisateur_FK, int Video_FK)
         {
             if (ModelState.IsValid)
             {
                 //try
                 {
+                    var loggedIn = db.Utilisateurs.FirstOrDefault(p => p.Username == User.Identity.Name);
                     Commentaire c = new Commentaire();
                     c.Contenu = commentaire.Contenu;
-                    c.Auteur = db.Chaines.Find(Chaine_FK);
-                    c.Chaine_FK = Chaine_FK;
+                    c.Auteur = db.Utilisateurs.Find(loggedIn.UtilisateurId);
+                    c.Utilisateur_FK = loggedIn.UtilisateurId;
                     c.Video = db.Videos.Find(Video_FK);
                     c.Video_FK = Video_FK;
                     db.Commentaires.Add(c);
-                    db.Chaines.Find(Chaine_FK).Commentaires.Add(c);
+                    db.Utilisateurs.Find(Utilisateur_FK).Commentaires.Add(c);
                     db.Videos.Find(Video_FK).Commentaires.Add(c);
                     db.SaveChanges();
                     return RedirectToAction("Details", "Videos", new { id = c.Video_FK });
@@ -71,7 +72,7 @@ namespace YoutubeClone.Controllers
                 //}
             }
 
-            ViewBag.Chaine_FK = new SelectList(db.Chaines, "ChaineId", "Name", commentaire.Chaine_FK);
+            ViewBag.Utilisateur_FK = new SelectList(db.Chaines, "ChaineId", "Name", commentaire.Utilisateur_FK);
             ViewBag.Video_FK = new SelectList(db.Videos, "VideoId", "Name", commentaire.Video_FK);
             return View(commentaire);
         }
@@ -88,7 +89,7 @@ namespace YoutubeClone.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Chaine_FK = new SelectList(db.Chaines, "ChaineId", "Name", commentaire.Chaine_FK);
+            ViewBag.Chaine_FK = new SelectList(db.Chaines, "ChaineId", "Name", commentaire.Utilisateur_FK);
             ViewBag.Video_FK = new SelectList(db.Videos, "VideoId", "Name", commentaire.Video_FK);
             return View(commentaire);
         }
@@ -106,7 +107,7 @@ namespace YoutubeClone.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Chaine_FK = new SelectList(db.Chaines, "ChaineId", "Name", commentaire.Chaine_FK);
+            ViewBag.Chaine_FK = new SelectList(db.Chaines, "ChaineId", "Name", commentaire.Utilisateur_FK);
             ViewBag.Video_FK = new SelectList(db.Videos, "VideoId", "Name", commentaire.Video_FK);
             return View(commentaire);
         }

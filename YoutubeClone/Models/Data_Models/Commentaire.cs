@@ -12,7 +12,7 @@ namespace YoutubeClone.Models.Data_Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string CommentaireId { get; set; }
+        public int CommentaireId { get; set; }
 
         [Required]
         [MaxLength(10000)]
@@ -23,10 +23,10 @@ namespace YoutubeClone.Models.Data_Models
         public DateTime DatePublication { get; set; }
 
         [ForeignKey("Auteur")]
-        public int Chaine_FK { get; set; }
+        public int Utilisateur_FK { get; set; }
 
-        [ForeignKey("Chaine_FK")]
-        public virtual Chaine Auteur { get; set; }
+        [ForeignKey("Utilisateur_FK")]
+        public virtual Utilisateur Auteur { get; set; }
 
         [ForeignKey("Video")]
         public int Video_FK { get; set; }

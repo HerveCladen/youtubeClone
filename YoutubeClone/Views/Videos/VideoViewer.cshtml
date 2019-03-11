@@ -116,15 +116,16 @@
         foreach(var item in Model.Commentaires)
         {
             <div>
-                <dl class="dl-horizontal">
-                    <dt>
-                        <a href="/Channel/Details/@item.Chaine_FK">@item.Auteur.Name</a> @item.DatePublication
-                    </dt>
-                    <dt>
-                        @item.Contenu
-                    </dt>
-                </dl>
+                <div style="display:inline-block">
+                    <div>
+                        <h4>@item.Auteur.Username - @item.DatePublication</h4>
+                    </div>
+                    <div>
+                        <h5>@item.Contenu</h5>
+                    </div>
+                </div>
             </div>
+            <hr/>
         }
     }
 </div>

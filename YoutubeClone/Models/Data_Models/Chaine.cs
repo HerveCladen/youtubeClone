@@ -36,10 +36,6 @@ namespace YoutubeClone.Models.Data_Models {
 
         public virtual ICollection<Video> Videos { get; set; }
 
-        /****************************************************************/
-        public virtual ICollection<Commentaire> Commentaires { get; set; }
-        /****************************************************************/
-
         [MaxLength(1050)]
         [RegularExpression("(([A-Za-z0-9_ ]{2,20},){0,49}([A-Za-z0-9_ ]{2,20})){0,1}", ErrorMessage ="Les tags doivent être de 2 à 20 caractères et doivent être séparés par des virgules, et il y a un maximum de 50 tags.")]
         public string Tags_Chaine { get; set; }
