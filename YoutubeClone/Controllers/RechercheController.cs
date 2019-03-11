@@ -15,7 +15,7 @@ namespace YoutubeClone.Controllers
         private YoutubeCloneDb db = new YoutubeCloneDb();
         // GET: Recherche
 
-        public ActionResult Index(bool isFromCat = false, string categorie = "All", string search = "", string isChaine = "off", string isVideo = "off", string uploadFrame = "All", string sortBy = "Popular")
+        public ActionResult Index(bool isFromCat = false, string categorie = "All", string search = "", string isChaine = "off", string isVideo = "off", string uploadFrame = "All", string sortBy = "Popular",int pageNumber=1)
         {
             /*
              * page est automatique
@@ -94,8 +94,35 @@ namespace YoutubeClone.Controllers
                     queriedChaines = queriedChaines.Where(C => C.Videos.Max(t => t.DatePublished) > CompareDate);
                 }
 
+                //HANDLE PAGES
+                int nbParPageVideo = 9;
+                int nbParPageChaine = 3;
+
+                if (queriedVideos.Count() / nbParPageVideo > queriedChaines.Count() / nbParPageChaine) {
+                    ViewBag.EndPage = ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=" + (queriedVideos.Count() / nbParPageVideo);
+                } else {
+                    ViewBag.EndPage = ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=" + (queriedChaines.Count() / nbParPageChaine);
+                }
+                ViewBag.FirstPage = ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=1" ;
+
+                if (queriedVideos.Count() > nbParPageVideo * pageNumber || queriedChaines.Count() > nbParPageChaine * pageNumber) {
+                    ViewBag.NextPage = "/Recherche/Index?search="+search+ "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber="+(pageNumber+1);
+                } else {
+                    ViewBag.NextPage = "#";
+                }
+                if (queriedVideos.Count() <= nbParPageVideo * pageNumber || queriedChaines.Count() <= nbParPageChaine * pageNumber) {
+                    ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=" + (pageNumber-1);
+                } else {
+                    ViewBag.LastPage = "#";
+                }
+                pageNumber-=1;
+
+                queriedVideos = queriedVideos.Skip(nbParPageVideo * pageNumber).Take(nbParPageVideo);
+                queriedChaines = queriedChaines.Skip(nbParPageChaine * pageNumber).Take(nbParPageChaine);
                 ViewBag.Videos = queriedVideos;
                 ViewBag.Chaines = queriedChaines;
+
+
                 if (queriedVideos.Count() != 0)
                     ViewBag.StatusVideo = true;
                 else
