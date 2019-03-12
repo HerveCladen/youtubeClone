@@ -49,7 +49,7 @@ namespace YoutubeClone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Contenu")] Commentaire commentaire, int Utilisateur_FK, int Video_FK)
+        public ActionResult Create([Bind(Include = "Contenu")] Commentaire commentaire, int Video_FK)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace YoutubeClone.Controllers
                     c.Video = db.Videos.Find(Video_FK);
                     c.Video_FK = Video_FK;
                     db.Commentaires.Add(c);
-                    db.Utilisateurs.Find(Utilisateur_FK).Commentaires.Add(c);
+                    db.Utilisateurs.Find(loggedIn.UtilisateurId).Commentaires.Add(c);
                     db.Videos.Find(Video_FK).Commentaires.Add(c);
                     db.SaveChanges();
                     return RedirectToAction("Details", "Videos", new { id = c.Video_FK });

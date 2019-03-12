@@ -110,10 +110,17 @@ namespace YoutubeClone_Bruce.Controllers
                 db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin
                 ) {
                 Utilisateur utilisateur = db.Utilisateurs.Find(id);
+                db.Commentaires.RemoveRange(db.Commentaires.Where(x => x.Utilisateur_FK == utilisateur.UtilisateurId));
+                utilisateur.Historique.Clear();
                 var chaines = utilisateur.Chaines.ToList();
                 foreach (Chaine c in chaines) {
                     var videos = c.Videos.ToList();
                     foreach (Video v in videos) {
+                        var commentaires = v.Commentaires.ToList();
+                        foreach (Commentaire com in commentaires)
+                        {
+                            db.Commentaires.Remove(com);
+                        }
                         db.Videos.Remove(v);
                         try {
                             System.IO.File.Delete(Server.MapPath("~") + v.ThumbnailPath);

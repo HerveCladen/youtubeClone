@@ -24,6 +24,7 @@ namespace YoutubeClone.Models.Data_Models
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Entity<Utilisateur>().HasMany(p => p.Historique);
+            modelBuilder.Entity<Utilisateur>().HasMany(p => p.Commentaires);
         }
     }
 
