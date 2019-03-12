@@ -185,7 +185,6 @@
     <Content Include="Views\Channel\ChannelViewer.cshtml" />
     <Content Include="Views\Recherche\Recherche.cshtml" />
     <Content Include="Views\Auth\SignUp.cshtml" />
-    <Content Include="Views\Utilisateurs\Edit.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Channel\ChainesUtilisateurs.cshtml" />
@@ -198,6 +197,7 @@
     <Content Include="Views\Utilisateurs\Delete.cshtml" />
     <Content Include="Views\Videos\Delete.cshtml" />
     <Content Include="Views\Shared\_Commenter.cshtml" />
+    <Content Include="Views\Auth\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

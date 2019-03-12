@@ -41,15 +41,12 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" required />
                 <input type="submit" value="Connexion" class="btn btn-default" />
+                @Html.ActionLink("Créer un compte", "SignUp", "Auth", new { ReturnUrl = Request.Url }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Revenir a l'accueil", "Index", "Home", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
 }
-
-    <ul>
-        <li>@Html.ActionLink("Revenir a l'accueil", "Index", "Home")</li>
-        <li>@Html.ActionLink("Créer un compte", "SignUp", "Auth")</li>
-    </ul>
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

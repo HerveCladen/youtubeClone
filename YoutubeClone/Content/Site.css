@@ -73,3 +73,16 @@ video {
     min-width: 847.5px !important
 }
 
+/*Page style in recherche*/
+.PageButton {
+    color: white;
+    background: #d4d4d4;
+    border-radius: 27px;
+    padding: 7px;
+    margin: 10px;
+    text-decoration: none !important;
+}
+
+.btn-disabled {
+    color: grey;
+}

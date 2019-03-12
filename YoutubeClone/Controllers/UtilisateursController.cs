@@ -8,9 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using YoutubeClone.Models.Data_Models;
-using YoutubeClone.Models.View_Models;
 
-namespace YoutubeClone_Bruce.Controllers
+namespace YoutubeClone.Controllers
 {
     public class UtilisateursController : Controller
     {
@@ -39,49 +38,6 @@ namespace YoutubeClone_Bruce.Controllers
             return View(utilisateur);
         }
 
-        // GET: Utilisateurs/Edit/5
-        [Authorize]
-        public ActionResult Edit() {
-            // ma methode == plus efficace
-            var u = db.Utilisateurs.FirstOrDefault(user => user.Username == User.Identity.Name);
-
-            // methode du prof...
-            //int UserID = Convert.ToInt32(User.Identity);
-            //Utilisateur u = db.Utilisateurs.Find(UserID);
-            return this.View(u);
-        }
-
-        // POST: Utilisateurs/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult Edit(Utilisateur u)
-        {
-            //   ne fonctionne pas comme prevue...
-            ViewBag.error = "";
-            //u.UtilisateurId = Convert.ToInt32(User.Identity);
-            var user = db.Utilisateurs.FirstOrDefault(model => model.Username == User.Identity.Name);
-
-            if (ModelState.IsValid)
-            {
-                if (user.HashPassword != Profil.Cryptage(u.HashPassword))
-                    user.HashPassword = Profil.Cryptage(u.HashPassword);
-                //**********************************************************************************************************************//
-                // la ligne 80 renvoi une exception des qu'il y a une modification.. a voir comment fix
-                // System.Data.Entity.Infrastructure.DbUpdateConcurrencyException:
-                //'Store update, insert, or delete statement affected an unexpected number of rows (0).
-                //Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540
-                //for information on understanding and handling optimistic concurrency exceptions.'
-
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("InfoUser","Auth",null);
-            }
-            return this.View(u);
-        }
-
         // GET: Utilisateurs/Delete/5
         [Authorize]
         public ActionResult Delete(int? id, string error = "")
@@ -90,7 +46,7 @@ namespace YoutubeClone_Bruce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Utilisateur utilisateur = db.Utilisateurs.Find(id);
+            Utilisateur utilisateur = db.Utilisateurs.FirstOrDefault(model => model.UtilisateurId == id);
             if (utilisateur == null)
             {
                 return HttpNotFound();
@@ -108,12 +64,14 @@ namespace YoutubeClone_Bruce.Controllers
             if (User.Identity.Name == db.Utilisateurs.Find(id).Username
                 ||
                 db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin
-                ) {
+                )
+            {
                 Utilisateur utilisateur = db.Utilisateurs.Find(id);
                 db.Commentaires.RemoveRange(db.Commentaires.Where(x => x.Utilisateur_FK == utilisateur.UtilisateurId));
                 utilisateur.Historique.Clear();
                 var chaines = utilisateur.Chaines.ToList();
-                foreach (Chaine c in chaines) {
+                foreach (Chaine c in chaines)
+                {
                     var videos = c.Videos.ToList();
                     foreach (Video v in videos) {
                         var commentaires = v.Commentaires.ToList();
@@ -121,33 +79,42 @@ namespace YoutubeClone_Bruce.Controllers
                         {
                             db.Commentaires.Remove(com);
                         }
+
                         db.Videos.Remove(v);
-                        try {
+                        try
+                        {
                             System.IO.File.Delete(Server.MapPath("~") + v.ThumbnailPath);
                             System.IO.File.Delete(Server.MapPath("~") + v.VideoPath);
-                        } catch (Exception e) {
+                        }
+                        catch (Exception e)
+                        {
+                            e.StackTrace.ToString();
                         }
                     }
                     db.Chaines.Remove(c);
                 }
-                if(!db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin)
+                if (User.Identity.Name == utilisateur.Username)
                     FormsAuthentication.SignOut();
                 db.Utilisateurs.Remove(utilisateur);
                 db.SaveChanges();
-            } else {
+            }
+            else
+            {
                 return RedirectToAction("Delete", "Utilisateurs", new { error = "You may not delete someone else's account" });
             }
-            return RedirectToAction("Index","Home",null);
+            return RedirectToAction("Index", "Home", null);
         }
 
         [Authorize]
-        public ActionResult Historique() {
+        public ActionResult Historique()
+        {
             Utilisateur user = db.Utilisateurs.First(c => c.Username == User.Identity.Name);
             return View("~/Views/Videos/Historique.cshtml", user.Historique);
         }
 
         [Authorize]
-        public ActionResult VideHistorique() {
+        public ActionResult VideHistorique()
+        {
             Utilisateur user = db.Utilisateurs.First(c => c.Username == User.Identity.Name);
             user.Historique.Clear();
             db.Entry(user).State = EntityState.Modified;
@@ -165,31 +132,45 @@ namespace YoutubeClone_Bruce.Controllers
         }
 
         [Authorize]
-        public ActionResult Admin() {
-            if (User.Identity.IsAuthenticated) {
-                if (db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin) {
+        public ActionResult Admin()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin)
+                {
 
                     ViewBag.Videos = db.Videos.AsEnumerable();
                     ViewBag.Chaines = db.Chaines.AsEnumerable();
                     ViewBag.Utilisateurs = db.Utilisateurs.AsEnumerable();
 
                     return View("~/Views/Utilisateurs/Admin.cshtml");
-                } else {
+                }
+                else
+                {
                     return RedirectToAction("Index", "Home");
                 }
-            } else {
+            }
+            else
+            {
                 return RedirectToAction("Index", "Home");
             }
         }
 
-        public ActionResult AdminMenuOption() {
-            if (User.Identity.IsAuthenticated) {
-                if (db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin) {
+        public ActionResult AdminMenuOption()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin)
+                {
                     return PartialView("~/Views/Shared/_AdminMenuOption.cshtml");
-                } else {
+                }
+                else
+                {
                     return Content("");
                 }
-            } else {
+            }
+            else
+            {
                 return Content("");
             }
         }

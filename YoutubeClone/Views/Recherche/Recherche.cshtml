@@ -47,6 +47,13 @@
     </form>
 
 </div>
+<div class="row" style="text-align:center;font-size:24px;">
+    @if (ViewBag.LastPage == "#") {<a style="color: grey;text-decoration: none !important;" class="PageButton btn-disabled"><<  </a>} else { <a class="PageButton" href="@ViewBag.FirstPage"><<  </a> } 
+    @if (ViewBag.LastPage == "#") {<a style="color: grey;text-decoration: none !important;" class="PageButton btn-disabled"><  </a>} else { <a class="PageButton" href="@ViewBag.LastPage"><  </a> }
+    Pages
+    @if (ViewBag.NextPage == "#") {<a style="color: grey;text-decoration: none !important;" class="PageButton btn-disabled">  ></a>} else { <a class="PageButton" href="@ViewBag.NextPage">  ></a>  } 
+    @if (ViewBag.NextPage == "#") {<a style="color: grey;text-decoration: none !important;" class="PageButton btn-disabled">  >></a>} else { <a class="PageButton" href="@ViewBag.EndPage">  >></a> } 
+</div>
 <!-- CONTENU DE LA RECHERCHE -->
 <div class="row">
     <!--VIDEO-->
@@ -68,7 +75,7 @@
             }
             else
             {
-                <p>Aucun résultat</p>
+                <p>Plus de résultat</p>
             }
 
         }
@@ -104,7 +111,7 @@
             }
             else
             {
-                <p>Aucun résultat</p>
+                <p>Plus de résultat</p>
             }
 
         }
