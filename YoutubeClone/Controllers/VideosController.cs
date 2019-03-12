@@ -157,6 +157,10 @@ namespace YoutubeClone.Controllers
                 db.Utilisateurs.Find(db.Chaines.Find(db.Videos.Find(id).Chaine_FK).Utilisateur_FK).Username == User.Identity.Name
                 ) {
                 Video video = db.Videos.Find(id);
+                foreach (Commentaire c in video.Commentaires.ToList())
+                {
+                    db.Commentaires.Remove(c);
+                }
                 try {
                     System.IO.File.Delete(Server.MapPath("~") + video.ThumbnailPath);
                     System.IO.File.Delete(Server.MapPath("~") + video.VideoPath);

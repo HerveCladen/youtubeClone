@@ -14,6 +14,7 @@ namespace YoutubeClone.Models.Data_Models {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VideoId { get; set; }
 
+        [DisplayName("Vues")]
         public int Views { get; set; }
 
         [Required]
@@ -41,6 +42,7 @@ namespace YoutubeClone.Models.Data_Models {
         [ForeignKey("Chaine_FK")]
         public virtual Chaine Channel { get; set; }
 
+        [DisplayName("Tags")]
         [RegularExpression("(([A-Za-z0-9_ ]{2,20},){0,49}([A-Za-z0-9_ ]{2,20})){0,1}")]
         [MaxLength(1050)]
         public string Tags_Video { get; set; }
@@ -50,6 +52,10 @@ namespace YoutubeClone.Models.Data_Models {
 
         [MaxLength(300)]
         public string ThumbnailPath { get; set; }
+        
+        /****************************************************************/
+        public virtual ICollection<Commentaire> Commentaires { get; set; }
+        /****************************************************************/
 
         public Video() {
            // ThumbnailPath = "/Content/Thumbnails/" + VideoId+".png";
