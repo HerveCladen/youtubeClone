@@ -197,11 +197,6 @@
     <Content Include="Views\Auth\InfoUser.cshtml" />
     <Content Include="Views\Utilisateurs\Delete.cshtml" />
     <Content Include="Views\Videos\Delete.cshtml" />
-    <Content Include="Views\Commentaires\Create.cshtml" />
-    <Content Include="Views\Commentaires\Delete.cshtml" />
-    <Content Include="Views\Commentaires\Details.cshtml" />
-    <Content Include="Views\Commentaires\Edit.cshtml" />
-    <Content Include="Views\Commentaires\Index.cshtml" />
     <Content Include="Views\Shared\_Commenter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
