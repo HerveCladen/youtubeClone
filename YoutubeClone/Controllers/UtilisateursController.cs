@@ -67,6 +67,7 @@ namespace YoutubeClone.Controllers
                 )
             {
                 Utilisateur utilisateur = db.Utilisateurs.Find(id);
+                utilisateur.Historique.Clear();
                 var chaines = utilisateur.Chaines.ToList();
                 foreach (Chaine c in chaines)
                 {
@@ -86,7 +87,7 @@ namespace YoutubeClone.Controllers
                     }
                     db.Chaines.Remove(c);
                 }
-                if (!db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin)
+                if (User.Identity.Name == utilisateur.Username)
                     FormsAuthentication.SignOut();
                 db.Utilisateurs.Remove(utilisateur);
                 db.SaveChanges();
