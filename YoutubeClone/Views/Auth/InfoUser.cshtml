@@ -1,13 +1,14 @@
 ﻿@model YoutubeClone.Models.View_Models.Profil
+@using YoutubeClone.Models.Data_Models
 
 @{
     ViewBag.Title = "Information compte";
 }
 
-<h2>Compte</h2>
+<h2>Compte de @User.Identity.Name</h2>
 
 <div>
-    <h4>Information de @User.Identity.Name</h4>
+    <h4>Information</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt class="control-label">
@@ -25,6 +26,20 @@
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
+
+        <dt>
+            @Html.Label("Chaine:")
+        </dt>
+
+        <dd>
+            |
+            @{ foreach (Chaine c in ViewBag.chaine)
+                {
+                    <span>@Html.ActionLink(c.Name, "ChainesUtilisateurs", "Channel") | </span>
+                }
+            }
+        </dd>
+
     </dl>
 </div>
 <p>

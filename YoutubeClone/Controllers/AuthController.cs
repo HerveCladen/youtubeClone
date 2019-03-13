@@ -172,6 +172,7 @@ namespace YoutubeClone.Controllers
         {
             var user = db.Utilisateurs.FirstOrDefault(model => model.Username == User.Identity.Name);
             Profil info = new Profil { UserName = user.Username, Email = user.Courriel };
+            ViewBag.chaine = user.Chaines;
 
             return View(info);
         }
