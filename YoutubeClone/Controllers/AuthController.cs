@@ -48,7 +48,7 @@ namespace YoutubeClone.Controllers
                 }
                 if (user == null)
                 {
-                    ModelState.AddModelError("UserName", "Le nom d'utilisateur n'exite pas");
+                    ModelState.AddModelError("UserName", "Le nom d'utilisateur n'existe pas");
                     return View(f);
                 }
                 if (user.HashPassword != formPass)

@@ -49,6 +49,7 @@ namespace YoutubeClone.Controllers
                 ViewBag.EditOK = false;
             }
             db.SaveChanges();
+            ViewBag.User = db.Utilisateurs.FirstOrDefault(user => user.Username == User.Identity.Name);
             return View("~/Views/Videos/VideoViewer.cshtml", video);
         }
 

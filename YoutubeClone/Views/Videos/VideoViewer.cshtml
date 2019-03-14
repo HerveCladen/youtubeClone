@@ -74,7 +74,6 @@
 
     </dl>
 </div>
-@*@Html.Action("MostPopularVideosOfChannels", "Channel", Model.Channel)*@
 <div>
     @if (User.Identity.IsAuthenticated)
     {
@@ -123,6 +122,12 @@
                     <div>
                         <h5>@item.Contenu</h5>
                     </div>
+                    @if (User.Identity.IsAuthenticated && ((Model.Channel.Utilisateur.Username == User.Identity.Name) || (ViewBag.User.IsAdmin == true)))
+                    {
+                        <div>
+                            @Html.ActionLink("Supprimer", "Delete", "Commentaires", new { id = item.CommentaireId }, new { @class = "btn btn-default" })
+                        </div>
+                    }
                 </div>
             </div>
             <hr/>
