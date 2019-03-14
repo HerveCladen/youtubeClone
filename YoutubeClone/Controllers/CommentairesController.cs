@@ -71,17 +71,6 @@ namespace YoutubeClone.Controllers
             return RedirectToAction("Details", "Videos", new { id = commentaire.Video_FK });  
         }
 
-        // POST: Commentaires/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Commentaire commentaire = db.Commentaires.Find(id);
-        //    db.Commentaires.Remove(commentaire);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
