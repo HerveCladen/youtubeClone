@@ -63,7 +63,7 @@ namespace YoutubeClone.Controllers
             Commentaire commentaire = db.Commentaires.Find(id);
             Video v = db.Videos.Find(commentaire.Video_FK);
             Utilisateur u = db.Utilisateurs.FirstOrDefault(user => user.Username == User.Identity.Name);
-            if (u.Username == v.Channel.Utilisateur.Username || u.IsAdmin)
+            if (u.Username == v.Channel.Utilisateur.Username || u.IsAdmin || u.Username == commentaire.Auteur.Username)
             {
                 db.Commentaires.Remove(commentaire);
                 db.SaveChanges();

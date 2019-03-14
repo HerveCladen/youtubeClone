@@ -122,7 +122,7 @@
                     <div>
                         <h5>@item.Contenu</h5>
                     </div>
-                    @if (User.Identity.IsAuthenticated && ((Model.Channel.Utilisateur.Username == User.Identity.Name) || (ViewBag.User.IsAdmin == true)))
+                    @if (User.Identity.IsAuthenticated && (Model.Channel.Utilisateur.Username == User.Identity.Name || ViewBag.User.IsAdmin == true || ViewBag.User.Username == item.Auteur.Username))
                     {
                         <div>
                             @Html.ActionLink("Supprimer", "Delete", "Commentaires", new { id = item.CommentaireId }, new { @class = "btn btn-default" })
