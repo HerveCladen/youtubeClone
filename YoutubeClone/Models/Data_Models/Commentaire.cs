@@ -34,8 +34,6 @@ namespace YoutubeClone.Models.Data_Models
         [ForeignKey("Video_FK")]
         public virtual Video Video { get; set; }
 
-        //public virtual ICollection<Commentaire> Reponses { get; set; }
-
         public Commentaire()
         {
             DatePublication = DateTime.Now;
