@@ -199,6 +199,8 @@
     <Content Include="Views\Videos\Delete.cshtml" />
     <Content Include="Views\Shared\_Commenter.cshtml" />
     <Content Include="Views\Auth\Edit.cshtml" />
+    <Content Include="Views\Videos\LikedVideos.cshtml" />
+    <Content Include="Views\Videos\Historique.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -15,34 +15,37 @@
             @*Faudra peut-être créer une sidebar comme sur YouTube pour que le navbar soit moins clustered*@
             <div class="dropdown col-md-4">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                    Logged as @User.Identity.Name
+                    Logged in as @User.Identity.Name
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
-                    @Html.Action("AdminMenuOption", "Utilisateurs", null)
-
                     <li>
-                        @Html.ActionLink("Chaînes", "ChainesUtilisateurs", "Channel", new { ReturnUrl = Request.Url }, null)
+                        @Html.ActionLink("Admin menu", "AdminMenuOption", "Utilisateurs", null)
                     </li>
                     <li>
-                        @Html.ActionLink("Compte", "InfoUser", "Auth", new { ReturnUrl = Request.Url }, null)
+                        @Html.ActionLink("Channels", "ChainesUtilisateurs", "Channel", new { ReturnUrl = Request.Url }, null)
                     </li>
                     <li>
-                        @*À faire*@
-                        @Html.ActionLink("Historique", "Historique", "Utilisateurs", new { ReturnUrl = Request.Url }, null)
+                        @Html.ActionLink("Account", "InfoUser", "Auth", new { ReturnUrl = Request.Url }, null)
                     </li>
                     <li>
-                        @Html.ActionLink("Déconnexion", "Logout", "Auth", new { ReturnUrl = Request.Url }, null)
+                        @Html.ActionLink("Viewed videos", "Historique", "Utilisateurs", new { ReturnUrl = Request.Url }, null)
+                    </li>
+                    <li>
+                        @Html.ActionLink("Liked videos", "LikedVideos", "Utilisateurs", new { ReturnUrl = Request.Url }, null)
+                    </li>
+                    <li>
+                        @Html.ActionLink("Logout", "Logout", "Auth", new { ReturnUrl = Request.Url }, null)
                     </li>
                 </ul>
             </div>
 } else {
         <ul>
             <li>
-                @Html.ActionLink("Connexion", "Login", "Auth", new { ReturnUrl = Request.Url }, null)
+                @Html.ActionLink("Login", "Login", "Auth", new { ReturnUrl = Request.Url }, null)
             </li>
             <li>
-                @Html.ActionLink("Créer un compte", "SignUp", "Auth", new { ReturnUrl = Request.Url }, null)
+                @Html.ActionLink("Create an account", "SignUp", "Auth", new { ReturnUrl = Request.Url }, null)
             </li>
         </ul>
 }

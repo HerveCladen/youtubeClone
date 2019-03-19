@@ -122,6 +122,13 @@ namespace YoutubeClone.Controllers
             return View("~/Views/Videos/Historique.cshtml", user.Historique);
         }
 
+        [Authorize]
+        public ActionResult LikedVideos()
+        {
+            Utilisateur user = db.Utilisateurs.First(c => c.Username == User.Identity.Name);
+            return View("~/Views/Videos/LikedVideos.cshtml", user.LikedVideos);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
