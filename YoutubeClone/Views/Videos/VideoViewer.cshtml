@@ -2,79 +2,75 @@
 
 @{
     ViewBag.Title = Model.Name;
+    DateTime t = Model.DatePublished;
 }
-
-<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
     <hr />
     @if (!String.IsNullOrEmpty(Model.VideoPath))
     {
         <video controls src="@Model.VideoPath" poster="@Model.ThumbnailPath"></video>
-    } else
+    }
+    else
     {
         <video controls src="https://ak5.picdn.net/shutterstock/videos/5770835/preview/stock-footage-the-decorated-archway-and-red-lanterns-in-the-snow.webm" poster="https://i.imgur.com/DS2bwux.png"></video>
     }
+    <div>
+        <h3>@Html.DisplayFor(model => model.Name)</h3>
+        <div style="display:flex; justify-content:space-between; width:600px">
+            <h4 style="color:#808080">@Html.DisplayFor(model => model.Views) views</h4>
+            <div>
+                <div style="width:140px; display:flex; justify-content:space-between; margin-left:auto; margin-right:auto">                    
+                    <a href='@Url.Action("Like", "Videos", new { id = Model.VideoId })' style="color:#808080">
+                        <img style="width:18px; margin-right:5px" src='@Url.Content("~/Content/rating.png")' /> @Model.Likes
+                    </a>
+                    <a href='@Url.Action("Dislike", "Videos", new { id = Model.VideoId })' style="color:#808080">
+                        <img style="width:18px; margin-right:5px; transform:rotate(180deg)" src='@Url.Content("~/Content/rating.png")' /> @Model.Dislikes
+                    </a>
+                </div>
+                <div style="width:160px; height:2px; background-color:lightgray; margin-top:15px">
+                    <div style="width:@YoutubeClone.Controllers.VideosController.RatioLD(Model.Likes, Model.Dislikes)%; background-color:#808080; height:2px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Channel.Name)
-        </dt>
-
-        <dd>
-            <a href="~/Channel/Details/@(Model.Channel.ChaineId)">
-                @Html.DisplayFor(model => model.Channel.Name)
-            </a>
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Views)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Views)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Categorie_Video)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Categorie_Video)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DatePublished)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatePublished)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tags_Video)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tags_Video)
-        </dd>
-        @if (User.Identity.IsAuthenticated && ViewBag.EditOK) {
-            <dd>
-                <a href="/Videos/Edit/@Model.VideoId" class="btn btn-default">Edit Video </a>
-            </dd>
+    <div>
+        <div>
+            <h4 style="margin-bottom:3px">
+                <a style="color:black" href="~/Channel/Details/@(Model.Channel.ChaineId)">
+                    @Html.DisplayFor(model => model.Channel.Name)
+                </a>
+            </h4>
+            <h5 style="color:#808080; margin-top:0">
+                Published on @t.ToString("MMM dd, yyyy")
+            </h5>
+        </div>
+        <div>
+            <h5 style="margin:20px 0">@Html.DisplayFor(model => model.Description)</h5>
+            <div style="display:flex; justify-content:space-between; width:150px">
+                <span style="color:#808080">@Html.DisplayNameFor(model => model.Categorie_Video)</span>
+                @Html.DisplayFor(model => model.Categorie_Video)
+            </div>
+            <div style="display:flex; justify-content:space-between; width:150px">
+                <span style="color:#808080">@Html.DisplayNameFor(model => model.Tags_Video)</span>
+                @if (!String.IsNullOrEmpty(Model.Tags_Video))
+                {
+                    @Html.DisplayFor(model => model.Tags_Video)
+                } else { <span>No tags</span> }
+            </div>
+        </div>
+        @if (User.Identity.IsAuthenticated && ViewBag.EditOK)
+        {
+            <div>
+                <a href="/Videos/Edit/@Model.VideoId" class="btn btn-default">Edit Video</a>
+            </div>
         }
-
-    </dl>
+    </div>
 </div>
+<hr/>
 <div>
+    <h4>@Model.Commentaires.Count Comments</h4>
     @if (User.Identity.IsAuthenticated)
     {
         using (Html.BeginForm("Create", "Commentaires"))
@@ -87,7 +83,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group col-md-11">
                     <div class="col-md-10">
-                        @Html.TextAreaFor(m => commentaire.Contenu, new { style = "resize: none; width: 1040px; padding:5px", placeholder = "Commentaire sur la vidéo", rows = 3, id = "commentaire", onkeyup = "verifier()", htmlAttributes = new { @class = "form-control" } })
+                        @Html.TextAreaFor(m => commentaire.Contenu, new { style = "resize: none; width: 1040px; padding:5px", placeholder = "Add a public comment", rows = 2, id = "commentaire", onkeyup = "verifier()", htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(m => commentaire.Contenu, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -103,14 +99,10 @@
     } else
     {
         <h3>
-            @Html.ActionLink("Se connecter", "Login", "Auth", new { ReturnUrl = Request.Url }, null) pour poster un commentaire.
+            @Html.ActionLink("Login", "Login", "Auth", new { ReturnUrl = Request.Url }, null) to post a comment.
         </h3>
     }
-    @if (Model.Commentaires.Count() == 0)
-    {
-        <h3>Aucun commentaire n'a été posté sur cette vidéo.</h3>
-    }
-    else
+    @if (!(Model.Commentaires.Count() == 0))
     {
         foreach(var item in Model.Commentaires)
         {
@@ -125,7 +117,7 @@
                     @if (User.Identity.IsAuthenticated && (Model.Channel.Utilisateur.Username == User.Identity.Name || ViewBag.User.IsAdmin == true || ViewBag.User.Username == item.Auteur.Username))
                     {
                         <div>
-                            @Html.ActionLink("Supprimer", "Delete", "Commentaires", new { id = item.CommentaireId }, new { @class = "btn btn-default" })
+                            @Html.ActionLink("Delete", "Delete", "Commentaires", new { id = item.CommentaireId }, new { @class = "btn btn-default" })
                         </div>
                     }
                 </div>

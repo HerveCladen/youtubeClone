@@ -32,23 +32,18 @@ namespace YoutubeClone.Controllers
         {
             if (ModelState.IsValid)
             {
-                //try
-                {
-                    var loggedIn = db.Utilisateurs.FirstOrDefault(p => p.Username == User.Identity.Name);
-                    Commentaire c = new Commentaire();
-                    c.Contenu = commentaire.Contenu;
-                    c.Auteur = db.Utilisateurs.Find(loggedIn.UtilisateurId);
-                    c.Utilisateur_FK = loggedIn.UtilisateurId;
-                    c.Video = db.Videos.Find(Video_FK);
-                    c.Video_FK = Video_FK;
-                    db.Commentaires.Add(c);
-                    db.Utilisateurs.Find(loggedIn.UtilisateurId).Commentaires.Add(c);
-                    db.Videos.Find(Video_FK).Commentaires.Add(c);
-                    db.SaveChanges();
-                    return RedirectToAction("Details", "Videos", new { id = c.Video_FK });
-                } //catch (Exception e) {
-                    //return RedirectToAction("Details", "Videos", new { id = Video_FK });
-                //}
+                var loggedIn = db.Utilisateurs.FirstOrDefault(p => p.Username == User.Identity.Name);
+                Commentaire c = new Commentaire();
+                c.Contenu = commentaire.Contenu;
+                c.Auteur = db.Utilisateurs.Find(loggedIn.UtilisateurId);
+                c.Utilisateur_FK = loggedIn.UtilisateurId;
+                c.Video = db.Videos.Find(Video_FK);
+                c.Video_FK = Video_FK;
+                db.Commentaires.Add(c);
+                db.Utilisateurs.Find(loggedIn.UtilisateurId).Commentaires.Add(c);
+                db.Videos.Find(Video_FK).Commentaires.Add(c);
+                db.SaveChanges();
+                return RedirectToAction("Details", "Videos", new { id = c.Video_FK });
             }
 
             ViewBag.Utilisateur_FK = new SelectList(db.Chaines, "ChaineId", "Name", commentaire.Utilisateur_FK);

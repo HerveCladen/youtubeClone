@@ -34,10 +34,12 @@ namespace YoutubeClone.Models.Data_Models
         public virtual ICollection<Chaine> Chaines { get; set; }
         
         public virtual ICollection<Video> Historique { get; set; }
-
-        /****************************************************************/
+        
         public virtual ICollection<Commentaire> Commentaires { get; set; }
-        /****************************************************************/
+
+        public virtual ICollection<Video> LikedVideos { get; set; }
+
+        public virtual ICollection<Video> DislikedVideos { get; set; }
 
         public bool IsAdmin { get; set; }   
         

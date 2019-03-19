@@ -7,19 +7,19 @@ using System.Linq;
 using System.Web;
 
 namespace YoutubeClone.Models.Data_Models {
-    public enum Categorie {Jeux ,Sport,Fashion,Review,React,Meme}
+    public enum Categorie {Jeux, Sport, Fashion, Review, React, Meme}
     public class Video
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int VideoId { get; set; }
 
-        [DisplayName("Vues")]
+        [DisplayName("Views")]
         public int Views { get; set; }
 
         [Required]
         [StringLength(40, MinimumLength = 5)]
-        [DisplayName("Nom de la vidéo")]
+        [DisplayName("Video title")]
         public string Name { get; set; }
 
         [Required]
@@ -29,7 +29,7 @@ namespace YoutubeClone.Models.Data_Models {
         public string Description { get; set; }
 
         [Required]
-        [DisplayName("Catégorie")]
+        [DisplayName("Categorie")]
         public Categorie Categorie_Video { get; set; }
 
         [Required]
@@ -53,13 +53,13 @@ namespace YoutubeClone.Models.Data_Models {
         [MaxLength(300)]
         public string ThumbnailPath { get; set; }
         
-        /****************************************************************/
         public virtual ICollection<Commentaire> Commentaires { get; set; }
-        /****************************************************************/
+        
+        public int Likes { get; set; }
+
+        public int Dislikes { get; set; }
 
         public Video() {
-           // ThumbnailPath = "/Content/Thumbnails/" + VideoId+".png";
-           // VideoPath = "/Content/Videos/" + VideoId +".mp4";
             DatePublished = DateTime.Now;
         }
     }

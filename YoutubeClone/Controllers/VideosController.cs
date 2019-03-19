@@ -193,5 +193,57 @@ namespace YoutubeClone.Controllers
             else if (diff < 365) return "Il y a " + (((DateTime.Now.Year - d.Year) * 12) + DateTime.Now.Month - d.Month) + " mois";
             else return "Il y a " + (DateTime.Now.Year - d.Year) + " ans";
         }
+
+        [Authorize]
+        public ActionResult Like(int id)
+        {
+            var user = db.Utilisateurs.FirstOrDefault(p => p.Username == User.Identity.Name);
+            var video = db.Videos.Find(id);
+            if (user.DislikedVideos.Contains(video)) {
+                video.Dislikes--; user.DislikedVideos.Remove(video);
+            }
+            if (!user.LikedVideos.Contains(video)) {
+                video.Likes++;
+                user.LikedVideos.Add(video);
+            } else {
+                video.Likes--;
+                user.LikedVideos.Remove(video);
+            }
+            db.SaveChanges();
+            
+            return RedirectToAction("Details", "Videos", new { id });
+        }
+
+        [Authorize]
+        public ActionResult Dislike(int id)
+        {
+            var user = db.Utilisateurs.FirstOrDefault(p => p.Username == User.Identity.Name);
+            var video = db.Videos.Find(id);
+            if (user.LikedVideos.Contains(video)) {
+                video.Likes--; user.LikedVideos.Remove(video);
+            }
+            if (!user.DislikedVideos.Contains(video)) {
+                video.Dislikes++;
+                user.DislikedVideos.Add(video);
+            }
+            else
+            {
+                video.Dislikes--;
+                user.DislikedVideos.Remove(video);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Details", "Videos", new { id });
+        }
+
+        public static int RatioLD(int likes, int dislikes)
+        {
+            double l = likes;
+            double d = dislikes;
+            if (dislikes != 0) {
+                return Convert.ToInt32(l / (l + d) * 100);
+            } else {
+                return 100;
+            }
+        }
     }
 }

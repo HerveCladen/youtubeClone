@@ -19,7 +19,7 @@ namespace YoutubeClone.Models.Data_Models
         public string Contenu { get; set; }
 
         [Required]
-        [DisplayName("Date de publication")]
+        [DisplayName("Published date")]
         public DateTime DatePublication { get; set; }
 
         [ForeignKey("Auteur")]
