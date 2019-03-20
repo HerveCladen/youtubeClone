@@ -98,10 +98,10 @@ namespace YoutubeClone.Controllers
                 int nbParPageVideo = 9;
                 int nbParPageChaine = 3;
 
-                if (queriedVideos.Count() / nbParPageVideo >= queriedChaines.Count() / nbParPageChaine) {
-                    ViewBag.EndPage = ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=" + Math.Ceiling((double)queriedVideos.Count() / nbParPageVideo);
+                if (queriedVideos.Count() / nbParPageVideo > queriedChaines.Count() / nbParPageChaine) {
+                    ViewBag.EndPage = ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=" + (queriedVideos.Count() / nbParPageVideo);
                 } else {
-                    ViewBag.EndPage = ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=" + Math.Ceiling((double)queriedChaines.Count() / nbParPageChaine);
+                    ViewBag.EndPage = ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=" + (queriedChaines.Count() / nbParPageChaine);
                 }
                 ViewBag.FirstPage = ViewBag.LastPage = "/Recherche/Index?search=" + search + "&isChaine=" + isChaine + "&isVideo=" + isVideo + "&uploadFrame=" + uploadFrame + "&sortBy=" + sortBy + "&categorie=" + categorie + "&isFromCat=" + isFromCat + "&pageNumber=1" ;
 
@@ -253,3 +253,4 @@ namespace YoutubeClone.Controllers
         }
     }
 }
+

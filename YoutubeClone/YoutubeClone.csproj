@@ -168,6 +168,56 @@
     <Compile Include="Models\View_Models\Profil.cs" />
     <Compile Include="Models\View_Models\RechercheCoefficient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ressource\Chaine.fr.Designer.cs">
+      <DependentUpon>Chaine.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ressource\Chaine.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Chaine.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ressource\Home.fr.Designer.cs">
+      <DependentUpon>Home.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ressource\Home.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Home.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ressource\Misc.fr.Designer.cs">
+      <DependentUpon>Misc.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ressource\Misc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Misc.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ressource\Utilisateur.fr.Designer.cs">
+      <DependentUpon>Utilisateur.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ressource\Utilisateur.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Utilisateur.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Ressource\Video.fr.Designer.cs">
+      <DependentUpon>Video.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Ressource\Video.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Video.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -214,6 +264,48 @@
   <ItemGroup>
     <Folder Include="Content\Videos\" />
     <Folder Include="Views\Default\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ressource\Chaine.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Chaine.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Chaine.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Chaine.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Home.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Home.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Home.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Home.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Misc.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Misc.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Misc.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Misc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Utilisateur.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Utilisateur.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Utilisateur.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Utilisateur.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Video.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Video.fr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ressource\Video.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Video.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
