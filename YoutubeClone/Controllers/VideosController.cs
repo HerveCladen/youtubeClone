@@ -238,10 +238,10 @@ namespace YoutubeClone.Controllers
         {
             double l = likes;
             double d = dislikes;
-            if (dislikes != 0) {
+            if ((likes + dislikes) != 0) {
                 return Convert.ToInt32(l / (l + d) * 100);
             } else {
-                return 100;
+                return 50;
             }
         }
     }
