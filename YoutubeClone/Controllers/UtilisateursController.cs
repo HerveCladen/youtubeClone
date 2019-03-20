@@ -69,6 +69,16 @@ namespace YoutubeClone.Controllers
                 Utilisateur utilisateur = db.Utilisateurs.Find(id);
                 db.Commentaires.RemoveRange(db.Commentaires.Where(x => x.Utilisateur_FK == utilisateur.UtilisateurId));
                 utilisateur.Historique.Clear();
+                foreach(Video v in utilisateur.LikedVideos)
+                {
+                    v.Likes--;
+                    utilisateur.LikedVideos.Remove(v);
+                }
+                foreach (Video v in utilisateur.DislikedVideos)
+                {
+                    v.Dislikes--;
+                    utilisateur.DislikedVideos.Remove(v);
+                }
                 var chaines = utilisateur.Chaines.ToList();
                 foreach (Chaine c in chaines)
                 {

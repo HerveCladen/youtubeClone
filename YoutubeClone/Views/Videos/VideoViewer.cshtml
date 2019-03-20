@@ -13,7 +13,7 @@
     }
     else
     {
-        <video controls src="https://ak5.picdn.net/shutterstock/videos/5770835/preview/stock-footage-the-decorated-archway-and-red-lanterns-in-the-snow.webm" poster="https://i.imgur.com/DS2bwux.png"></video>
+        <video controls src="https://ak5.picdn.net/shutterstock/videos/5770835/preview/stock-footage-the-decorated-archway-and-red-lanterns-in-the-snow.webm" poster='@Url.Content("~/Content/Images/default_poster.png")'></video>
     }
     <div>
         <h3>@Html.DisplayFor(model => model.Name)</h3>
@@ -22,10 +22,10 @@
             <div>
                 <div style="width:140px; display:flex; justify-content:space-between; margin-left:auto; margin-right:auto">                    
                     <a href='@Url.Action("Like", "Videos", new { id = Model.VideoId })' style="color:#808080">
-                        <img style="width:18px; margin-right:5px" src='@Url.Content("~/Content/rating.png")' /> @Model.Likes
+                        <img style="width:18px; margin-right:5px" src='@Url.Content("~/Content/Images/rating.png")' /> @Model.Likes
                     </a>
                     <a href='@Url.Action("Dislike", "Videos", new { id = Model.VideoId })' style="color:#808080">
-                        <img style="width:18px; margin-right:5px; transform:rotate(180deg)" src='@Url.Content("~/Content/rating.png")' /> @Model.Dislikes
+                        <img style="width:18px; margin-right:5px; transform:rotate(180deg)" src='@Url.Content("~/Content/Images/rating.png")' /> @Model.Dislikes
                     </a>
                 </div>
                 <div style="width:160px; height:2px; background-color:lightgray; margin-top:15px">
