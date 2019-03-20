@@ -114,3 +114,16 @@ C:\Users\Herve\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone
 C:\Users\Herve\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.CopyComplete
 C:\Users\Herve\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.dll
 C:\Users\Herve\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.pdb
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Chaine.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Home.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Misc.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Utilisateur.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Video.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Chaine.fr.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Home.fr.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Misc.fr.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Utilisateur.fr.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.Ressource.Video.fr.resources
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\YoutubeClone.csproj.GenerateResource.Cache
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\bin\fr\YoutubeClone.resources.dll
+D:\My Docs\Documents\GitHub\youtubeClone\YoutubeClone\obj\Debug\fr\YoutubeClone.resources.dll

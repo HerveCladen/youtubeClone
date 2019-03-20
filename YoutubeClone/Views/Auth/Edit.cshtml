@@ -1,17 +1,17 @@
 ﻿@model YoutubeClone.Models.View_Models.Profil
 
 @{
-    ViewBag.Title = "Modifier le profil";
+    ViewBag.Title = YoutubeClone.Ressource.Utilisateur.TitleEdit;
 }
 
-<h2>Modification</h2>
+<h2>@YoutubeClone.Ressource.Utilisateur.PageNameEdit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Utilisateur</h4>
+        <h4>@YoutubeClone.Ressource.Utilisateur.ControllerName</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Confirmer le nouveau courriel", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label(YoutubeClone.Ressource.Utilisateur.EmailConfirm, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.VerifiedEmail, new { htmlAttributes = new { @class = "form-control", } })
                 @Html.ValidationMessageFor(model => model.VerifiedEmail, "", new { @class = "text-danger" })
@@ -39,7 +39,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Entrez le nouveau mot de passe", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label(YoutubeClone.Ressource.Utilisateur.NewPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.Password("HashPassword", "", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HashPassword, "", new { @class = "text-danger" })
@@ -47,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Confirmation du nouveau mot de passe", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label(YoutubeClone.Ressource.Utilisateur.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.Password("VerifiedPass", "", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.VerifiedPass, "", new { @class = "text-danger" })
@@ -55,7 +55,7 @@
         </div>
 
         <div class="form-group">
-            @Html.Label("Confirmer les changements avec votre ancien mot de passe", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label(YoutubeClone.Ressource.Utilisateur.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.Password("OldPassConf", "", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessage("OldPassConf", "", new { @class = "text-danger" })
@@ -64,9 +64,9 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Modifier" class="btn btn-default" />
-                @Html.ActionLink("Delete le compte", "Delete", "Utilisateurs", new { id = ViewBag.userId }, new { @class = "btn btn-default" })
-                @Html.ActionLink("Annuler", "InfoUser", "Auth", null, new { @class = "btn btn-default" })
+                <input type="submit" value="@YoutubeClone.Ressource.Utilisateur.ActionEdit" class="btn btn-default" />
+                @Html.ActionLink(YoutubeClone.Ressource.Utilisateur.GoToDelete, "Delete", "Utilisateurs", new { id = ViewBag.userId }, new { @class = "btn btn-default" })
+                @Html.ActionLink(YoutubeClone.Ressource.Utilisateur.Cancel, "InfoUser", "Auth", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>

@@ -2,10 +2,10 @@
 @using YoutubeClone.Models.Data_Models
 
 @{
-    ViewBag.Title = "Information compte";
+    ViewBag.Title = YoutubeClone.Ressource.Utilisateur.TitleDetails;
 }
 
-<h2>Compte de @User.Identity.Name</h2>
+<h2>@YoutubeClone.Ressource.Utilisateur.PageNameDetails @User.Identity.Name</h2>
 
 <div>
     <h4>Information</h4>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.Label("Chaine:")
+            @Html.Label(YoutubeClone.Ressource.Utilisateur.LabelChannel)
         </dt>
 
         <dd>
@@ -43,8 +43,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Modifier", "Edit", "Auth", null, new { @class = "btn btn-default" })
-    @Html.ActionLink("Retourner a l'acceuil", "Index", "Home", null, new { @class = "btn btn-default" })
+    @Html.ActionLink(YoutubeClone.Ressource.Utilisateur.GoToEdit, "Edit", "Auth", null, new { @class = "btn btn-default" })
+    @Html.ActionLink(YoutubeClone.Ressource.Utilisateur.GoToHome, "Index", "Home", null, new { @class = "btn btn-default" })
 </p>
 
 

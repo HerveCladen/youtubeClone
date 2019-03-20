@@ -1,30 +1,28 @@
 ﻿@model YoutubeClone.Models.Data_Models.Utilisateur
 
 @{
-    ViewBag.Title = "Confirmation suppression";
+    ViewBag.Title = YoutubeClone.Ressource.Utilisateur.TitleDelete;
 }
 
-<h2>Suppression</h2>
+<h2>@YoutubeClone.Ressource.Utilisateur.PageNameDelete</h2>
 
-<h3>Etes-vous certains de vouloir supprimer le compte <b>@Model.Username</b>?</h3>
+<h3>@YoutubeClone.Ressource.Utilisateur.DeleteQuestion <b>[@Model.Username]</b></h3>
 <h5 style="color:red">@ViewBag.Error</h5>
 <div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-        <h2>Avertissement</h2>
-        <p>La suppression de ce compte, causera <b>l'elimination</b> de tout le contenu relier a ce compte, videos, chaines, commentaire, like, etc.</p>
-        <p><b>Par la confirmation si dessous, vous accepter entierement toute la responsabilite consernant la perte de tout contenu relie a ce compte</b></p>
-        <p><b>YouTubeClone</b> ne sera en aucun cas, tenu responsable de la perte des donnees reliees au compte supprimer</p>
+    <h2>@YoutubeClone.Ressource.Utilisateur.DeleteWarning</h2>
+        <p>@YoutubeClone.Ressource.Utilisateur.DeleteMessage</p>
         <br />
         <br />
         <div class="form-actions no-color">
             <input type="checkbox" id="confirm-disabled" name="confirm" onchange="document.getElementById('btn-disabled').disabled = !this.checked;"/>
-            <h4>J'accepte les termes et conditions mentionner si-dessus</h4>
+            <h4>@YoutubeClone.Ressource.Utilisateur.DeleteAcceptance</h4>
         </div>
         <div class="form-actions no-color">
-            <input type="submit" id="btn-disabled" name="supprimer" value="Supprimer" disabled class="btn btn-default" />
-            @Html.ActionLink("Annuler", "InfoUser", "Auth", null, new { @class = "btn btn-default" })
+            <input type="submit" id="btn-disabled" name="supprimer" value="@YoutubeClone.Ressource.Utilisateur.ActionDelete" disabled class="btn btn-default" />
+            @Html.ActionLink(YoutubeClone.Ressource.Utilisateur.Cancel, "InfoUser", "Auth", null, new { @class = "btn btn-default" })
         </div>
     }
 </div>
