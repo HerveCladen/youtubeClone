@@ -119,11 +119,14 @@
     <Content Include="App_Data\YoutubeCloneDb_log.ldf">
       <DependentUpon>YoutubeCloneDb.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Avatars\default-avatar.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\default_poster.png" />
     <Content Include="Content\Images\rating.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Thumbnails\default-thumbnail.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -209,7 +212,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Thumbnails\" />
     <Folder Include="Content\Videos\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>

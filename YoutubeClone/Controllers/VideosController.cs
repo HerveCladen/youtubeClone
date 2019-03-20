@@ -76,7 +76,6 @@ namespace YoutubeClone.Controllers
                     video.Channel = db.Chaines.Find(videoCreate.Chaine_FK);
                     video.Chaine_FK = videoCreate.Chaine_FK;
                     db.Videos.Add(video);
-                    db.SaveChanges();
                     video.ThumbnailPath = "/Content/Thumbnails/" + video.VideoId + Path.GetExtension(posterUP.FileName);
                     video.VideoPath =  "/Content/Videos/" + video.VideoId + Path.GetExtension(videoUP.FileName);
                     posterUP.SaveAs(Server.MapPath("~") + "Content\\Thumbnails\\" + video.VideoId + Path.GetExtension(posterUP.FileName));

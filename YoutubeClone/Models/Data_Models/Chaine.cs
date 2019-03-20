@@ -39,5 +39,8 @@ namespace YoutubeClone.Models.Data_Models {
         [MaxLength(1050)]
         [RegularExpression("(([A-Za-z0-9_ ]{2,20},){0,49}([A-Za-z0-9_ ]{2,20})){0,1}", ErrorMessage ="The tags need to be 2 to 20 characters, separated by commas. The maximum amount of tags is 50.")]
         public string Tags_Chaine { get; set; }
+
+        [MaxLength(1050)]
+        public string AvatarPath { get; set; }
     }
 }

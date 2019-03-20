@@ -59,45 +59,40 @@ namespace YoutubeClone.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult DeleteConfirmed(int id)
-        {
+        public ActionResult DeleteConfirmed(int id) {
             if (User.Identity.Name == db.Utilisateurs.Find(id).Username
                 ||
                 db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin
-                )
-            {
+                ) {
                 Utilisateur utilisateur = db.Utilisateurs.Find(id);
                 db.Commentaires.RemoveRange(db.Commentaires.Where(x => x.Utilisateur_FK == utilisateur.UtilisateurId));
                 utilisateur.Historique.Clear();
-                foreach(Video v in utilisateur.LikedVideos)
-                {
+                foreach(Video v in utilisateur.LikedVideos) {
                     v.Likes--;
                     utilisateur.LikedVideos.Remove(v);
                 }
-                foreach (Video v in utilisateur.DislikedVideos)
-                {
+                foreach (Video v in utilisateur.DislikedVideos) {
                     v.Dislikes--;
                     utilisateur.DislikedVideos.Remove(v);
                 }
                 var chaines = utilisateur.Chaines.ToList();
-                foreach (Chaine c in chaines)
-                {
+                foreach (Chaine c in chaines) {
+                    try
+                    {
+                        System.IO.File.Delete(Server.MapPath("~") + c.AvatarPath);
+                    } catch (Exception e) { }
                     var videos = c.Videos.ToList();
                     foreach (Video v in videos) {
                         var commentaires = v.Commentaires.ToList();
-                        foreach (Commentaire com in commentaires)
-                        {
+                        foreach (Commentaire com in commentaires) {
                             db.Commentaires.Remove(com);
                         }
-
                         db.Videos.Remove(v);
-                        try
-                        {
+                        try {
                             System.IO.File.Delete(Server.MapPath("~") + v.ThumbnailPath);
                             System.IO.File.Delete(Server.MapPath("~") + v.VideoPath);
                         }
-                        catch (Exception e)
-                        {
+                        catch (Exception e) {
                             e.StackTrace.ToString();
                         }
                     }
@@ -107,9 +102,7 @@ namespace YoutubeClone.Controllers
                     FormsAuthentication.SignOut();
                 db.Utilisateurs.Remove(utilisateur);
                 db.SaveChanges();
-            }
-            else
-            {
+            } else {
                 return RedirectToAction("Delete", "Utilisateurs", new { error = "You may not delete someone else's account" });
             }
             return RedirectToAction("Index", "Home", null);

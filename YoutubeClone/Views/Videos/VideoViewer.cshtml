@@ -36,26 +36,39 @@
     </div>
     <hr />
     <div>
-        <div>
-            <h4 style="margin-bottom:3px">
+        <div style="display:flex; align-items:center">
+            <div style="margin-right:15px">
                 <a style="color:black" href="~/Channel/Details/@(Model.Channel.ChaineId)">
-                    @Html.DisplayFor(model => model.Channel.Name)
+                    @if (!String.IsNullOrEmpty(Model.Channel.AvatarPath))
+                    {
+                        <img style="width:48px; height:48px; border-radius:180px" src="@Model.Channel.AvatarPath" />
+                    }
+                    else
+                    {
+                        <img style="width:48px; height:48px; border-radius:180px" src='@Url.Content("~/Content/Avatars/default-avatar.png")' />
+                    }
                 </a>
-            </h4>
-            <h5 style="color:#808080; margin-top:0">
-                Published on @t.ToString("MMM dd, yyyy")
-            </h5>
+            </div>
+            <div>
+                <h4 style="margin-bottom:3px">
+                    <a style="color:black" href="~/Channel/Details/@(Model.Channel.ChaineId)">
+                        @Html.DisplayFor(model => model.Channel.Name)
+                    </a>
+                </h4>
+                <h5 style="color:#808080; margin-top:0">
+                    Published on @t.ToString("MMM dd, yyyy")
+                </h5>
+            </div>
         </div>
         <div>
             <h5 style="margin:20px 0">@Html.DisplayFor(model => model.Description)</h5>
             <div style="display:flex; justify-content:space-between; width:150px">
                 <span style="color:#808080">@Html.DisplayNameFor(model => model.Categorie_Video)</span>
-                @Html.DisplayFor(model => model.Categorie_Video)
+                <a href="/Recherche/Index?isFromCat=true&search=&isVideo=on&categorie=@Model.Categorie_Video">@Model.Categorie_Video@*.ToString()*@</a>
             </div>
             <div style="display:flex; justify-content:space-between; width:150px">
                 <span style="color:#808080">@Html.DisplayNameFor(model => model.Tags_Video)</span>
-                @if (!String.IsNullOrEmpty(Model.Tags_Video))
-                {
+                @if (!String.IsNullOrEmpty(Model.Tags_Video)) {
                     @Html.DisplayFor(model => model.Tags_Video)
                 } else { <span>No tags</span> }
             </div>

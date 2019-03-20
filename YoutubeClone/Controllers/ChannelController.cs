@@ -9,6 +9,7 @@ using PagedList.Mvc;
 using System.Net;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace YoutubeClone.Controllers
 {
@@ -65,21 +66,30 @@ namespace YoutubeClone.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Name,Description,Utilisateur_FK,Categorie_Chaine,Tags_Chaine")] Chaine chaine) {
+        public ActionResult Create([Bind(Include = "Name,Description,Utilisateur_FK,Categorie_Chaine,Tags_Chaine")] Chaine chaineCreate, HttpPostedFileBase avatarUP) {
             if (ModelState.IsValid) {
-                db.Chaines.Add(chaine);
                 try {
+                    Chaine chaine = new Chaine();
+                    chaine.Name = chaineCreate.Name;
+                    chaine.Description = chaineCreate.Description;
+                    chaine.Utilisateur_FK = chaineCreate.Utilisateur_FK;
+                    chaine.Categorie_Chaine = chaineCreate.Categorie_Chaine;
+                    chaine.Tags_Chaine = chaineCreate.Tags_Chaine;
+                    db.Chaines.Add(chaine);                    
+                    if (avatarUP != null)
+                    {
+                        chaine.AvatarPath = "/Content/Avatars/" + chaine.ChaineId + Path.GetExtension(avatarUP.FileName);
+                        avatarUP.SaveAs(Server.MapPath("~") + "Content\\Avatars\\" + chaine.ChaineId + Path.GetExtension(avatarUP.FileName));                        
+                    }
                     db.SaveChanges();
-                } catch (Exception se) {
-                    //Here you can send an error message if save crashes from unique index
-                    ModelState.AddModelError("Name", "The chosen name is not unique");
-                    return RedirectToAction("Create");
+                    return RedirectToAction("ChainesUtilisateurs");
+                } catch (Exception e) {
+                    return View(chaineCreate);
                 }
-                return RedirectToAction("ChainesUtilisateurs");
             }
-
             ViewBag.Utilisateur_FK = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
-            return View("Create.cshtml",chaine);
+            //return Content(avatarUP.FileName);
+            return View(chaineCreate);
         }
 
         // GET: Chaines/Edit/5
@@ -104,25 +114,38 @@ namespace YoutubeClone.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Edit([Bind(Include = "ChaineId,Name,Description,Utilisateur_FK,Categorie_Chaine,Tags_Chaine")] Chaine chaine) {
+        public ActionResult Edit([Bind(Include = "ChaineId,Name,Description,Utilisateur_FK,Categorie_Chaine,Tags_Chaine")] Chaine chaineEdit, HttpPostedFileBase avatarUP) {
             if (ModelState.IsValid) {
-                if (User.Identity.Name == db.Utilisateurs.Where(c => c.UtilisateurId == db.Chaines.Where(C => C.ChaineId == chaine.ChaineId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
-                    db.Entry(chaine).State = EntityState.Modified;
+                if (User.Identity.Name == db.Utilisateurs.Where(c => c.UtilisateurId == db.Chaines.Where(C => C.ChaineId == chaineEdit.ChaineId).FirstOrDefault().Utilisateur_FK).FirstOrDefault().Username) {
                     try {
+                        Chaine chaine = new Chaine();
+                        chaine.ChaineId = chaineEdit.ChaineId;
+                        chaine.Name = chaineEdit.Name;
+                        chaine.Description = chaineEdit.Description;
+                        chaine.Utilisateur_FK = chaineEdit.Utilisateur_FK;
+                        chaine.Categorie_Chaine = chaineEdit.Categorie_Chaine;
+                        chaine.Tags_Chaine = chaineEdit.Tags_Chaine;                        
+                        if (avatarUP != null) {
+                            chaine.AvatarPath = "/Content/Avatars/" + chaine.ChaineId + Path.GetExtension(avatarUP.FileName);
+                            try
+                            {
+                                System.IO.File.Delete(Server.MapPath("~") + chaine.AvatarPath);
+                            } catch (Exception e) { }
+                            avatarUP.SaveAs(Server.MapPath("~") + "Content\\Avatars\\" + chaine.ChaineId + Path.GetExtension(avatarUP.FileName));                            
+                        }
+                        db.Entry(chaine).State = EntityState.Modified;
                         db.SaveChanges();
                         var user = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
-                        return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));
-                    } catch (Exception se) {
-                        //Here you can send an error message if save crashes from unique index
-                        ModelState.AddModelError("Name", "The chosen name is not unique");
-                        return View("~/Views/Channel/Edit.cshtml", chaine);
+                        return View("~/Views/Channel/ChainesUtilisateurs.cshtml", db.Chaines.Where(c => c.Utilisateur_FK == user));                        
+                    } catch (Exception e) {
+                        return View("~/Views/Channel/Edit.cshtml", chaineEdit);
                     }
                 } else {
                     ModelState.AddModelError("Name", "You may not edit a channel owned by someone else");
                 }
             }
             ViewBag.Utilisateur_FK = db.Utilisateurs.Where(C => C.Username == User.Identity.Name).FirstOrDefault().UtilisateurId;
-            return View("~/Views/Channel/Edit.cshtml",chaine);
+            return View("~/Views/Channel/Edit.cshtml",chaineEdit);
         }
 
         // GET: Chaines/Delete/5
@@ -149,6 +172,10 @@ namespace YoutubeClone.Controllers
                 db.Utilisateurs.Where(c => c.Username == User.Identity.Name).FirstOrDefault().IsAdmin
                 ) {
                 Chaine chaine = db.Chaines.Find(id);
+                try
+                {
+                    System.IO.File.Delete(Server.MapPath("~") + chaine.AvatarPath);
+                } catch (Exception e) { }
                 var videos = chaine.Videos.ToList();
                 foreach (Video v in videos) {
                     foreach (Commentaire c in v.Commentaires.ToList())
