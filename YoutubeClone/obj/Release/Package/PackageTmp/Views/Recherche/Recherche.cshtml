@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Recherche";
+}
+
+
+<h2><b>Recherche de</b> @ViewBag.Recherche</h2>
+
+<!-- BAR+FILTRE -->
+<div class="row">
+    <form method="get" action="/Recherche/Index">
+
+        <div class="col-md-12" style="text-align:center">
+            <input type="text" name="search" value="" required autofocus>
+            <input type="submit" value="Recherche avec filtres" />
+        </div>
+        <div class="col-md-3">
+            <p>Type</p>
+            <input type="checkbox" name="isChaine" checked> Chaine <br />
+            <input type="checkbox" name="isVideo" checked> Video <br />
+        </div>
+        <div class="col-md-3">
+            <p>Upload Time</p>
+            <input type="radio" name="uploadFrame" value="All" checked> All time<br />
+            <input type="radio" name="uploadFrame" value="Day"> Today<br />
+            <input type="radio" name="uploadFrame" value="Week"> This Week<br />
+            <input type="radio" name="uploadFrame" value="Month"> This Month<br />
+            <input type="radio" name="uploadFrame" value="Year"> This Year<br />
+        </div>
+        <div class="col-md-3">
+            <p>Sort By</p>
+            <input type="radio" name="sortBy" value="Relevance"> Relevance<br />
+            <input type="radio" name="sortBy" value="Popular" checked> Popular<br />
+            <input type="radio" name="sortBy" value="UploadDate"> Upload time<br />
+        </div>
+        <div class="col-md-3">
+            <p>Category</p>
+            <select name="categorie">
+                <option value="All">All</option>
+                <option value="Fashion">Fashion</option>
+                <option value="React">React</option>
+                <option value="Jeux">Jeux</option>
+                <option value="Sport">Sport</option>
+                <option value="Review">Review</option>
+                <option value="Meme">Meme</option>
+            </select>
+        </div>
+    </form>
+
+</div>
+<div class="row" style="text-align:center;font-size:24px;">
+    @if (ViewBag.LastPage == "#") {<a style="color: grey;text-decoration: none !important;" class="PageButton btn-disabled"><<  </a>} else { <a class="PageButton" href="@ViewBag.FirstPage"><<  </a> } 
+    @if (ViewBag.LastPage == "#") {<a style="color: grey;text-decoration: none !important;" class="PageButton btn-disabled"><  </a>} else { <a class="PageButton" href="@ViewBag.LastPage"><  </a> }
+    Pages
+    @if (ViewBag.NextPage == "#") {<a style="color: grey;text-decoration: none !important;" class="PageButton btn-disabled">  ></a>} else { <a class="PageButton" href="@ViewBag.NextPage">  ></a>  } 
+    @if (ViewBag.NextPage == "#") {<a style="color: grey;text-decoration: none !important;" class="PageButton btn-disabled">  >></a>} else { <a class="PageButton" href="@ViewBag.EndPage">  >></a> } 
+</div>
+<!-- CONTENU DE LA RECHERCHE -->
+<div class="row">
+    <!--VIDEO-->
+    <div class="col-md-6">
+        <div class="col-md-12">
+            <h3>Vidéos - Résultat(s)</h3>
+            <hr />
+        </div>
+        @{if (ViewBag.StatusVideo)
+            {
+                foreach (var item in ViewBag.Videos)
+                {
+                    <div>
+                        <div class="col-md-4">
+                            @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", (YoutubeClone.Models.Data_Models.Video)item)
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Plus de résultat</p>
+            }
+
+        }
+    </div>
+
+    <!--CHAINE-->
+    <div class="col-md-6" style="border-left: 2px red solid">
+        <div class="col-md-12">
+            <h3>Chaînes - Résultat(s)</h3>
+            <hr />
+        </div>
+
+        @{if (ViewBag.StatusChaine)
+            {
+                foreach (var item in ViewBag.Chaines)
+                {
+                    <div>
+                        <div class="col-md-12">
+                            @*@Html.Action("MostPopularVideosOfChannels", "Channel", (YoutubeClone.Models.Data_Models.Chaine)item)*@
+                            <div class="row">
+                                @{ var r = (YoutubeClone.Models.Data_Models.Chaine)item; }
+                                <a href="/Channel/Details/@r.ChaineId">
+                                    <div style="border:1px solid black; color:black; border-radius:15px; margin-bottom:20px; padding-left:30px; padding-bottom:10px">
+                                        <h3>@r.Name</h3>
+                                        <h4>@r.Videos.Count() vidéos</h4>
+                                        <h4>@r.Description</h4>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Plus de résultat</p>
+            }
+
+        }
+    </div>
+</div>

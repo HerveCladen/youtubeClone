@@ -131,6 +131,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\VideoSharing-DG-HC-BBA - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -254,8 +255,12 @@
     <Content Include="Views\Auth\Edit.cshtml" />
     <Content Include="Views\Videos\LikedVideos.cshtml" />
     <Content Include="Views\Videos\Historique.cshtml" />
+    <Content Include="Views\Shared\_Recommended.cshtml" />
+    <Content Include="Views\Shared\_AdminMenuOption.cshtml" />
+    <Content Include="Views\Utilisateurs\Admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>

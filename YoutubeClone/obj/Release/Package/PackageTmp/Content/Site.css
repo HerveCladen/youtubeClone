@@ -1,0 +1,120 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+ul {
+    list-style: none;
+}
+
+li > a {
+    color: #999;
+    text-decoration: none;
+}
+
+li > a:hover {
+    color: lightgray;
+    text-decoration: none;
+}
+
+.greeting {
+    font-size: 1.2em;
+    color: #999;    
+}
+
+.video {
+    margin-right: 25px;
+}
+
+.video-populaire {
+    padding-bottom: 15px;
+    padding-left: 0 !important;
+}
+
+.thumbnail {
+    width: 160px;
+    height: 90px;
+}
+
+.thumbnail-image {
+    max-height: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    height: 90px;
+    width: 160px;
+}
+
+.video-details {
+    width: 200px !important;
+}
+
+.video-details-part {
+    text-align: left !important;
+}
+
+video {
+    max-width:75%
+}
+
+.block-size {
+    min-width: 847.5px !important
+}
+
+/*Page style in recherche*/
+.PageButton {
+    color: white;
+    background: #d4d4d4;
+    border-radius: 27px;
+    padding: 7px;
+    margin: 10px;
+    text-decoration: none !important;
+}
+
+.btn-disabled {
+    color: grey;
+}
+
+.inputs {
+    width:380px !important
+}
+
+.categories {
+    background-color: #FAFAFA;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray
+}
+
+.category {
+    padding-right:0;
+    border-bottom:1px solid lightgray;
+    height: 35px;
+}
+
+.category-links {
+    display:inline-block;
+    width:100%;
+    height:100%;
+    padding:7px 0 7px 15px;
+    color: black;
+}
+
+.category-links:hover {
+    color:gray;
+    text-decoration: none;
+    font-size:1.05em;
+}

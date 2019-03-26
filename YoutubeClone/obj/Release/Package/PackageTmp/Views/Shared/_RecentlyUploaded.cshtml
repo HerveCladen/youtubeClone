@@ -1,0 +1,18 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IEnumerable<YoutubeClone.Models.Data_Models.Video>
+
+<div class="RecentlyUploaded">
+    <div class="row">
+        <h1 class="col-md-12">Recently Uploaded</h1>
+    </div>
+    <div id="targetElement" class="row">
+        @foreach (var item in Model) {
+            <div style="background-color:darkgrey">
+                <div class="col-md-2 video">
+                    @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item)
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model YoutubeClone.Models.LoginForm
+
+@{
+    ViewBag.Title = YoutubeClone.Ressource.Utilisateur.TitleLogin;
+}
+
+<h2>@YoutubeClone.Ressource.Utilisateur.PageNameLogin</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>@YoutubeClone.Ressource.Utilisateur.ControllerName</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control inputs" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HashPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HashPassword, new { htmlAttributes = new { @class = "form-control inputs" } })
+                @Html.ValidationMessageFor(model => model.HashPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RemindMe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RemindMe, new { htmlAttributes = new { @class = "form-control inputs" } })
+                @Html.ValidationMessageFor(model => model.RemindMe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" required />
+                <input type="submit" value="@YoutubeClone.Ressource.Utilisateur.ActionLogin" class="btn btn-default" />
+                @Html.ActionLink(YoutubeClone.Ressource.Utilisateur.GoToCreate, "SignUp", "Auth", new { ReturnUrl = Request.Url }, new { @class = "btn btn-default" })
+                @Html.ActionLink(YoutubeClone.Ressource.Utilisateur.GoToHome, "Index", "Home", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
