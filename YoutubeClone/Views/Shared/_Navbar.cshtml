@@ -1,54 +1,58 @@
 ﻿<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container ">
-        <div class="row " style="align-items:center; ">
-            @Html.ActionLink("Youtube Clone", "Index", "Home", new { area = "" }, new { @class = "navbar-brand col-md-4" })
-                <form method="get" action="/Recherche/Index" class="navbar-form col-md-4" style="">
-                    <div>
-                        <input type="text" name="search" value="" required>
-                        <input type="hidden" name="isVideo" value="on" />
-                        <input type="hidden" name="isChaine" value="on" />
-                        <input type="submit" value="Recherche" />
-                    </div>
-                </form>
+        <div class="row" style="margin:auto; display:flex; justify-content:space-between">
+            @Html.ActionLink("Youtube Clone", "Index", "Home", new { area = "" }, new { @class = "navbar-brand col-md-2" })
+            <form method="get" action="/Recherche/Index" class="navbar-form col-md-4" style="margin:auto">
+                <div>
+                    <input type="text" name="search" value="" style="width:400px" class="form-control" required>
+                    <input type="hidden" name="isVideo" value="on" />
+                    <input type="hidden" name="isChaine" value="on" /> 
+                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>                    
+                </div>
+            </form>
 
-                @if (User.Identity.IsAuthenticated) {
-            @*Faudra peut-être créer une sidebar comme sur YouTube pour que le navbar soit moins clustered*@
-            <div class="dropdown col-md-4">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                    Logged in as @User.Identity.Name
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li>
-                        @Html.ActionLink("Admin menu", "AdminMenuOption", "Utilisateurs", null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("Channels", "ChainesUtilisateurs", "Channel", new { ReturnUrl = Request.Url }, null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("Account", "InfoUser", "Auth", new { ReturnUrl = Request.Url }, null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("Viewed videos", "Historique", "Utilisateurs", new { ReturnUrl = Request.Url }, null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("Liked videos", "LikedVideos", "Utilisateurs", new { ReturnUrl = Request.Url }, null)
-                    </li>
-                    <li>
-                        @Html.ActionLink("Logout", "Logout", "Auth", new { ReturnUrl = Request.Url }, null)
-                    </li>
-                </ul>
-            </div>
-} else {
-        <ul>
-            <li>
-                @Html.ActionLink("Login", "Login", "Auth", new { ReturnUrl = Request.Url }, null)
-            </li>
-            <li>
-                @Html.ActionLink("Create an account", "SignUp", "Auth", new { ReturnUrl = Request.Url }, null)
-            </li>
-        </ul>
-}
-            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="dropdown col-md-2" style="margin:auto">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                        Logged in as @User.Identity.Name
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            @Html.ActionLink("Admin menu", "AdminMenuOption", "Utilisateurs", null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Channels", "ChainesUtilisateurs", "Channel", new { ReturnUrl = Request.Url }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Account", "InfoUser", "Auth", new { ReturnUrl = Request.Url }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Viewed videos", "Historique", "Utilisateurs", new { ReturnUrl = Request.Url }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Liked videos", "LikedVideos", "Utilisateurs", new { ReturnUrl = Request.Url }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Logout", "Logout", "Auth", new { ReturnUrl = Request.Url }, null)
+                        </li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-2">
+                    <ul>
+                        <li>
+                            @Html.ActionLink("Login", "Login", "Auth", new { ReturnUrl = Request.Url }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Create an account", "SignUp", "Auth", new { ReturnUrl = Request.Url }, null)
+                        </li>
+                    </ul>
+                </div>
+            }
         </div>
     </div>
+</div>

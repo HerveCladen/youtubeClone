@@ -2,29 +2,26 @@
 
 <div class="MenuCategories">
     <div class="row">
-        <h1 class="col-md-12">Categories de video</h1>
+        <h2 class="col-md-12">Video categories</h2>
     </div>
 
-    <div class="row">
-        @foreach (var item in Model) {
-            <div style="background-color:yellow">
-                <div class="col-md-12">
-                    <!--TODO: AVOIR LE PROPER LINK/PARAMETER-->
-                    @Html.ActionLink((string)item.ToString(), "Index", "Recherche", new { categorie = item, isChaine = "on", isFromCat = true }, null)
-                </div>
+    <div class="categories">
+        @foreach (var item in Model)
+        {
+            <div class="category">
+                @Html.ActionLink((string)item.ToString(), "Index", "Recherche", new { categorie = item, isVideo = "on", isFromCat = true }, new { @class = "category-links" })
             </div>
         }
     </div>
     <div class="row">
-        <h1 class="col-md-12">Categories de chaine</h1>
+        <h2 class="col-md-12">Channel categories</h2>
     </div>
 
-    <div class="row">
+    <div class="categories">
         @foreach (var item in Model) {
-            <div style="background-color:yellow">
-                <div class="col-md-12">
-                    <!--TODO: AVOIR LE PROPER LINK/PARAMETER-->
-                    @Html.ActionLink((string)item.ToString(), "Index", "Recherche", new { categorie = item, isVideo = "on", isFromCat = true }, null)
+            <div class="category">
+                <div class="col-md-12" style="padding-left:0">
+                    @Html.ActionLink((string)item.ToString(), "Index", "Recherche", new { categorie = item, isChaine = "on", isFromCat = true }, new { @class = "category-links" })
                 </div>
             </div>
         }

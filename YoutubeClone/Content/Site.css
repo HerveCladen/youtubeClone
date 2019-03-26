@@ -40,7 +40,8 @@ li > a:hover {
 }
 
 .video-populaire {
-    padding-bottom: 15px
+    padding-bottom: 15px;
+    padding-left: 0 !important;
 }
 
 .thumbnail {
@@ -85,4 +86,35 @@ video {
 
 .btn-disabled {
     color: grey;
+}
+
+.inputs {
+    width:380px !important
+}
+
+.categories {
+    background-color: #FAFAFA;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray
+}
+
+.category {
+    padding-right:0;
+    border-bottom:1px solid lightgray;
+    height: 35px;
+}
+
+.category-links {
+    display:inline-block;
+    width:100%;
+    height:100%;
+    padding:7px 0 7px 15px;
+    color: black;
+}
+
+.category-links:hover {
+    color:gray;
+    text-decoration: none;
+    font-size:1.05em;
 }
