@@ -41,7 +41,6 @@ li > a:hover {
 
 .video-populaire {
     padding-bottom: 15px;
-    padding-left: 0 !important;
 }
 
 .thumbnail {
@@ -117,4 +116,42 @@ video {
     color:gray;
     text-decoration: none;
     font-size:1.05em;
+}
+
+.Chaine {
+    padding-left: 0 !important;
+}
+
+#container {
+    overflow: hidden;
+    padding-left: 15px;
+}
+
+div.scrollmenu {
+    white-space: nowrap;    
+}
+
+div.scrollmenu div {
+    display: inline-block;
+    text-align: center;
+    padding-right:1.5px
+}
+
+#slideBack, #slide {
+    position:absolute;
+    bottom:95px;
+    font-size:30px;
+    color:lightgray;
+}
+
+#slideBack:hover, #slide:hover {
+    cursor:pointer
+}
+
+#slideBack {
+    left: -25px;
+}
+
+#slide {
+    right:-25px;
 }

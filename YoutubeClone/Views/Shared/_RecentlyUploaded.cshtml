@@ -1,18 +1,55 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
 @model IEnumerable<YoutubeClone.Models.Data_Models.Video>
-
+<head>
+    <script src="~/Scripts/script.js" type="text/javascript"></script>
+</head>
 <div class="RecentlyUploaded">
     <div class="row">
         <h1 class="col-md-12">Recently Uploaded</h1>
     </div>
-    <div id="targetElement" class="row">
-        @foreach (var item in Model) {
-            <div style="background-color:darkgrey">
-                <div class="col-md-2 video">
-                    @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item)
+    <div id="container">
+        <div id="targetElement" class="row scrollmenu">
+            @foreach (var item in Model)
+            {
+                <div>
+                    <div>
+                        @Html.Partial("~/Views/Shared/_VideoThumbnail.cshtml", item)
+                    </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
     </div>
+    <i id="slideBack" class="fas fa-arrow-circle-left"></i>
+    <i id="slide" class="fas fa-arrow-circle-right"></i>
+
+    @*Script does not work when linked through script sheet for some unknown reason, will need to look into it later*@
+    <script>
+        var button = document.getElementById('slide');
+        button.onclick = function () {
+            var container = document.getElementById('container');
+            sideScroll(container, 'right', 25, 100, 10);
+        };
+
+        var back = document.getElementById('slideBack');
+        back.onclick = function () {
+            var container = document.getElementById('container');
+            sideScroll(container, 'left', 25, 100, 10);
+        };
+
+        function sideScroll(element, direction, speed, distance, step) {
+            scrollAmount = 0;
+            var slideTimer = setInterval(function () {
+                if (direction == 'left') {
+                    element.scrollLeft -= step;
+                } else {
+                    element.scrollLeft += step;
+                }
+                scrollAmount += step;
+                if (scrollAmount >= distance) {
+                    window.clearInterval(slideTimer);
+                }
+            }, speed);
+        }
+    </script>
 </div>

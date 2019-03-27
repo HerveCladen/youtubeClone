@@ -18,7 +18,7 @@ namespace YoutubeClone.Controllers
         public ActionResult RecentlyUploaded() {
             var Videos= db.Videos;
             //retourne les 5 plus recent
-            return PartialView("~/Views/Shared/_RecentlyUploaded.cshtml", Videos.OrderByDescending(C => C.DatePublished).Take(5));
+            return PartialView("~/Views/Shared/_RecentlyUploaded.cshtml", Videos.OrderByDescending(C => C.DatePublished).Take(10));
         }
 
         public ActionResult MostPopularVideos() {

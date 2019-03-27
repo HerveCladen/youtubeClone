@@ -2,10 +2,8 @@
     ViewBag.Title = "Recherche";
 }
 
-
 <h2><b>Recherche de</b> @ViewBag.Recherche</h2>
 
-<!-- BAR+FILTRE -->
 <div class="row">
     <form method="get" action="/Recherche/Index">
 
@@ -100,7 +98,7 @@
                                 <a href="/Channel/Details/@r.ChaineId">
                                     <div style="border:1px solid black; color:black; border-radius:15px; margin-bottom:20px; padding-left:30px; padding-bottom:10px">
                                         <h3>@r.Name</h3>
-                                        <h4>@r.Videos.Count() vidéos</h4>
+                                        <h4>@r.Videos.Count() videos</h4>
                                         <h4>@r.Description</h4>
                                     </div>
                                 </a>

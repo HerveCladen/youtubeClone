@@ -19,9 +19,7 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li>
-                            @Html.ActionLink("Admin menu", "Admin", "Utilisateurs",null, null)
-                        </li>
+                        @Html.Action("AdminMenuOption", "Utilisateurs", null)
                         <li>
                             @Html.ActionLink("Channels", "ChainesUtilisateurs", "Channel", new { ReturnUrl = Request.Url }, null)
                         </li>
